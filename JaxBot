@@ -42,7 +42,7 @@ czas_gry = 0
 IloscKasyDoPowrotu1 = 400
 PierwszyPowrot = true
 IloscKasyDoPowrotu2 = 1100
-IloscZyciaDoPowrotu =  0.07 -- Zycia%
+IloscZyciaDoPowrotu =  0.15 -- Zycia%
 
 Ja = { Walka = false, Ide = false, Wolny = false}
 
