@@ -1,4 +1,14 @@
--- Jax Bot 0.1.3
+-- Jax Bot 0.1.4
+--[[
+	0.1.4
+	Changes Smart Fight with monsters in jungle wont wase e or q for last monset in spot
+	Fixed Dragon
+	0.1.3
+	Fixed Buy
+	0.1.2
+	Fixed Junge Roaming
+]]--
+
 if myHero.charName ~= "Jax" then return end
 
 --[[
@@ -790,30 +800,34 @@ function Jungle()
 	if Strona == "Niebieska" then
 		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
 			RobSmoka()
-		elseif (Smok.Zyje == false or JaxUstawienia.RobSmoka == false or czas_gry <= 300) and BlueNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry>=10 and czas_gry <= 115 then
-			RobBlue(BlueNiebieskich)
-		elseif BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
-			RobWilki(WilkiNiebieskich)
-		elseif WilkiNiebieskich.Zyje == false and DuchyNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Duchow" or Status == "Robienie Duchow") then
-			RobDuchy(DuchyNiebieskich)
-		elseif DuchyNiebieskich.Zyje == false and RedNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Reda" or Status == "Robienie Reda") then
-			RobRed(RedNiebieskich)
-		elseif RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
-			RobGolemy(GolemyNiebieskich)
+		else
+			if BlueNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry>=10 and czas_gry <= 115 then
+				RobBlue(BlueNiebieskich)
+			elseif BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
+				RobWilki(WilkiNiebieskich)
+			elseif WilkiNiebieskich.Zyje == false and DuchyNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Duchow" or Status == "Robienie Duchow") then
+				RobDuchy(DuchyNiebieskich)
+			elseif DuchyNiebieskich.Zyje == false and RedNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Reda" or Status == "Robienie Reda") then
+				RobRed(RedNiebieskich)
+			elseif RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
+				RobGolemy(GolemyNiebieskich)
+			end
 		end
 	else
 		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
 			RobSmoka()
-		elseif (Smok.Zyje == false or JaxUstawienia.RobSmoka == false or czas_gry <= 300) and BlueCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
-			RobBlue(BlueCzerwonych)
-		elseif BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
-			RobWilki(WilkiCzerwonych)
-		elseif WilkiCzerwonych.Zyje == false and DuchyCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Duchow" or Status == "Robienie Duchow") then
-			RobDuchy(DuchyCzerwonych)
-		elseif DuchyCzerwonych.Zyje == false and RedCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Reda" or Status == "Robienie Reda") then
-			RobRed(RedCzerwonych)
-		elseif RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
-			RobGolemy(GolemyCzerwonych)
+		else
+			if BlueCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
+				RobBlue(BlueCzerwonych)
+			elseif BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
+				RobWilki(WilkiCzerwonych)
+			elseif WilkiCzerwonych.Zyje == false and DuchyCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Duchow" or Status == "Robienie Duchow") then
+				RobDuchy(DuchyCzerwonych)
+			elseif DuchyCzerwonych.Zyje == false and RedCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Reda" or Status == "Robienie Reda") then
+				RobRed(RedCzerwonych)
+			elseif RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
+				RobGolemy(GolemyCzerwonych)
+			end
 		end
 	end
 	
@@ -876,9 +890,7 @@ function RobBlue(Druzyna)
 			else
 				Druzyna.MlodyLizard1 = nil
 				if Druzyna.MlodyLizard2 ~= nil and not Druzyna.MlodyLizard2.dead then
-					CastSpell(_Q, Druzyna.MlodyLizard2)
 					CastSpell(_W)
-					CastSpell(_E)
 					myHero:Attack(Druzyna.MlodyLizard2)
 				else
 					Status = "Jungle"
@@ -913,9 +925,7 @@ function RobWilki(Druzyna)
 			else
 				Druzyna.Wilk1 = nil
 				if Druzyna.Wilk2 ~= nil and not Druzyna.Wilk2.dead then
-					CastSpell(_Q, Druzyna.Wilk2)
 					CastSpell(_W)
-					CastSpell(_E)
 					myHero:Attack(Druzyna.Wilk2)
 				else
 					Status = "Jungle"
@@ -956,9 +966,7 @@ function RobDuchy(Druzyna)
 				else
 					Druzyna.MalyDuch2 = nil
 					if Druzyna.MalyDuch3 ~= nil and not Druzyna.MalyDuch3.dead then
-					CastSpell(_Q, Druzyna.MalyDuch3)
 					CastSpell(_W)
-					CastSpell(_E)
 					myHero:Attack(Druzyna.MalyDuch3)
 					else
 						Status = "Jungle"
@@ -994,9 +1002,7 @@ function RobRed(Druzyna)
 			else
 				Druzyna.MlodyJaszczur1 = nil
 				if Druzyna.MlodyJaszczur2 ~= nil and not Druzyna.MlodyJaszczur2.dead then
-					CastSpell(_Q, Druzyna.MlodyJaszczur2)
 					CastSpell(_W)
-					CastSpell(_E)
 					myHero:Attack(Druzyna.MlodyJaszczur2)
 				else
 					Status = "Jungle"
@@ -1023,9 +1029,7 @@ function RobGolemy(Druzyna)
 		else
 			Druzyna.Golem = nil	
 			if Druzyna.MalyGolem ~= nil and not Druzyna.MalyGolem.dead then
-				CastSpell(_Q, Druzyna.MalyGolem)
 				CastSpell(_W)
-				CastSpell(_E)
 				myHero:Attack(Druzyna.MalyGolem)
 			else
 				Status = "Jungle"
