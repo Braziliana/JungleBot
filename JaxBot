@@ -477,7 +477,6 @@ function OnTick()
 		Kombo()
 	end
 	
-	--PrintChat(Ja.Status)
 	
 end
 
@@ -527,9 +526,7 @@ function Druzyna()
 		Ja.Strona = BazaCzerwonych.Strona
 	else
 		Ja.Strona = "Nieznana"
-		PrintChat("Please Go To Your Respawn And Restart Script")
 	end
-	PrintChat("Strona: " .. Ja.Strona)
 end
 
 function Kombo()
@@ -636,7 +633,6 @@ function JaxAI()
 			Ja.Status = "Wolny"
 		end
 		Ja.ZabezpieczenieCzas = czas_gry
-		PrintChat("Zabezpieczenie")
 	end
 	
 end
@@ -688,12 +684,10 @@ function SklepAI()
 	if Sklep.WSklepie == false then
 		Sklep.CzasWSklepie = czas_gry
 		Sklep.WSklepie = true
-		PrintChat("In Store")
 	end
 	
 	if czas_gry - Sklep.CzasNaKupno >= Sklep.CzasWSklepie then
 		Sklep.WSklepie = false
-		PrintChat("End Time For Store")
 		Status = Jungle.Status
 	end
 	
@@ -1177,7 +1171,7 @@ function PotworyOdrodzenie()
 			PierwszeOdrodzenieSmoka = false
 		end
 	else
-		if czas_gry - Smok.Czas_smierci >= Smok.Czas_odrodzenia and Smok.Zyje == false then Smok.Zyje = true PrintChat("Respawn Dragon") end
+		if czas_gry - Smok.Czas_smierci >= Smok.Czas_odrodzenia and Smok.Zyje == false then Smok.Zyje = true end
 	end
 	
 	if PierwszeOdrodzenieBarona then
@@ -1186,7 +1180,7 @@ function PotworyOdrodzenie()
 			PierwszeOdrodzenieBarona = false
 		end
 	else
-		if czas_gry - Baron.Czas_smierci >= Baron.Czas_odrodzenia and Baron.Zyje == false then Baron.Zyje = true PrintChat("Respawn Baron") end
+		if czas_gry - Baron.Czas_smierci >= Baron.Czas_odrodzenia and Baron.Zyje == false then Baron.Zyje = true end
 	end
 
 end
