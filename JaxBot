@@ -1,4 +1,6 @@
+-- Jax Bot 0.1.3
 if myHero.charName ~= "Jax" then return end
+
 --[[
 
 	GLOBALNE
@@ -415,16 +417,17 @@ function Sklep()
 		PrintChat("In Store")
 	end
 	
+	if czas_gry < 10 and czas_gry > 0 then
+		BuyItem(1039)
+		BuyItem(2003)
+	end
+	
 	if czas_gry-CzasNaKupno >= CzasWSklepie then
 		WSklepie = false
 		PrintChat("End Time For Store")
 		Status = "Jungle"
 	end
 	
-	if czas_gry < 100 and czas_gry > 0 then
-		BuyItem(1039)
-		BuyItem(2003)
-	else
 	if GetTickCount() > OstatnieKupno + OpuznienieKupna then
 		if Przedmioty[NastepneKupno] ~= nil and GetInventorySlotItem(Przedmioty[NastepneKupno]) ~= nil then
 			NastepneKupno = NastepneKupno + 1
@@ -433,11 +436,7 @@ function Sklep()
 			OstatnieKupno = GetTickCount()
 		end
 	end
-	end
 	
-	
-	
-
 end
 
 
@@ -460,6 +459,7 @@ CzarE = {Gotowe = false, Obrazenia = 0, Zasieg = 187}
 CzarR = {Gotowe = false, Obrazenia = 0, Zasieg = 500}
 BRK = {Gotowe = false, Obrazenia = 0, Zasieg = 500, ID = 3153, Miejsce = nil}
 BC = {Gotowe = false, Obrazenia = 0, Zasieg = 500, ID = 3144, Miejsce = nil}
+WL = {Gotowe = false, Obrazenia = 0, Zasieg = 500, ID = Wriggles_Lantern, Miejsce = nil}
 
 function Czary()
 	
@@ -475,6 +475,9 @@ function Czary()
 	
 	BC.Miejsce = GetInventorySlotItem(BC.ID)
 	BC.Gotowe = (BC.Miejsce ~= nil and myHero:CanUseSpell(BC.Miejsce) == READY)
+	
+	WL.Miejsce = GetInventorySlotItem(WL.ID)
+	WL.Gotowe = (WL.Miejsce ~= nil and myHero:CanUseSpell(WL.Miejsce) == READY)
 	
 end
 
@@ -515,7 +518,7 @@ end
 function OnLoad()
 	ZaladowaniePotworowWJungle()
 	PrintChat("Jax Bot Loaded")
-	Status = "Wolny"
+	Status = "Sklep"
 	MyHeroTeam()
 	PrintChat("X: "..myHero.x)
 	PrintChat("Y: "..myHero.y)
@@ -783,10 +786,11 @@ end
 -- JUNGLE LOGIC
 function Jungle()
 	--PrintChat(Status)
+	
 	if Strona == "Niebieska" then
-		if czas_gry >= 300 and BC.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
+		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
 			RobSmoka()
-		elseif (Smok.Zyje == false or not JaxUstawienia.RobSmoka) and BlueNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
+		elseif (Smok.Zyje == false or JaxUstawienia.RobSmoka == false or czas_gry <= 300) and BlueNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry>=10 and czas_gry <= 115 then
 			RobBlue(BlueNiebieskich)
 		elseif BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
 			RobWilki(WilkiNiebieskich)
@@ -798,9 +802,9 @@ function Jungle()
 			RobGolemy(GolemyNiebieskich)
 		end
 	else
-		if czas_gry >= 300 and BC.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
+		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
 			RobSmoka()
-		elseif (Smok.Zyje == false or not JaxUstawienia.RobSmoka) and BlueCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
+		elseif (Smok.Zyje == false or JaxUstawienia.RobSmoka == false or czas_gry <= 300) and BlueCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
 			RobBlue(BlueCzerwonych)
 		elseif BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
 			RobWilki(WilkiCzerwonych)
@@ -826,26 +830,28 @@ function KomunikacjaZDruzyna()
 end
 
 function RobSmoka()
-	if myHero.health/myHero.MaxHealth >= 0.9 or myHero.level > 16 and myHero.health/myHero.MaxHealth >= 0.4	then
+
+	if myHero.health/myHero.maxHealth >= 0.9 or myHero.level >= 16 and myHero.health/myHero.maxHealth >= 0.4 then
 		if ((myHero.x - Smok.X)^2 + (myHero.z - Smok.Z)^2)^(1/2) > 350  then
 			myHero:MoveTo(Smok.X, Smok.Z)
 			Status = "Idz Do Smoka"
 		else
-			Status = "Robienie Smoka"
-			if Smok.Smok ~= nil and not Smok.Smok.dead then
-				CastSpell(_Q, Smok.Smok)
-				CastSpell(_W)
-				CastSpell(_E)
-				myHero:Attack(Smok.Smok)
-			else
-				Status = "Jungle"
-				Smok.Smok = nil
-				Smok.Czas_smierci = czas_gry
-				Smok.Zyje = false	
-			end	
+			Status = "Powrot"
 		end
-	else
-		Status = "Powrot"
+	end
+	if ((myHero.x - Smok.X)^2 + (myHero.z - Smok.Z)^2)^(1/2) < 600  then
+		Status = "Robienie Smoka"
+		if Smok.Smok ~= nil and not Smok.Smok.dead then
+			CastSpell(_Q, Smok.Smok)
+			CastSpell(_W)
+			CastSpell(_E)
+			myHero:Attack(Smok.Smok)
+		else
+			Status = "Jungle"
+			Smok.Smok = nil
+			Smok.Czas_smierci = czas_gry
+			Smok.Zyje = false	
+		end	
 	end
 end
 
@@ -1031,6 +1037,10 @@ function RobGolemy(Druzyna)
 	end
 end
 
+function Smite()
+
+end
+
 
 function Debugger()
 	
@@ -1109,12 +1119,12 @@ end
 function AI_Mozg()
 	
 	if Strona == "Niebieska" then
-		if math.sqrt((myHero.x - BazaNiebieskich.x) ^ 2 + (myHero.z - BazaNiebieskich.z) ^ 2) < BazaNiebieskich.zasieg and czas_gry-CzasWSklepie >= NastepneKupowanie then
+		if math.sqrt((myHero.x - BazaNiebieskich.x) ^ 2 + (myHero.z - BazaNiebieskich.z) ^ 2) < BazaNiebieskich.zasieg and (czas_gry-CzasWSklepie >= NastepneKupowanie or czas_gry < 10) then
 			--CzasWSklepie = czas_gry
 			Status = "Sklep"
 		end
 	else
-		if math.sqrt((myHero.x - BazaCzerwonych.x) ^ 2 + (myHero.z - BazaCzerwonych.z) ^ 2) < BazaCzerwonych.zasieg and czas_gry-CzasWSklepie >= NastepneKupowanie then
+		if math.sqrt((myHero.x - BazaCzerwonych.x) ^ 2 + (myHero.z - BazaCzerwonych.z) ^ 2) < BazaCzerwonych.zasieg and (czas_gry-CzasWSklepie >= NastepneKupowanie or czas_gry < 10) then
 			CzasWSklepie = czas_gry
 			Status = "Sklep"
 		end
@@ -1138,6 +1148,9 @@ function AI_Mozg()
 	
 	
 	if PierwszyPowrot then
+		if myHero.level >= 5 then
+			PierwszyPowrot = false
+		end
 		if myHero.gold >= IloscKasyDoPowrotu1 and not WBazie() then
 			Status = "Powrot"
 		end
