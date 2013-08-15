@@ -626,7 +626,7 @@ function JaxAI()
 		JungleAI()
 	end
 	--WalkaAI()
-	
+	--[[
 	if czas_gry - Ja.ZabezpieczenieCzas >= 5 then
 		--Zabezpieczenie Przed Chujowym bledem
 		if  Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie and Ja.Status ~= Sklep.Status and Ja.Status ~= Powrot.Status and Ja.Status ~= "Wolny" then
@@ -634,7 +634,7 @@ function JaxAI()
 		end
 		Ja.ZabezpieczenieCzas = czas_gry
 	end
-	
+	]]--
 end
 
 function PowrotAI()
@@ -739,7 +739,7 @@ function JungleAI()
 end
 
 function RobBlue(Miejsce)
-	if  math.sqrt((myHero.x - Miejsce.X)^2 + (myHero.z - Miejsce.Z)^2) > 350  then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 250  then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
@@ -773,7 +773,7 @@ function RobBlue(Miejsce)
 end
 
 function RobWilki(Miejsce)
-	if  math.sqrt((myHero.x - Miejsce.X)^2 + (myHero.z - Miejsce.Z)^2) > 150  then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 150 then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
@@ -807,7 +807,7 @@ function RobWilki(Miejsce)
 end
 
 function RobDuchy(Miejsce)
-	if  math.sqrt((myHero.x - Miejsce.X)^2 + (myHero.z - Miejsce.Z)^2) > 350  then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 250 then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
@@ -849,7 +849,7 @@ function RobDuchy(Miejsce)
 end
 
 function RobReda(Miejsce)
-	if  math.sqrt((myHero.x - Miejsce.X)^2 + (myHero.z - Miejsce.Z)^2) > 350  then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 250 then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
@@ -884,12 +884,12 @@ end
 
 
 function RobGolemy(Miejsce)
-	if  math.sqrt((myHero.x - Miejsce.X)^2 + (myHero.z - Miejsce.Z)^2) > 350  then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 150 then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
 		Ja.Status = Miejsce.StatusRobie
-		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead then
+		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead and Miejsce.Golem.x ~= nil then
 			CastSpell(_Q, Miejsce.Golem)
 			CastSpell(_W)
 			CastSpell(_E)
