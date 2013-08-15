@@ -1200,7 +1200,7 @@ function AI_Mozg()
 		end
 	end
 	
-	if Status ~= "Sklep" or Status ~="Powrot" or Status ~= "Walka" and czas_gry > 10  then
+	if (Status ~= "Sklep" or Status ~="Powrot" or Status ~= "Walka") and czas_gry > 10  then
 		Status = "Jungle"
 		Jungle()
 	end
