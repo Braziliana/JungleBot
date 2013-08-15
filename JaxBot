@@ -1201,6 +1201,7 @@ function AI_Mozg()
 	end
 	
 	if Status ~= "Sklep" or Status ~="Powrot" or Status ~= "Walka" then
+		Status = "Jungle"
 		Jungle()
 	end
 	
