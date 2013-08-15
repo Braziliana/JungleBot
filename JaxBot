@@ -714,10 +714,8 @@ function JungleAI()
 			RobDuchy(DuchyNiebieskich)
 		elseif (DuchyNiebieskich.Zyje == false and RedNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie) or (Ja.Status == RedNiebieskich.StatusIde or Ja.Status == RedNiebieskich.StatusRobie) then
 			RobReda(RedNiebieskich)
-		elseif (RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie) or (Ja.Status == GolemyNiebieskich.StatusIde or Ja.Status == GolemyNiebieskich.StatusRobie) then
+		else --(RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie) or (Ja.Status == GolemyNiebieskich.StatusIde or Ja.Status == GolemyNiebieskich.StatusRobie) then
 			RobGolemy(GolemyNiebieskich)
-		else
-			Ja.Status = Jungle.Status
 		end
 	elseif Ja.Strona == BazaCzerwonych.Strona then
 		if (BlueCzerwonych.Zyje or czas_gry <= 115) and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie then
@@ -728,10 +726,8 @@ function JungleAI()
 			RobDuchy(DuchyCzerwonych)
 		elseif (DuchyCzerwonych.Zyje == false and RedCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie) or (Ja.Status == RedCzerwonych.StatusIde or Ja.Status == RedCzerwonych.StatusRobie) then
 			RobReda(RedCzerwonych) 
-		elseif (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
+		else -- (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
 			RobGolemy(GolemyCzerwonych)
-		else
-			Ja.Status = Jungle.Status
 		end
 	end
 	
@@ -889,14 +885,14 @@ function RobGolemy(Miejsce)
 		Ja.Status = Miejsce.StatusIde
 	else
 		Ja.Status = Miejsce.StatusRobie
-		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead and Miejsce.Golem.x ~= nil then
+		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead and Miejsce.Golem.visible then
 			CastSpell(_Q, Miejsce.Golem)
 			CastSpell(_W)
 			CastSpell(_E)
 			myHero:Attack(Miejsce.Golem)
 		else
 			Miejsce.Golem = nil	
-			if Miejsce.MalyGolem ~= nil and not Miejsce.MalyGolem.dead then
+			if Miejsce.MalyGolem ~= nil and not Miejsce.MalyGolem.dead and Miejsce.MalyGolem.visible then
 				CastSpell(_Q, Miejsce.MalyGolem)
 				CastSpell(_W)
 				myHero:Attack(Miejsce.MalyGolem)
