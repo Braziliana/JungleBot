@@ -1,5 +1,9 @@
--- Jax Bot 0.1.4
+-- Jax Bot 0.1.5
 --[[
+	0.1.5
+	Removed Do Dragon
+	SmartSmite Added
+	Seems not to freez in jungle
 	0.1.4
 	Changes Smart Fight with monsters in jungle wont wase e or q for last monset in spot
 	Fixed Dragon
@@ -38,7 +42,7 @@ czas_gry = 0
 IloscKasyDoPowrotu1 = 400
 PierwszyPowrot = true
 IloscKasyDoPowrotu2 = 1100
-IloscZyciaDoPowrotu =  0.2 -- Zycia%
+IloscZyciaDoPowrotu =  0.07 -- Zycia%
 
 Ja = { Walka = false, Ide = false, Wolny = false}
 
@@ -462,6 +466,8 @@ end
 sekwencja_czarow = { 3, 2, 1, 2, 2, 4, 2, 1, 2, 1, 4, 1, 1, 3, 3, 4, 3, 3 }
 poziom_czarow = 0
 
+Smite = {Gotowe = false, Obrazenia = 0, Zasieg = 625, Miejsce = nil, PodstawoweObrazenia = 460, ObrazeniaCoPoziom = 30, CzasOdnowienia = 70}
+
 AA = {Gotowe = false, Obrazenia = 0, Zasieg = 125}
 CzarQ = {Gotowe = false, Obrazenia = 0, Zasieg = 700}
 CzarW = {Gotowe = false, Obrazenia = 0, Zasieg = 125}
@@ -488,6 +494,9 @@ function Czary()
 	
 	WL.Miejsce = GetInventorySlotItem(WL.ID)
 	WL.Gotowe = (WL.Miejsce ~= nil and myHero:CanUseSpell(WL.Miejsce) == READY)
+	
+	Smite.Gotowe = (Smite.Miejsce ~= nil and myHero:CanUseSpell(Smite.Miejsce) == READY)
+	Smite.Obrazenia = Smite.PodstawoweObrazenia + Smite.ObrazeniaCoPoziom * myHero.level
 	
 end
 
@@ -535,13 +544,16 @@ function OnLoad()
 	PrintChat("Z: "..myHero.z)
 	JaxUstawienia = scriptConfig("Jax Bot", "Jax Bot")
 	JaxUstawienia:addParam("JaxAI","Auto Bot", SCRIPT_PARAM_ONKEYTOGGLE, true, string.byte("O"))
-	JaxUstawienia:addParam("RobSmoka","Do Dragon", SCRIPT_PARAM_ONOFF, true)
+	--JaxUstawienia:addParam("RobSmoka","Do Dragon", SCRIPT_PARAM_ONOFF, true)
 	JaxUstawienia:addParam("Walka","Combo", SCRIPT_PARAM_ONKEYDOWN, true, string.byte("A"))
 
 	cel = TargetSelector(TARGET_LOW_HP,CzarQ.Zasieg+150,DAMAGE_PHYSICAL)
     cel.name = Jax
     JaxUstawienia:addTS(cel)
 	Status = "Jungle"
+	
+	if myHero:GetSpellData(SUMMONER_1).name:find("Smite") then Smite.Miejsce = SUMMONER_1
+    elseif myHero:GetSpellData(SUMMONER_2).name:find("Smite") then Smite.Miejsce = SUMMONER_2 end
 	
 end
 
@@ -796,11 +808,8 @@ end
 -- JUNGLE LOGIC
 function Jungle()
 	--PrintChat(Status)
-	
+	SmiteAI()
 	if Strona == "Niebieska" then
-		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
-			RobSmoka()
-		else
 			if BlueNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry>=10 and czas_gry <= 115 then
 				RobBlue(BlueNiebieskich)
 			elseif BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
@@ -812,11 +821,9 @@ function Jungle()
 			elseif RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
 				RobGolemy(GolemyNiebieskich)
 			end
-		end
+		
 	else
-		if czas_gry >= 300 and WL.Miejsce ~= nil and Smok.Zyje and (Status == "Jungle" or Status == "Idz Do Smoka" or Status == "Robienie Smoka") and JaxUstawienia.RobSmoka then
-			RobSmoka()
-		else
+
 			if BlueCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Blue" or Status == "Robienie Blue") or czas_gry <= 115 then
 				RobBlue(BlueCzerwonych)
 			elseif BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Wilkow" or Status == "Robienie Wilkow") then
@@ -828,7 +835,6 @@ function Jungle()
 			elseif RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and (Status == "Jungle" or Status == "Idz Do Golemow" or Status == "Robienie Golemow") then
 				RobGolemy(GolemyCzerwonych)
 			end
-		end
 	end
 	
 end
@@ -1041,7 +1047,67 @@ function RobGolemy(Druzyna)
 	end
 end
 
-function Smite()
+function SmiteAI()
+
+	if Strona == "Niebieska" and Smite.Gotowe then
+		if RedNiebieskich.Zyje == false and czas_gry - RedNiebieskich.Czas_smierci >= Smite.CzasOdnowienia then
+			if WilkiNiebieskich.DuzyWilk ~= nil and math.sqrt((myHero.x - WilkiNiebieskich.X)^2 + (myHero.z - WilkiNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > WilkiNiebieskich.DuzyWilk.health then
+				CastSpell(Smite.Miejsce, WilkiNiebieskich.DuzyWilk)
+			end
+			if DuchyNiebieskich.Duch ~= nil and math.sqrt((myHero.x - DuchyNiebieskich.X)^2 + (myHero.z - DuchyNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > DuchyNiebieskich.Duch.health then
+				CastSpell(Smite.Miejsce, DuchyNiebieskich.Duch)
+			end
+			if GolemyNiebieskich.Golem ~= nil and math.sqrt((myHero.x - GolemyNiebieskich.X)^2 + (myHero.z - GolemyNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyNiebieskich.Golem then
+				CastSpell(Smite.Miejsce, GolemyNiebieskich.Golem)
+			end
+		else
+			if RedNiebieskich.StarszyJaszczur ~= nil and math.sqrt((myHero.x - RedNiebieskich.X)^2 + (myHero.z - RedNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > RedNiebieskich.StarszyJaszczur.health then
+				CastSpell(Smite.Miejsce, RedNiebieskich.StarszyJaszczur)
+			end
+		end
+		if RedCzerwonych.StarszyJaszczur ~= nil and math.sqrt((myHero.x - RedCzerwonych.X)^2 + (myHero.z - RedCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > RedCzerwonych.StarszyJaszczur.health then
+			CastSpell(Smite.Miejsce, RedCzerwonych.StarszyJaszczur)
+		end
+		if BlueCzerwonych.StarozytnyGolem ~= nil and math.sqrt((myHero.x - BlueCzerwonych.X)^2 + (myHero.z - BlueCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > BlueCzerwonych.StarozytnyGolem.health then
+			CastSpell(Smite.Miejsce, BlueCzerwonych.StarozytnyGolem)
+		end
+		if math.sqrt((myHero.x - Smok.X)^2 + (myHero.z - Smok.Z)^2) < Smite.Zasieg and Smite.Obrazenia > Smok.Smok.health and Smok.Smok ~= nil then
+			CastSpell(Smite.Miejsce, Smok.Smok)
+		end
+		if math.sqrt((myHero.x - Baron.X)^2 + (myHero.z - Baron.Z)^2) < Smite.Zasieg and Smite.Obrazenia > Baron.Baron.health and Baron.Baron ~= nil then
+			CastSpell(Smite.Miejsce, Baron.Baron)
+		end
+	
+	else
+		if RedCzerwonych.Zyje == false and czas_gry - RedCzerwonych.Czas_smierci >= Smite.CzasOdnowienia then
+			if WilkiCzerwonych.DuzyWilk ~= nil and math.sqrt((myHero.x - WilkiCzerwonych.X)^2 + (myHero.z - WilkiCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > WilkiCzerwonych.DuzyWilk.health then
+				CastSpell(Smite.Miejsce, WilkiCzerwonych.DuzyWilk)
+			end
+			if DuchyCzerwonych.Duch ~= nil and math.sqrt((myHero.x - DuchyCzerwonych.X)^2 + (myHero.z - DuchyCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > DuchyCzerwonych.Duch.health then
+				CastSpell(Smite.Miejsce, DuchyCzerwonych.Duch)
+			end
+			if GolemyCzerwonych.Golem ~= nil and math.sqrt((myHero.x - GolemyCzerwonych.X)^2 + (myHero.z - GolemyCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyCzerwonych.Golem then
+				CastSpell(Smite.Miejsce, GolemyCzerwonych.Golem)
+			end
+		else
+			if RedCzerwonych.StarszyJaszczur ~= nil and math.sqrt((myHero.x - RedCzerwonych.X)^2 + (myHero.z - RedCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > RedCzerwonych.StarszyJaszczur.health then
+				CastSpell(Smite.Miejsce, RedCzerwonych.StarszyJaszczur)
+			end
+		end
+		
+		if RedNiebieskich.StarszyJaszczur ~= nil and math.sqrt((myHero.x - RedNiebieskich.X)^2 + (myHero.z - RedNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > RedNiebieskich.StarszyJaszczur.health then
+			CastSpell(Smite.Miejsce, RedNiebieskich.StarszyJaszczur)
+		end
+		if BlueNiebieskich.StarozytnyGolem ~= nil and math.sqrt((myHero.x - BlueNiebieskich.X)^2 + (myHero.z - BlueNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > BlueNiebieskich.StarozytnyGolem.health then
+			CastSpell(Smite.Miejsce, BlueNiebieskich.StarozytnyGolem)
+		end
+		if math.sqrt((myHero.x - Smok.X)^2 + (myHero.z - Smok.Z)^2) < Smite.Zasieg and Smite.Obrazenia > Smok.Smok.health and Smok.Smok ~= nil then
+			CastSpell(Smite.Miejsce, Smok.Smok)
+		end
+		if math.sqrt((myHero.x - Baron.X)^2 + (myHero.z - Baron.Z)^2) < Smite.Zasieg and Smite.Obrazenia > Baron.Baron.health and Baron.Baron ~= nil then
+			CastSpell(Smite.Miejsce, Baron.Baron)
+		end
+	end
 
 end
 
@@ -1150,12 +1216,13 @@ function AI_Mozg()
 		Walka()
 	end
 	
+	PrintChat(Status)
 	
 	if PierwszyPowrot then
 		if myHero.level >= 5 then
 			PierwszyPowrot = false
 		end
-		if myHero.gold >= IloscKasyDoPowrotu1 and not WBazie() then
+		if myHero.gold >= IloscKasyDoPowrotu1 and not WBazie() and Status ~= "Robienie Blue" and Status ~= "Robienie Wilkow" and Status ~= "Robienie Duchow" and Status ~= "Robienie Reda" and Status ~= "Robienie Golemow" and Status ~= "Robienie Smoka"then
 			Status = "Powrot"
 		end
 		if IloscZyciaDoPowrotu >= myHero.health/myHero.maxHealth and myHero.level > 2 and not WBazie() then
@@ -1165,7 +1232,7 @@ function AI_Mozg()
 		if IloscZyciaDoPowrotu >= myHero.health/myHero.maxHealth and myHero.level > 2 and not WBazie() then
 			Status = "Powrot"
 		end
-		if myHero.gold >= IloscKasyDoPowrotu2 and not WBazie() then
+		if myHero.gold >= IloscKasyDoPowrotu2 and not WBazie() and Status ~= "Robienie Blue" and Status ~= "Robienie Wilkow" and Status ~= "Robienie Duchow" and Status ~= "Robienie Reda" and Status ~= "Robienie Golemow" and Status ~= "Robienie Smoka" then
 			Status = "Powrot"
 		end
 	end
@@ -1197,3 +1264,12 @@ function ZnajdzNajszybciejOdrodzonePotworyWJungli()
 	
 
 end
+
+
+
+
+
+
+
+
+
