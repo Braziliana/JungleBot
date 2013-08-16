@@ -10,9 +10,11 @@ JJJ JJJ		 UUU   UUU		NNN		NNNNNN		GGG		GGG		LLL	   LLL		EEEEEEEEEEEE
   JJJ			UUU			NNN		   NNN		 GGGGGGGGG		LLLLLLLLLL		EEEEEEEEEEEE
 
 ]]--
--- Jax Bot 0.2.0
+-- Jax Bot 0.2.1
 --[[
-
+	0.2.1
+	Fixed Golems Freez
+	Added some shit 
 	0.2.0
 	Rewrited Code
 	0.1.5
@@ -482,6 +484,8 @@ function OnTick()
 	czas_gry = GetInGameTimer()
 	Czary()
 	
+	--PrintChat(Ja.Status)
+	
 	if JaxUstawienia.JaxAI then
 		JaxAI()
 	end
@@ -518,6 +522,8 @@ function OnDraw()
 		-- Baron
 		--RysujPozycje(Baron)
 		RysujPozycje(Baron)
+		
+		
 	end
 end
 
@@ -602,15 +608,57 @@ function Czary()
 end
 
 function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
+	JungleCzasOdrodzenia()
+	NajkrutszyCzas = WilkiNiebieskich.Czas_odrodzenia
+	if Ja.Strona == BazaNiebieskich.Strona then
+		if BlueNiebieskich.Czas_do_odrodzenia <= NajkrutszyCzas then
+			IdzDo(BlueNiebieskich)
+			NajkrutszyCzas = BlueNiebieskich.Czas_do_odrodzenia
+		elseif WilkiNiebieskich.Czas_do_odrodzenia < NajkrutszyCzas then
+			IdzDo(WilkiNiebieskich)
+			NajkrutszyCzas = WilkiNiebieskich.Czas_do_odrodzenia
+		elseif DuchyNiebieskich.Czas_do_odrodzenia < NajkrutszyCzas then
+			IdzDo(DuchyNiebieskich)
+			NajkrutszyCzas = DuchyNiebieskich.Czas_do_odrodzenia
+		elseif RedNiebieskich.Czas_do_odrodzenia < NajkrutszyCzas then
+			IdzDo(RedNiebieskich)
+			NajkrutszyCzas = RedNiebieskich.Czas_do_odrodzenia
+		elseif GolemyNiebieskich.Czas_do_odrodzenia < NajkrutszyCzas then
+			IdzDo(GolemyNiebieskich)
+			NajkrutszyCzas = GolemyNiebieskich.Czas_do_odrodzenia
+		end
+			
+	elseif Ja.Strona == BazaCzerwonych.Strona then
+	
+	end
+	
 
-	return math.min(1,1)
+end
+
+function IdzDo(Miejsce)
+
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 250  then
+		myHero:MoveTo(Miejsce.X, Miejsce.Z)
+		Ja.Status = Miejsce.StatusIde
+	end
 
 end
 
 function JungleCzasOdrodzenia()
-
-	x = BlueNiebieskich.Czas_smierci + BlueNiebieskich.Czas_odrodzenia
-
+	
+	--Niebieskie
+	BlueNiebieskich.Czas_do_odrodzenia = BlueNiebieskich.Czas_smierci + BlueNiebieskich.Czas_odrodzenia
+	RedNiebieskich.Czas_do_odrodzenia = RedNiebieskich.Czas_smierci + RedNiebieskich.Czas_odrodzenia
+	WilkiNiebieskich.Czas_do_odrodzenia = WilkiNiebieskich.Czas_smierci + WilkiNiebieskich.Czas_odrodzenia
+	DuchyNiebieskich.Czas_do_odrodzenia = DuchyNiebieskich.Czas_smierci + DuchyNiebieskich.Czas_odrodzenia
+	GolemyNiebieskich.Czas_do_odrodzenia = GolemyNiebieskich.Czas_smierci + GolemyNiebieskich.Czas_odrodzenia
+	
+	--Czerwone
+	BlueCzerwonych.Czas_do_odrodzenia = BlueCzerwonych.Czas_smierci + BlueCzerwonych.Czas_odrodzenia
+	RedCzerwonych.Czas_do_odrodzenia = RedCzerwonych.Czas_smierci + RedCzerwonych.Czas_odrodzenia
+	WilkiCzerwonych.Czas_do_odrodzenia = WilkiCzerwonych.Czas_smierci + WilkiCzerwonych.Czas_odrodzenia
+	DuchyCzerwonych.Czas_do_odrodzenia = DuchyCzerwonych.Czas_smierci + DuchyCzerwonych.Czas_odrodzenia
+	GolemyCzerwonych.Czas_do_odrodzenia = GolemyCzerwonych.Czas_smierci + GolemyCzerwonych.Czas_odrodzenia
 end
 
 --[[
@@ -631,25 +679,32 @@ function JaxAI()
 	
 	SmiteAI()
 	
-	if math.sqrt((myHero.x - BazaNiebieskich.X) ^ 2 + (myHero.z - BazaNiebieskich.Z) ^ 2) < BazaNiebieskich.Zasieg then
-		SklepAI()
-		if myHero.health/myHero.maxHealth >= 0.95 then
-			Ja.Status = "Wolny"
-		end
-	elseif math.sqrt((myHero.x - BazaCzerwonych.X) ^ 2 + (myHero.z - BazaCzerwonych.Z) ^ 2) < BazaCzerwonych.Zasieg then
-		SklepAI()
-		if myHero.health/myHero.maxHealth >= 0.95 then
-			Ja.Status = "Wolny"
-		end
-	end
-	
 	PowrotAI()
 	
 	DodajCzaryAI()
 	
-	if Ja.Status ~= Powrot.Status then
+	if Ja.Status ~= Powrot.Status and  Ja.Status ~= Sklep.Status then
 		JungleAI()
 	end
+	
+	if Strona == BazaNiebieskich.Status then
+		if math.sqrt((myHero.x - BazaNiebieskich.X) ^ 2 + (myHero.z - BazaNiebieskich.Z) ^ 2) < BazaNiebieskich.Zasieg and czas_gry-Sklep.CzasWSklepie >= Sklep.NastepneKupowanie or czas_gry <= 10 then
+			Ja.Status = Sklep.Status
+		elseif math.sqrt((myHero.x - BazaNiebieskich.X) ^ 2 + (myHero.z - BazaNiebieskich.Z) ^ 2) < BazaNiebieskich.Zasieg and myHero.health/myHero.maxHealth >= 0.95 and myHero.mana/myHero.maxMana >= 0.95 and Ja.Status ~= Sklep.Status then
+			Ja.Status = "Wolny"
+		end
+	else
+		if math.sqrt((myHero.x - BazaCzerwonych.X) ^ 2 + (myHero.z - BazaCzerwonych.Z) ^ 2)  and czas_gry-Sklep.CzasWSklepie >= Sklep.NastepneKupowanie or czas_gry <= 10 then
+			Ja.Status = Sklep.Status
+		elseif math.sqrt((myHero.x - BazaCzerwonych.X) ^ 2 + (myHero.z - BazaCzerwonych.Z) ^ 2)  and czas_gry-Sklep.CzasWSklepie >= Sklep.NastepneKupowanie and myHero.health/myHero.maxHealth >= 0.95 and myHero.mana/myHero.maxMana >= 0.95 and Ja.Status ~= Sklep.Status then
+			Ja.Status = "Wolny"
+		end
+	end
+	
+	if Ja.Status == Sklep.Status then
+		SklepAI()
+	end
+	
 	--WalkaAI()
 	--[[
 	if czas_gry - Ja.ZabezpieczenieCzas >= 5 then
@@ -700,20 +755,19 @@ function DodajCzaryAI()
 end
 
 function SklepAI()
-	
-	if czas_gry <= 10 then
+	if czas_gry < 10 and czas_gry > 0 then
 		BuyItem(1039)
 		BuyItem(2003)
 	end
-	
 	if Sklep.WSklepie == false then
 		Sklep.CzasWSklepie = czas_gry
 		Sklep.WSklepie = true
+		Ja.Status = Sklep.Status
 	end
 	
 	if czas_gry - Sklep.CzasNaKupno >= Sklep.CzasWSklepie then
 		Sklep.WSklepie = false
-		Status = Jungle.Status
+		Ja.Status = "Wolny"
 	end
 	
 	if GetTickCount() > Sklep.OstatnieKupno + Sklep.OpuznienieKupna then
@@ -731,7 +785,7 @@ end
 function JungleAI()
 	
 	if Ja.Strona == BazaNiebieskich.Strona then
-		if (BlueNiebieskich.Zyje or czas_gry >= 10 and czas_gry <= 116) and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie then
+		if (BlueNiebieskich.Zyje or czas_gry <= 116) and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie then
 			RobBlue(BlueNiebieskich)
 		elseif (BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie) or (Ja.Status == WilkiNiebieskich.StatusIde or Ja.Status == WilkiNiebieskich.StatusRobie)  then
 			RobWilki(WilkiNiebieskich)
@@ -739,11 +793,14 @@ function JungleAI()
 			RobDuchy(DuchyNiebieskich)
 		elseif (DuchyNiebieskich.Zyje == false and RedNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie) or (Ja.Status == RedNiebieskich.StatusIde or Ja.Status == RedNiebieskich.StatusRobie) then
 			RobReda(RedNiebieskich)
-		else --(RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie) or (Ja.Status == GolemyNiebieskich.StatusIde or Ja.Status == GolemyNiebieskich.StatusRobie) then
+		elseif (RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie) or (Ja.Status == GolemyNiebieskich.StatusIde or Ja.Status == GolemyNiebieskich.StatusRobie )then
 			RobGolemy(GolemyNiebieskich)
+		else
+			PrintChat("Szukam celu")
+			ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 		end
 	elseif Ja.Strona == BazaCzerwonych.Strona then
-		if (BlueCzerwonych.Zyje or czas_gry >= 10 and czas_gry <= 116) and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie then
+		if (BlueCzerwonych.Zyje or czas_gry <= 116) and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie then
 			RobBlue(BlueCzerwonych)
 		elseif (BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie) or (Ja.Status == WilkiCzerwonych.StatusIde or Ja.Status == WilkiCzerwonych.StatusRobie) then
 			RobWilki(WilkiCzerwonych)
@@ -753,6 +810,9 @@ function JungleAI()
 			RobReda(RedCzerwonych) 
 		elseif (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
 			RobGolemy(GolemyCzerwonych)
+		else
+			ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
+			PrintChat("Szukam celu")
 		end
 	end	
 end
@@ -908,16 +968,50 @@ function RobGolemy(Miejsce)
 		Ja.Status = Miejsce.StatusIde
 	else
 		Ja.Status = Miejsce.StatusRobie
-		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead and Miejsce.Golem.visible then
+		if Miejsce.Golem ~= nil and not Miejsce.Golem.dead then
 			CastSpell(_Q, Miejsce.Golem)
 			CastSpell(_W)
 			CastSpell(_E)
 			myHero:Attack(Miejsce.Golem)
 		else
-			Miejsce.Golem = nil	
-			if Miejsce.MalyGolem ~= nil and not Miejsce.MalyGolem.dead and Miejsce.MalyGolem.visible then
+			Miejsce.Golem = nil
+			if Miejsce.MalyGolem ~= nil and not Miejsce.MalyGolem.dead then
 				CastSpell(_Q, Miejsce.MalyGolem)
 				CastSpell(_W)
+				CastSpell(_E)
+				myHero:Attack(Miejsce.MalyGolem)
+			else
+				Ja.Status = Jungle.Status
+				Miejsce.MalyGolem = nil
+				Miejsce.Czas_smierci = czas_gry
+				Miejsce.Zyje = false
+			end
+		end
+	end	
+		
+	--[[
+	else
+		Ja.Status = Miejsce.StatusRobie
+		if Miejsce.Golem ~= nil and Miejsce.Golem.visible then
+			if CzarQ.Gotowe then
+				CastSpell(_Q, Miejsce.Golem)
+			end
+			if CzarW.Gotowe then
+				CastSpell(_W)
+			end
+			if CzarE.Gotowe then
+				CastSpell(_E)
+			end
+			myHero:Attack(Miejsce.Golem)
+		else
+			Miejsce.Golem = nil	
+			if Miejsce.MalyGolem ~= nil and Miejsce.MalyGolem.visible then
+				if CzarQ.Gotowe then
+					CastSpell(_Q, Miejsce.MalyGolem)
+				end
+				if CzarW.Gotowe then
+					CastSpell(_W)
+				end
 				myHero:Attack(Miejsce.MalyGolem)
 			else
 				Ja.Status = Jungle.Status
@@ -927,6 +1021,7 @@ function RobGolemy(Miejsce)
 			end
 		end
 	end
+	]]--
 end
 
 
@@ -939,7 +1034,7 @@ function SmiteAI()
 			if DuchyNiebieskich.Duch ~= nil and math.sqrt((myHero.x - DuchyNiebieskich.X)^2 + (myHero.z - DuchyNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > DuchyNiebieskich.Duch.health then
 				CastSpell(Smite.Miejsce, DuchyNiebieskich.Duch)
 			end
-			if GolemyNiebieskich.Golem ~= nil and math.sqrt((myHero.x - GolemyNiebieskich.X)^2 + (myHero.z - GolemyNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyNiebieskich.Golem then
+			if GolemyNiebieskich.Golem ~= nil and math.sqrt((myHero.x - GolemyNiebieskich.X)^2 + (myHero.z - GolemyNiebieskich.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyNiebieskich.Golem.health then
 				CastSpell(Smite.Miejsce, GolemyNiebieskich.Golem)
 			end
 		else
@@ -968,7 +1063,7 @@ function SmiteAI()
 			if DuchyCzerwonych.Duch ~= nil and math.sqrt((myHero.x - DuchyCzerwonych.X)^2 + (myHero.z - DuchyCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > DuchyCzerwonych.Duch.health then
 				CastSpell(Smite.Miejsce, DuchyCzerwonych.Duch)
 			end
-			if GolemyCzerwonych.Golem ~= nil and math.sqrt((myHero.x - GolemyCzerwonych.X)^2 + (myHero.z - GolemyCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyCzerwonych.Golem then
+			if GolemyCzerwonych.Golem ~= nil and math.sqrt((myHero.x - GolemyCzerwonych.X)^2 + (myHero.z - GolemyCzerwonych.Z)^2) < Smite.Zasieg and Smite.Obrazenia > GolemyCzerwonych.Golem.health  then
 				CastSpell(Smite.Miejsce, GolemyCzerwonych.Golem)
 			end
 		else
@@ -1175,13 +1270,6 @@ function PotworyOdrodzenie()
 		if czas_gry - GolemyCzerwonych.Czas_smierci >= GolemyCzerwonych.Czas_odrodzenia and GolemyCzerwonych.Zyje == false or (GolemyCzerwonych.Golem ~= nil or GolemyCzerwonych.MalyGolem ~= nil) then GolemyCzerwonych.Zyje = true end
 		if czas_gry - BlueCzerwonych.Czas_smierci >= BlueCzerwonych.Czas_odrodzenia and BlueCzerwonych.Zyje == false or (BlueCzerwonych.StarozytnyGolem ~= nil or BlueCzerwonych.MlodyLizard1 ~= nil or BlueCzerwonych.MlodyLizard2 ~= nil) then BlueCzerwonych.Zyje = true end
 		if czas_gry - RedCzerwonych.Czas_smierci >= RedCzerwonych.Czas_odrodzenia and RedCzerwonych.Zyje == false or (RedCzerwonych.StarszyJaszczur ~= nil or RedCzerwonych.MlodyJaszczur1 ~= nil or RedCzerwonych.MlodyJaszczur2 ~= nil) then RedCzerwonych.Zyje = true end
-		--[[
-		if czas_gry - WilkiCzerwonych.Czas_smierci >= WilkiCzerwonych.Czas_odrodzenia and WilkiCzerwonych.Zyje == false then WilkiCzerwonych.Zyje = true PrintChat("Respawn Wolves Red Team") end
-		if czas_gry - DuchyCzerwonych.Czas_smierci >= DuchyCzerwonych.Czas_odrodzenia and DuchyCzerwonych.Zyje == false then DuchyCzerwonych.Zyje = true PrintChat("Respawn Wariths Red Team") end
-		if czas_gry - GolemyCzerwonych.Czas_smierci >= GolemyCzerwonych.Czas_odrodzenia and GolemyCzerwonych.Zyje == false then GolemyCzerwonych.Zyje = true PrintChat("Respawn Golems Red Team") end
-		if czas_gry - BlueCzerwonych.Czas_smierci >= BlueCzerwonych.Czas_odrodzenia and BlueCzerwonych.Zyje == false then BlueCzerwonych.Zyje = true PrintChat("Respawn Blue Buff Red Team") end
-		if czas_gry - RedCzerwonych.Czas_smierci >= RedCzerwonych.Czas_odrodzenia and RedCzerwonych.Zyje == false then RedCzerwonych.Zyje = true PrintChat("Respawn Red Buff Red Team") end
-		]]--
 	end
 	
 	if PierwszeOdrodzenieSmoka then
