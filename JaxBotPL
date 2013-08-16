@@ -461,7 +461,7 @@ function OnLoad()
 	
 	JaxUstawienia = scriptConfig("Jax Bot", "Jax Bot")
 	JaxUstawienia:addParam("JaxAI","Automatyczne Czyszczenie Lasu", SCRIPT_PARAM_ONKEYTOGGLE, true, string.byte("O"))
-	JaxUstawienia:addParam("Walka","Kombo", SCRIPT_PARAM_ONKEYDOWN, false, string.byte("A"))
+	JaxUstawienia:addParam("Walka","Kombinacja", SCRIPT_PARAM_ONKEYDOWN, false, string.byte("A"))
 	JaxUstawienia:addParam("Rysuj","Rysowanie kolek", SCRIPT_PARAM_ONOFF, true)
 
 	cel = TargetSelector(TARGET_LOW_HP,CzarQ.Zasieg+150,DAMAGE_PHYSICAL)
