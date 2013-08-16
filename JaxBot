@@ -10,9 +10,11 @@ JJJ JJJ		 UUU   UUU		NNN		NNNNNN		GGG		GGG		LLL	   LLL		EEEEEEEEEEEE
   JJJ			UUU			NNN		   NNN		 GGGGGGGGG		LLLLLLLLLL		EEEEEEEEEEEE
 
 ]]--
--- Jax Bot 0.2
+-- Jax Bot 0.2.1
 --[[
-	0.2
+	0.2.1
+	Fixed Golems Freez
+	0.2.0
 	Rewrited Code
 	0.1.5
 	Removed Do Dragon
@@ -177,6 +179,7 @@ BlueNiebieskich = {
 	Czas_odrodzenia = 300,
 	Pierwsze_odrodzenie = 115,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_1", 
 	Idz = false,
 	Walka = false,
@@ -202,6 +205,7 @@ WilkiNiebieskich = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_2", 
 	Idz = false,
 	Walka = false,
@@ -225,6 +229,7 @@ DuchyNiebieskich = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_3", 
 	Idz = false,
 	Walka = false,
@@ -250,6 +255,7 @@ RedNiebieskich = {
 	Czas_odrodzenia = 300,
 	Pierwsze_odrodzenie = 115,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_4", 
 	Idz = false,
 	Walka = false,
@@ -273,6 +279,7 @@ GolemyNiebieskich = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_5", 
 	Idz = false,
 	Walka = false,
@@ -295,6 +302,7 @@ BlueCzerwonych = {
 	Czas_odrodzenia = 300,
 	Pierwsze_odrodzenie = 115,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_7", 
 	Idz = false,
 	Walka = false,
@@ -318,6 +326,7 @@ WilkiCzerwonych = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_8", 
 	Idz = false,
 	Walka = false,
@@ -341,6 +350,7 @@ DuchyCzerwonych = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_9", 
 	Idz = false,
 	Walka = false,
@@ -366,6 +376,7 @@ RedCzerwonych = {
 	Czas_odrodzenia = 300,
 	Pierwsze_odrodzenie = 115,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_10", 
 	Idz = false,
 	Walka = false,
@@ -389,6 +400,7 @@ GolemyCzerwonych = {
 	Czas_odrodzenia = 50,
 	Pierwsze_odrodzenie = 125,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_11", 
 	Idz = false,
 	Walka = false,
@@ -411,6 +423,7 @@ Smok = {
 	Czas_odrodzenia = 360,
 	Pierwsze_odrodzenie = 150,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_6",
 	Idz = false,
 	Walka = false,
@@ -430,6 +443,7 @@ Baron = {
 	Czas_odrodzenia = 420,
 	Pierwsze_odrodzenie = 900,
 	Czas_smierci = 0,
+	Czas_do_odrodzenia = 0,
 	Nazwa = "monsterCamp_12",
 	Idz = false,
 	Walka = false,
@@ -588,6 +602,18 @@ function Czary()
 	
 end
 
+function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
+
+	return math.min(1,1)
+
+end
+
+function JungleCzasOdrodzenia()
+
+	x = BlueNiebieskich.Czas_smierci + BlueNiebieskich.Czas_odrodzenia
+
+end
+
 --[[
 
 	AI OPTIONS
@@ -706,7 +732,7 @@ end
 function JungleAI()
 	
 	if Ja.Strona == BazaNiebieskich.Strona then
-		if (BlueNiebieskich.Zyje or czas_gry <= 115) and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie then
+		if (BlueNiebieskich.Zyje or czas_gry >= 10 and czas_gry <= 116) and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie then
 			RobBlue(BlueNiebieskich)
 		elseif (BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie and Ja.Status ~= GolemyNiebieskich.StatusIde and Ja.Status ~= GolemyNiebieskich.StatusRobie) or (Ja.Status == WilkiNiebieskich.StatusIde or Ja.Status == WilkiNiebieskich.StatusRobie)  then
 			RobWilki(WilkiNiebieskich)
@@ -718,7 +744,7 @@ function JungleAI()
 			RobGolemy(GolemyNiebieskich)
 		end
 	elseif Ja.Strona == BazaCzerwonych.Strona then
-		if (BlueCzerwonych.Zyje or czas_gry <= 115) and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie then
+		if (BlueCzerwonych.Zyje or czas_gry >= 10 and czas_gry <= 116) and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie then
 			RobBlue(BlueCzerwonych)
 		elseif (BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie) or (Ja.Status == WilkiCzerwonych.StatusIde or Ja.Status == WilkiCzerwonych.StatusRobie) then
 			RobWilki(WilkiCzerwonych)
@@ -726,12 +752,10 @@ function JungleAI()
 			RobDuchy(DuchyCzerwonych)
 		elseif (DuchyCzerwonych.Zyje == false and RedCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= GolemyCzerwonych.StatusIde and Ja.Status ~= GolemyCzerwonych.StatusRobie) or (Ja.Status == RedCzerwonych.StatusIde or Ja.Status == RedCzerwonych.StatusRobie) then
 			RobReda(RedCzerwonych) 
-		else -- (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
+		elseif (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
 			RobGolemy(GolemyCzerwonych)
 		end
-	end
-	
-	
+	end	
 end
 
 function RobBlue(Miejsce)
