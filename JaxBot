@@ -852,7 +852,7 @@ function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 			IdzDoICzekaj(DuchyNiebieskich)
 		elseif RedNiebieskich.Czas_do_odrodzenia <= GolemyNiebieskich.Czas_do_odrodzenia then
 			IdzDoICzekaj(RedNiebieskich)
-		else
+		elseif RedNiebieskich.Czas_do_odrodzenia >= GolemyNiebieskich.Czas_do_odrodzenia then
 			IdzDoICzekaj(GolemyNiebieskich)
 		end
 	elseif BazaCzerwonych.Strona then
@@ -864,7 +864,7 @@ function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 			IdzDoICzekaj(DuchyCzerwonych)
 		elseif RedCzerwonych.Czas_do_odrodzenia <= GolemyCzerwonych.Czas_do_odrodzenia then
 			IdzDoICzekaj(RedCzerwonych)
-		else
+		elseif RedCzerwonych.Czas_do_odrodzenia >= GolemyCzerwonych.Czas_do_odrodzenia then
 			IdzDoICzekaj(GolemyCzerwonych)
 		end
 	end
