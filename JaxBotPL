@@ -663,7 +663,7 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 	BezpieczneMiejsce5.Odleglosc = math.sqrt((myHero.x - BezpieczneMiejsce5.X)^2 + (myHero.z - BezpieczneMiejsce5.Z)^2)
 	BezpieczneMiejsce6.Odleglosc = math.sqrt((myHero.x - BezpieczneMiejsce6.X)^2 + (myHero.z - BezpieczneMiejsce6.Z)^2)
 	
-	if Ja.Stroa == BazaNiebieskich.Strona then
+	if Ja.Strona == BazaNiebieskich.Strona then
 		if BezpieczneMiejsce1.Odleglosc <= BezpieczneMiejsce2.Odleglosc then
 			if math.sqrt((myHero.x - BezpieczneMiejsce1.X)*(myHero.x - BezpieczneMiejsce1.X) + (myHero.z - BezpieczneMiejsce1.Z)*(myHero.z - BezpieczneMiejsce1.Z)) >= BezpieczneMiejsce1.Zasieg  then
 				myHero:MoveTo(BezpieczneMiejsce1.X, BezpieczneMiejsce1.Z)
@@ -713,7 +713,7 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 				CastSpell(RECALL)
 			end
 		end
-	else -- ---------------------------------------------------------
+	elseif Ja.Strona == BazaCzerwonych.Strona then
 		if BezpieczneMiejsce6.Odleglosc <= BezpieczneMiejsce4.Odleglosc then
 			if math.sqrt((myHero.x - BezpieczneMiejsce6.X)*(myHero.x - BezpieczneMiejsce6.X) + (myHero.z - BezpieczneMiejsce6.Z)*(myHero.z - BezpieczneMiejsce6.Z)) >= BezpieczneMiejsce6.Zasieg  then
 				myHero:MoveTo(BezpieczneMiejsce6.X, BezpieczneMiejsce6.Z)
