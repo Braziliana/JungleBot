@@ -702,7 +702,7 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 				Ja.Status = Recal.Status
 				CastSpell(RECALL)
 			end
-		else
+		elseif BezpieczneMiejsce5.Odleglosc >= BezpieczneMiejsce6.Odleglosc then
 			if math.sqrt((myHero.x - BezpieczneMiejsce6.X)*(myHero.x - BezpieczneMiejsce6.X) + (myHero.z - BezpieczneMiejsce6.Z)*(myHero.z - BezpieczneMiejsce6.Z)) >= BezpieczneMiejsce6.Zasieg  then
 				myHero:MoveTo(BezpieczneMiejsce6.X, BezpieczneMiejsce6.Z)
 				Ja.Status = Powrot.Status
@@ -752,7 +752,7 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 				Ja.Status = Recal.Status
 				CastSpell(RECALL)
 			end
-		else
+		elseif BezpieczneMiejsce2.Odleglosc >= BezpieczneMiejsce1.Odleglosc then
 			if math.sqrt((myHero.x - BezpieczneMiejsce1.X)*(myHero.x - BezpieczneMiejsce1.X) + (myHero.z - BezpieczneMiejsce1.Z)*(myHero.z - BezpieczneMiejsce1.Z)) >= BezpieczneMiejsce1.Zasieg  then
 				myHero:MoveTo(BezpieczneMiejsce1.X, BezpieczneMiejsce1.Z)
 				Ja.Status = Powrot.Status
@@ -764,6 +764,7 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 	end
 	
 end
+
 
 
 function Kombinacja()
