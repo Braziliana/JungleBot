@@ -1024,7 +1024,7 @@ function JungleAI()
 			RobReda(RedNiebieskich)
 		elseif (RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje and Ja.Status ~= BlueNiebieskich.StatusIde and Ja.Status ~= BlueNiebieskich.StatusRobie and Ja.Status ~= WilkiNiebieskich.StatusIde and Ja.Status ~= WilkiNiebieskich.StatusRobie  and Ja.Status ~= DuchyNiebieskich.StatusIde and Ja.Status ~= DuchyNiebieskich.StatusRobie and Ja.Status ~= RedNiebieskich.StatusIde and Ja.Status ~= RedNiebieskich.StatusRobie) or (Ja.Status == GolemyNiebieskich.StatusIde or Ja.Status == GolemyNiebieskich.StatusRobie )then
 			RobGolemy(GolemyNiebieskich)
-		else 
+		elseif  BlueNiebieskich.Zyje == false and WilkiNiebieskich.Zyje == false and DuchyNiebieskich.Zyje == false and RedNiebieskich.Zyje == false and GolemyNiebieskich.Zyje == false then
 			ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 		end
 	elseif Ja.Strona == BazaCzerwonych.Strona then
@@ -1038,7 +1038,7 @@ function JungleAI()
 			RobReda(RedCzerwonych) 
 		elseif (RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje and Ja.Status ~= BlueCzerwonych.StatusIde and Ja.Status ~= BlueCzerwonych.StatusRobie and Ja.Status ~= WilkiCzerwonych.StatusIde and Ja.Status ~= WilkiCzerwonych.StatusRobie  and Ja.Status ~= DuchyCzerwonych.StatusIde and Ja.Status ~= DuchyCzerwonych.StatusRobie and Ja.Status ~= RedCzerwonych.StatusIde and Ja.Status ~= RedCzerwonych.StatusRobie) or (Ja.Status == GolemyCzerwonych.StatusIde or Ja.Status == GolemyCzerwonych.StatusRobie) then
 			RobGolemy(GolemyCzerwonych)
-		else
+		elseif  BlueCzerwonych.Zyje == false and WilkiCzerwonych.Zyje == false and DuchyCzerwonych.Zyje == false and RedCzerwonych.Zyje == false and GolemyCzerwonych.Zyje == false then
 			ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 		end
 	end	
