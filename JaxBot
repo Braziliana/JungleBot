@@ -10,10 +10,12 @@ JJJ JJJ		 UUU   UUU		NNN		NNNNNN		GGG		GGG		LLL	   LLL		EEEEEEEEEEEE
   JJJ			UUU			NNN		   NNN		 GGGGGGGGG		LLLLLLLLLL		EEEEEEEEEEEE
 
 ]]--
--- Jax Bot 0.2.5.1
+-- Jax Bot 0.2
 --[[
+	0.2.5.2
+	Fixed Jungle Predicion
 	0.2.5.1
-	- Hot Fix For Fucked Things
+	Fixed some shit
 	0.2.5
 	- Smart jungle if all mosters are ded finds the fastest respawning and goes to them
 	- Now E in jungle wont be ended to fast
@@ -768,7 +770,6 @@ function ZnajdzNajblizszeBezpieczneMiejsce()
 end
 
 
-
 function Kombinacja()
 	if cel.target ~= nil then
 		if GetDistance(cel.target) < BRK.Zasieg then
@@ -845,8 +846,10 @@ function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 	WilkiCzerwonych.Czas_do_odrodzenia = math.ceil(WilkiCzerwonych.Czas_smierci + WilkiCzerwonych.Czas_odrodzenia)
 	DuchyCzerwonych.Czas_do_odrodzenia = math.ceil(DuchyCzerwonych.Czas_smierci + DuchyCzerwonych.Czas_odrodzenia)
 	GolemyCzerwonych.Czas_do_odrodzenia = math.ceil(GolemyCzerwonych.Czas_smierci + GolemyCzerwonych.Czas_odrodzenia)
+
 	
 	if Ja.Strona == BazaNiebieskich.Strona then
+	--[[
 		if BlueNiebieskich.Czas_do_odrodzenia <= WilkiNiebieskich.Czas_do_odrodzenia then
 			IdzDoICzekaj(BlueNiebieskich)
 		elseif WilkiNiebieskich.Czas_do_odrodzenia <= DuchyNiebieskich.Czas_do_odrodzenia then
@@ -858,7 +861,20 @@ function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 		elseif RedNiebieskich.Czas_do_odrodzenia >= GolemyNiebieskich.Czas_do_odrodzenia then
 			IdzDoICzekaj(GolemyNiebieskich)
 		end
+	]]--
+		if WilkiNiebieskich.Czas_do_odrodzenia <= DuchyNiebieskich.Czas_do_odrodzenia and WilkiNiebieskich.Czas_do_odrodzenia <= GolemyNiebieskich.Czas_do_odrodzenia and WilkiNiebieskich.Czas_do_odrodzenia <= BlueNiebieskich.Czas_do_odrodzenia and WilkiNiebieskich.Czas_do_odrodzenia <= RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(WilkiNiebieskich)
+		elseif DuchyNiebieskich.Czas_do_odrodzenia <= GolemyNiebieskich.Czas_do_odrodzenia and DuchyNiebieskich.Czas_do_odrodzenia <= BlueNiebieskich.Czas_do_odrodzenia and DuchyNiebieskich.Czas_do_odrodzenia <= RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(DuchyNiebieskich)
+		elseif GolemyNiebieskich.Czas_do_odrodzenia <= BlueNiebieskich.Czas_do_odrodzenia and GolemyNiebieskich.Czas_do_odrodzenia <= RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(GolemyNiebieskich)
+		elseif BlueNiebieskich.Czas_do_odrodzenia <= RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(BlueNiebieskich)
+		elseif BlueNiebieskich.Czas_do_odrodzenia > RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(RedNiebieskich)
+		end
 	elseif Ja.Strona ==  BazaCzerwonych.Strona then
+	--[[
 		if BlueCzerwonych.Czas_do_odrodzenia <= WilkiCzerwonych.Czas_do_odrodzenia then
 			IdzDoICzekaj(BlueCzerwonych)
 		elseif WilkiCzerwonych.Czas_do_odrodzenia <= DuchyCzerwonych.Czas_do_odrodzenia then
@@ -870,7 +886,20 @@ function ZnajdzNajszybciejOdradzajaceSieStworyWJungli()
 		elseif RedCzerwonych.Czas_do_odrodzenia >= GolemyCzerwonych.Czas_do_odrodzenia then
 			IdzDoICzekaj(GolemyCzerwonych)
 		end
-	en
+	]]--
+		if WilkiCzerwonych.Czas_do_odrodzenia <= DuchyCzerwonych.Czas_do_odrodzenia and WilkiCzerwonych.Czas_do_odrodzenia <= GolemyCzerwonych.Czas_do_odrodzenia and WilkiCzerwonych.Czas_do_odrodzenia <= BlueCzerwonych.Czas_do_odrodzenia and WilkiCzerwonych.Czas_do_odrodzenia <= RedNiebieskich.Czas_do_odrodzenia then
+			IdzDoICzekaj(WilkiCzerwonych)
+		elseif DuchyCzerwonych.Czas_do_odrodzenia <= GolemyCzerwonych.Czas_do_odrodzenia and DuchyCzerwonych.Czas_do_odrodzenia <= BlueCzerwonych.Czas_do_odrodzenia and DuchyCzerwonych.Czas_do_odrodzenia <= RedCzerwonych.Czas_do_odrodzenia then
+			IdzDoICzekaj(DuchyCzerwonych)
+		elseif GolemyCzerwonych.Czas_do_odrodzenia <= BlueCzerwonych.Czas_do_odrodzenia and GolemyCzerwonych.Czas_do_odrodzenia <= RedCzerwonych.Czas_do_odrodzenia then
+			IdzDoICzekaj(GolemyCzerwonych)
+		elseif BlueCzerwonych.Czas_do_odrodzenia <= RedCzerwonych.Czas_do_odrodzenia then
+			IdzDoICzekaj(BlueCzerwonych)
+		elseif BlueCzerwonych.Czas_do_odrodzenia > RedCzerwonych.Czas_do_odrodzenia then
+			IdzDoICzekaj(RedCzerwonych)
+		end
+	end
+end
 
 function IdzDo(Miejsce)
 
@@ -1194,7 +1223,7 @@ end
 
 
 function RobGolemy(Miejsce)
-	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 150 then
+	if math.sqrt((myHero.x - Miejsce.X)*(myHero.x - Miejsce.X) + (myHero.z - Miejsce.Z)*(myHero.z - Miejsce.Z)) >= 250 then
 		myHero:MoveTo(Miejsce.X, Miejsce.Z)
 		Ja.Status = Miejsce.StatusIde
 	else
