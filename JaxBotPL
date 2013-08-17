@@ -10,7 +10,7 @@ JJJ JJJ		 UUU   UUU		NNN		NNNNNN		GGG		GGG		LLL	   LLL		EEEEEEEEEEEE
   JJJ			UUU			NNN		   NNN		 GGGGGGGGG		LLLLLLLLLL		EEEEEEEEEEEE
 
 ]]--
--- Jax Bot 0.2
+-- Jax Bot 0.2.5
 --[[
 	0.2.5
 	- Smart jungle if all mosters are ded finds the fastest respawning and goes to them
