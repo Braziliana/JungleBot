@@ -788,15 +788,15 @@ function Kombinacja()
 			CastSpell(_Q, cel.target)
 		end
 		
-		if GetDistance(cel.target) <= CzarW.Zasieg+50 and CzarW.Gotowe and JaxUstawieniaCzarow.UzywajWKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacj then
+		if GetDistance(cel.target) <= CzarW.Zasieg+50 and CzarW.Gotowe and JaxUstawieniaCzarow.UzywajWKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacja then
 			CastSpell(_W)
 		end
 		
-		if GetDistance(cel.target) <= CzarE.Zasieg+50 and CzarE.Gotowe and JaxUstawieniaCzarow.UzywajEKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacj then
+		if GetDistance(cel.target) <= CzarE.Zasieg+50 and CzarE.Gotowe and JaxUstawieniaCzarow.UzywajEKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacja then
 			CastSpell(_E)
 		end
 		
-		if GetDistance(cel.target) <= CzarR.Zasieg and CzarR.Gotowe and JaxUstawieniaCzarow.UzywajRKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacj then
+		if GetDistance(cel.target) <= CzarR.Zasieg and CzarR.Gotowe and JaxUstawieniaCzarow.UzywajRKombinacja and myHero.mana/myHero.maxMana * 100 >= JaxUstawieniaCzarow.MinimumManyKombinacja then
 			CastSpell(_R)
 		end
 	
