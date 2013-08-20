@@ -1,0 +1,288 @@
+lazurowy = ARGB(0x00,0xFF,0xFF,0xFF)
+czerwony = ARGB(0x00,0xFF,0x00,0x00)
+jasnyzielony = ARGB(0x00,0x00,0xFF,0x00)
+ciemnyniebieski = ARGB(0x00,0x00,0x00,0xFF)
+fioletowy = ARGB(0x00,0xFF,0x00,0xFF)
+-- Niebieska Strona
+-- Gora
+NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1 = {
+	PunkDrogi1X = 2685,
+	PunkDrogi1Y = 54,
+	PunkDrogi1Z = 7492,
+	PunkDrogi2X = 3211,
+	PunkDrogi2Y = -7,
+	PunkDrogi2Z = 9081,
+	PunkDrogi3X = 2234,
+	PunkDrogi3Y = -26,
+	PunkDrogi3Z = 11370,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2 = {
+	PunkDrogi1X = 2685,
+	PunkDrogi1Y = 54,
+	PunkDrogi1Z = 7492,
+	PunkDrogi2X = 3211,
+	PunkDrogi2Y = -7,
+	PunkDrogi2Z = 9081,
+	PunkDrogi3X = 4043,
+	PunkDrogi3Y = 48,
+	PunkDrogi3Z = 11580,
+	PunkDrogi4X = 3492,
+	PunkDrogi4Y = 33,
+	PunkDrogi4Z = 12593,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3 = {
+	PunkDrogi1X = 4273,
+	PunkDrogi1Y = 53,
+	PunkDrogi1Z = 7026,
+	PunkDrogi2X = 5026,
+	PunkDrogi2Y = -62,
+	PunkDrogi2Z = 8432,
+	PunkDrogi3X = 5879,
+	PunkDrogi3Y = -30,
+	PunkDrogi3Z = 9171,
+	PunkDrogi4X = 5824,
+	PunkDrogi4Y = 55,
+	PunkDrogi4Z = 9896,
+	PunkDrogi5X = 4043,
+	PunkDrogi5Y = 48,
+	PunkDrogi5Z = 11580,
+	PunkDrogi6X = 3492,
+	PunkDrogi6Y = 33,
+	PunkDrogi6Z = 12593,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+-- Srodek
+NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1 = {
+	PunkDrogi1X = 4273,
+	PunkDrogi1Y = 53,
+	PunkDrogi1Z = 7026,
+	PunkDrogi2X = 5026,
+	PunkDrogi2Y = -62,
+	PunkDrogi2Z = 8432,
+	PunkDrogi3X = 6453,
+	PunkDrogi3Y = -64,
+	PunkDrogi3Z = 8344,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2 = {
+	PunkDrogi1X = 4273,
+	PunkDrogi1Y = 53,
+	PunkDrogi1Z = 7026,
+	PunkDrogi2X = 5026,
+	PunkDrogi2Y = -62,
+	PunkDrogi2Z = 8432,
+	PunkDrogi3X = 5879,
+	PunkDrogi3Y = -30,
+	PunkDrogi3Z = 9171,
+	PunkDrogi4X = 7323,
+	PunkDrogi4Y = 55,
+	PunkDrogi4Z = 8331,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3 = {
+	PunkDrogi1X = 7998,
+	PunkDrogi1Y = 11,
+	PunkDrogi1Z = 5240,
+	PunkDrogi2X = 8339,
+	PunkDrogi2Y = -66,
+	PunkDrogi2Z = 6435,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+
+NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4 = {
+	PunkDrogi1X = 7998,
+	PunkDrogi1Y = 11,
+	PunkDrogi1Z = 5240,
+	PunkDrogi2X = 9104,
+	PunkDrogi2Y = -65,
+	PunkDrogi2Z = 6050,
+	PunkDrogi3X = 8523,
+	PunkDrogi3Y = 55,
+	PunkDrogi3Z = 7291,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+-- Dol
+NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1 = {
+	PunkDrogi1X = 7579,
+	PunkDrogi1Y = 54,
+	PunkDrogi1Z = 3226,
+	PunkDrogi2X = 10011,
+	PunkDrogi2Y = 53,
+	PunkDrogi2Z = 2842,
+	PunkDrogi3X = 11661,
+	PunkDrogi3Y = -53,
+	PunkDrogi3Z = 3307,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2 = {
+	PunkDrogi1X = 7998,
+	PunkDrogi1Y = 11,
+	PunkDrogi1Z = 5240,
+	PunkDrogi2X = 10036,
+	PunkDrogi2Y = -62,
+	PunkDrogi2Z = 4928,
+	PunkDrogi3X = 11661,
+	PunkDrogi3Y = -53,
+	PunkDrogi3Z = 3307,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3 = {
+	PunkDrogi1X = 6572,
+	PunkDrogi1Y = 55,
+	PunkDrogi1Z = 2804,
+	PunkDrogi2X = 8789,
+	PunkDrogi2Y = 62,
+	PunkDrogi2Z = 1915,
+	PunkDrogi3X = 10163,
+	PunkDrogi3Y = 52,
+	PunkDrogi3Z = 663,
+	PunkDrogi4X = 11724,
+	PunkDrogi4Y = 52,
+	PunkDrogi4Z = 1093,
+	PunkDrogi5X = 12364,
+	PunkDrogi5Y = 55,
+	PunkDrogi5Z = 1599,
+	Zasieg = 75,
+	Kolor = fioletowy,
+	Gank = false,
+	RysujDrogeGanku = false,
+	Status = "Gank Gornej Lini"
+}
+-- Czerwona Strona
+--Gora
+--Srodek
+--Dol
+
+function OnLoad()
+	GankUstawienia = scriptConfig("Gank Helper", "Gank Helper")
+	--BlueTeam
+	--Top
+	GankUstawienia:addParam("GoraDroga1","Draw 1st Way to gank Top", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("GoraDroga2","Draw 2st Way to gank Top", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("GoraDroga3","Draw 3st Way to gank Top", SCRIPT_PARAM_ONOFF, false)
+	--Mid
+	GankUstawienia:addParam("SrodekDroga1","Draw 1st Way to gank Mid", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("SrodekDroga2","Draw 2st Way to gank Mid", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("SrodekDroga3","Draw 3st Way to gank Mid", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("SrodekDroga4","Draw 3st Way to gank Mid", SCRIPT_PARAM_ONOFF, false)
+	--Bot
+	GankUstawienia:addParam("DolDroga1","Draw 1st Way to gank Bot", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("DolDroga2","Draw 2st Way to gank Bot", SCRIPT_PARAM_ONOFF, false)
+	GankUstawienia:addParam("DolDroga3","Draw 3st Way to gank Bot", SCRIPT_PARAM_ONOFF, false)
+	--RedTeam
+	--Top
+	--Mid
+	--Bot
+	
+	--XYZ
+	GankUstawienia:addParam("RysujXYZ","Draw XYZ Position", SCRIPT_PARAM_ONOFF, false)
+end
+
+function OnDraw()
+
+	if GankUstawienia.GoraDroga1 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki1.Kolor)
+	end
+	if GankUstawienia.GoraDroga2 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi4X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi4Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.PunkDrogi4Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki2.Kolor)
+	end
+	if GankUstawienia.GoraDroga3 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi4X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi4Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi4Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi5X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi5Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi5Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi6X, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi6Y, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.PunkDrogi6Z, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoGornejDrozki3.Kolor)
+	end
+	if GankUstawienia.SrodekDroga1 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki1.Kolor)
+	end
+	if GankUstawienia.SrodekDroga2 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi4X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi4Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.PunkDrogi4Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki2.Kolor)
+	end
+	if GankUstawienia.SrodekDroga3 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki3.Kolor)
+	end
+	if GankUstawienia.SrodekDroga4 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoSrodkowejDrozki4.Kolor)
+	end
+	if GankUstawienia.DolDroga1 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki1.Kolor)
+	end
+	if GankUstawienia.DolDroga2 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki2.Kolor)
+	end
+	if GankUstawienia.DolDroga3 then
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi1X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi1Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi1Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi2X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi2Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi2Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi3X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi3Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi3Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi4X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi4Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi4Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Kolor)
+		DrawCircle(NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi5X, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi5Y, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.PunkDrogi5Z, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Zasieg, NiebieskaDruzynaPunktDrogiDrogaDoDolnejDrozki3.Kolor)
+	end
+		
+	if GankUstawienia.RysujXYZ then
+ 		DrawLine(100,175,200,175,1,0xFFFFFF00)
+		DrawLine(100,175,100,260,1,0xFFFFFF00)
+		DrawLine(200,175,200,260,1,0xFFFFFF00)
+		DrawLine(100,260,200,260,1,0xFFFFFF00)
+		
+		DrawText("X: ".. math.floor(myHero.x),20,120,180,0xFF00FF00)
+		DrawText("Y: ".. math.floor(myHero.y),20,120,210,0xFF00FF00)
+		DrawText("Z: ".. math.floor(myHero.z),20,120,240,0xFF00FF00)
+	end
+end
