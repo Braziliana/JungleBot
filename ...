@@ -1107,7 +1107,6 @@ Sheen = {
 }
 Sightstone = {
 	Item1 = Ruby_Crystal,
-	Slot = nil,
 	ID = 2049
 }
 Sorcerers_Shoes = {
@@ -1133,8 +1132,6 @@ Sunfire_Cape = {
 Sword_of_the_Divine = {
 	Item1 = Recurve_Bow,
 	Item2 = Dagger,
-	Slot = nil,
-	Ready = false,
 	ID = 3131
 }
 Sword_of_the_Occult = {
@@ -1156,8 +1153,6 @@ Tiamat = {
 	Item2 = Long_Sword,
 	Item3 = Rejuvenation_Bead,
 	Item4 = Rejuvenation_Bead,
-	Slot = nil,
-	Ready = false,
 	ID = 3077
 }
 Vampiric_Scepter = {
@@ -1226,9 +1221,6 @@ Banshees_Veil = {
 Bilgewater_Cutlass = {
 	Item1 = ,
 	Item2 = ,
-	Slot = nil,
-	Ready = false,
-	Range = 450,
 	ID = 3144
 }
 The_Black_Cleaver = {
@@ -1260,13 +1252,185 @@ Frozen_Heart = {
 	Item2 = Glacial_Shroud,
 	ID = 3110
 }
-Frozen Mallet = {
+Frozen_Mallet = {
 	Item1 = Ruby_Crystal,
 	Item2 = Pickaxe,
 	Item3 = Giants_Belt,
 	ID = 3022
 }
-
+Iceborn_Gauntlet = {
+	Item1 = Sheen,
+	Item2 = Glacial_Shroud,
+	ID = 3025
+}
+Liandrys_Torment = {
+	Item1 = Haunting_Guise,
+	Item2 = Amplifying_Tome,
+	ID = 3151
+}
+Lich_Bane = {
+	Item1 = Sheen,
+	Item2 = Blasting_Wand,
+	ID = 3100
+}
+Manamune = {
+	Item1 = Tear_of_the_Goddess,
+	Item2 = Long_Sword,
+	ID = 3004
+}
+Maw_of_Malmortius = {
+	Item1 = Hexdrinker,
+	Item2 = Pickaxe,
+	ID = 3156
+}
+Mercurial_Scimitar = {
+	Item1 = Quicksilver Sash,
+	Item2 = BF_Sword,
+	ID = 3139
+}
+Mikaels_Crucible = {
+	Item1 = Philosophers_Stone,
+	Item2 = Chalice_of_Harmony,
+	ID = 3222
+}
+Morellonomicon = {
+	Item1 = Fiendish_Codex,
+	Item2 = Kages_Lucky_Pick,
+	Item3 = Faerie_Charm,
+	ID = 3165
+}
+Nashors_Tooth = {
+	Item1 = Stinger,
+	Item2 = Fiendish_Codex,
+	ID = 3115
+}
+Ohmwrecker = {
+	Item1 = Ruby_Crystal,
+	Item2 = Blasting_Wand,
+	Item3 = Philosophers_Stone,
+	ID = 3056
+}
+Phantom_Dancer = {
+	Item1 = Cloak_of_Agility,
+	Item2 = Zeal,
+	Item3 = Dagger,
+	ID = 3046
+}
+Randuins_Omen = {
+	Item1 = Giants_Belt,
+	Item2 = Wardens_Mail,
+	ID = 3143
+}
+Ravenous_Hydra = {
+	Item1 = Tiamat,
+	Item2 = Vampiric_Scepter,
+	ID = 3074
+}
+Rod_of_Ages = {
+	Item1 = Catalyst_the_Protector,
+	Item2 = Blasting_Wand,
+	ID = 3027
+}
+Ruby_Sightstone = {
+	Item1 = Sightstone,
+	Item2 = Ruby_Crystal,
+	ID = 2045
+}
+Shard_of_True_Ice = {
+	Item1 = Kages_Lucky_Pick,
+	Item2 = Mana_Manipulator,
+	ID = 3092
+}
+Shurelyas_Reverie = {
+	Item1 = Kindlegem,
+	Item2 = Philosophers_Stone,
+	ID = 3609
+}
+Spirit_of_the_Ancient_Golem = {
+	Item1 = Spirit_Stone,
+	Item2 = Kindlegem,
+	ID = 3207
+}
+Spirit_of_the_Elder_Lizard = {
+	Item1 = Spirit_Stone,
+	Item2 = Long_Sword,
+	Item3 = Long_Sword,
+	ID = 3209
+}
+Spirit_of_the_Spectral_Wraith = {
+	Item1 = Spirit_Stone,
+	Item2 = Hextech_Revolver,
+	ID = 3206
+}
+Spirit_Visage = {
+	Item1 = Kindlegem,
+	Item2 = Spectres_Cowl,
+	ID = 3065
+}
+Statikk_Shiv = {
+	Item1 = Zeal,
+	Item2 = Avarice_Blade,
+	ID = 3087
+}
+Trinity_Force = {
+	Item1 = Zeal,
+	Item2 = Sheen,
+	Item3 = Phage,
+	ID = 3078
+}
+Twin_Shadows = {
+	Item1 = Kages_Lucky_Pick,
+	Item2 = Null-Magic_Mantle,
+	ID = 3023
+}
+Will_of_the_Ancients = {
+	Item1 = Hextech_Revolver‎,
+	Item2 = Kages_Lucky_Pick,
+	ID = 3152
+}
+Wriggles_Lantern = {
+	Item1 = Madreds_Razors,
+	Item2 = Vampiric_Scepter,
+	ID = 3154
+}
+Youmuus_Ghostblade = {
+	Item1 = Avarice_Blade,
+	Item2 = The_Brutalizer,
+	ID = 3142
+}
+Zekes_Herald = {
+	Item1 = Kindlegem,
+	Item2 = Vampiric_Scepter,
+	ID = 3050
+}
+Zephyr = {
+	Item1 = Stinger,
+	Item2 = Pickaxe,
+	ID = 3172
+}
+Zhonyas_Hourglass = {
+	Item1 = Seekers_Armguard,
+	Item2 = Needlessly_Large_Rod, 
+	ID = 3157
+}
+-- Mythical
+Blade_of_the_Ruined_King = {
+	Item1 = Bilgewater_Cutlass,
+	Item2 = Dagger,
+	Item3 = Dagger,
+	ID = 3153
+}
+Hextech_Gunblade = {
+	Item1 = Hextech_Revolver,
+	Item2 = Bilgewater_Cutlass,
+	ID = 3146
+}
+Locket_of_the_Iron_Solari = {
+	Item1 = Aegis_of_the_Legion,
+	Item2 = Ruby_Crystal,
+	Item3 = Null-Magic_Mantle,
+	ID = 3190
+}
 
 
 
@@ -1367,6 +1531,5 @@ function OnDraw()
 	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint6X, BlueTeamTopLaneWayPoints3.WayPoint6Y, BlueTeamTopLaneWayPoints3.WayPoint6Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
 	-- Blue Team Mid Lane
 end
-
 
 
