@@ -866,570 +866,691 @@ SafeRecalSpot6 = {
 -- List
 -- Basic Items
 Amplifying_Tome = {
-	ID = 1052
+	ID = 1052,
+	Bought = false
 }
 BF_Sword = {
-	ID = 1038
+	ID = 1038,
+	Bought = false
 }
 Blasting_Wand = {
-	ID = 1026
+	ID = 1026,
+	Bought = false
 }
 Boots_of_Speed = {
-	ID = 1001
+	ID = 1001,
+	Bought = false
 }
 Brawlers_Gloves = {
-	ID = 1051
+	ID = 1051,
+	Bought = false
 }
 Chain_Vest = {
-	ID = 1031
+	ID = 1031,
+	Bought = false
 }
 Cloak_of_Agility = {
-	ID = 1018
+	ID = 1018,
+	Bought = false
 }
 Cloth_Armor = {
-	ID = 1029
+	ID = 1029,
+	Bought = false
 }
 Dagger = {
-	ID = 1042
+	ID = 1042,
+	Bought = false
 }
 Dorans_Blade = {
-	ID = 1055
+	ID = 1055,
+	Bought = false
 }
 Dorans_Ring = {
-	ID = 1056
+	ID = 1056,
+	Bought = false
 }
 Dorans_Shield = {
-	ID = 1054
+	ID = 1054,
+	Bought = false
 }
 Giants_Belt = {
-	ID = 1011
+	ID = 1011,
+	Bought = false
 }
 Hunters_Machete = {
-	ID = 1039
+	ID = 1039,
+	Bought = false
 }
 Long_Sword = {
-	ID = 1036
+	ID = 1036,
+	Bought = false
 }
 Needlessly_Large_Rod = {
-	ID = 1058
+	ID = 1058,
+	Bought = false
 }
 Negatron_Cloak = {
-	ID = 1057
+	ID = 1057,
+	Bought = false
 }
 NullMagic_Mantle = {
-	ID = 1033
+	ID = 1033,
+	Bought = false
 }
 Pickaxe = {
-	ID = 1037
+	ID = 1037,
+	Bought = false
 }
 Recurve_Bow = {
-	ID = 1043
+	ID = 1043,
+	Bought = false
 }
 Rejuvenation_Bead = {
-	ID = 1006
+	ID = 1006,
+	Bought = false
 }
 Ruby_Crystal = {
-	ID = 1028
+	ID = 1028,
+	Bought = false
 }
 Sapphire_Crystal = {
-	ID = 1027
+	ID = 1027,
+	Bought = false
 }
 Spectres_Cowl = {
 	Item1 = Negatron_Cloak,
 	Item2 = Ruby_Crystal,
-	ID = nil
+	ID = nil,
+	Bought = false
 }
 -- Advanced
 Abyssal_Scepter = {
 	Item1 = Blasting_Wand,
 	Item2 = Negatron_Cloak,
 	ID = 3001,
+	Bought = false
 }
 Avarice_Blade = {
 	Item1 = Brawlers_Gloves,
-	ID = 3093
+	ID = 3093,
+	Bought = false
 }
 Berserkers_Greaves = {
 	Item1 =  Boots_of_Speed,
 	Item2 = Dagger,
-	ID = 3006
+	ID = 3006,
+	Bought = false
 }
 Boots_of_Mobility = {
 	Item1 = Boots_of_Speed,
-	ID = 3117
+	ID = 3117,
+	Bought = false
 }
 Boots_of_Swiftness = {
 	Item1 = Boots_of_Speed,
-	ID = 3009
+	ID = 3009,
+	Bought = false
 }
 The_Brutalizer = {
 	Item1 =  Long_Sword,
 	Item2 =  Long_Sword,
-	ID = 3134
+	ID = 3134,
+	Bought = false
 }
 Catalyst_the_Protector = {
 	Item1 = Ruby_Crystal,
 	Item2 = Sapphire_Crystal,
-	ID = 3010 
+	ID = 3010,
+	Bought = false
 }
 Chalice_of_Harmony = {
 	Item1 = Faerie_Charm,
 	Item2 = Faerie_Charm,
 	Item3 = NullMagic_Mantle, 
-	ID = 3028
+	ID = 3028,
+	Bought = false
 }
 Emblem_of_Valor = {
 	Item1 = Cloth_Armor,
 	Item2 = Rejuvenation_Bead,
-	ID = 3097
+	ID = 3097,
+	Bought = false
 }
 Fiendish_Codex = {
 	Item1 = Amplifying_Tome,
-	ID = 3108
+	ID = 3108,
+	Bought = false
 }
 Glacial_Shroud = {
 	Item1 = Sapphire_Crystal,
 	Item2 = Chain_Vest,
-	ID = 3024
+	ID = 3024,
+	Bought = false
 }
 Guardian_Angel = {
 	Item1 = Negatron_Cloak,
 	Item2 = Chain_Vest,
-	ID = 3026
+	ID = 3026,
+	Bought = false
 }
 Guinsoos_Rageblade = {
 	Item1 = Pickaxe,
 	Item2 = Blasting_Wand,
-	ID = 1820
+	ID = 1820,
+	Bought = false
 }
 Haunting_Guise = {
 	Item1 = Ruby_Crystal,
 	Item2 = Amplifying_Tome,
-	ID = 3136
+	ID = 3136,
+	Bought = false
 }
 Hexdrinker = {
 	Item1 = Long_Sword,
 	Item2 = Null_Magic_Mantle,
-	ID = 3155
+	ID = 3155,
+	Bought = false
 }
 Hextech_Revolver = {
 	Item1 = Amplifying_Tome,
 	Item2 = Amplifying_Tome,
-	ID = 3145
+	ID = 3145,
+	Bought = false
 }
 Infinity_Edge = {
 	Item1 = BF_Sword,
 	Item2 = Pickaxe,
 	Item3 = Cloak_of_Agility,
-	ID = 3031
+	ID = 3031,
+	Bought = false
 }
 Ionian_Boots_of_Lucidity = {
 	Item1 = Boots_of_Speed,
-	ID = 3158
+	ID = 3158,
+	Bought = false
 }
 Kages_Lucky_Pick = {
 	Item1 = Amplifying_Tome,
-	ID = 3098
+	ID = 3098,
+	Bought = false
 }
 Kindlegem = {
 	Item1 = Ruby_Crystal,
-	ID = 3067
+	ID = 3067,
+	Bought = false
 }
 Last_Whisper = {
 	Item1 = Long_Sword,
 	Item2 = Pickaxe,
-	ID = 3035
+	ID = 3035,
+	Bought = false
 }
 Madreds_Razors = {
 	Item1 = Cloth_Armor,
 	Item2 = Hunters_Machete,
-	ID = 3106
+	ID = 3106,
+	Bought = false
 }
 Mana_Manipulator = {
 	Item1 = Faerie_Charm,
-	ID = 3037
+	ID = 3037,
+	Bought = false
 }
 Mejais_Soulstealer = {
 	Item1 = Amplifying_Tome,
-	ID = 3041
+	ID = 3041,
+	Bought = false
 }
 Mercurys_Treads = {
 	Item1 = Boots_of_Speed,
 	Item2 = NullMagic_Mantle,
-	ID = 3111
+	ID = 3111,
+	Bought = false
 }
 Ninja_Tabi = {
 	Item1 = Boots_of_Speed,
 	Item2 = Cloth_Armor,
-	ID = 3047
+	ID = 3047,
+	Bought = false
 }
 Phage = {
 	Item1 = Ruby_Crystal,
 	Item2 = LongSword,
-	ID = 3044 
+	ID = 3044,
+	Bought = false
 }
 Philosophers_Stone = {
 	Item1 = FaerieCharm,
 	Item2 = RejuvenationBead,
-	ID = 3096
+	ID = 3096,
+	Bought = false
 }
 Quicksilver_Sash = {
 	Item1 = Negatron_Cloak,
-	ID = 3140
+	ID = 3140,
+	Bought = false
 }
 Rabadons_Deathcap = {
 	Item1 = Blasting_Wand,
 	Item2 = Needlessly_Large_Rod, 
-	ID = 3089
+	ID = 3089,
+	Bought = false
 }
 Runaans_Hurricane = {
 	Item1 = Recurve_Bow,
 	Item2 = Dagger,
 	Item3 = Dagger,
-	ID = 3085
+	ID = 3085,
+	Bought = false
 }
 Rylais_Crystal_Scepter = {
 	Item1 = Amplifying_Tome,
 	Item2 = Blasting_Wand,
 	Item3 = Giants_Belt,
-	ID = 3116
+	ID = 3116,
+	Bought = false
 }
 Seekers_Armguard = {
 	Item1 = Amplifying_Tome,
 	Item2 = Cloth_Armor,
 	Item3 = Cloth_Armor,
-	ID = 3191
+	ID = 3191,
+	Bought = false
 }
 Sheen = {
 	Item1 = Sapphire_Crystal,
 	Item2 = Amplifying_Tome,
-	ID = 3057
+	ID = 3057,
+	Bought = false
 }
 Sightstone = {
 	Item1 = Ruby_Crystal,
-	ID = 2049
+	ID = 2049,
+	Bought = false
 }
 Sorcerers_Shoes = {
 	Item1 = Boots_of_Speed,
-	ID = 3020
+	ID = 3020,
+	Bought = false
 }
 Spirit_Stone = {
 	Item1 = Hunters_Machete,
 	Item2 = Faerie_Charm,
 	Item3 = Rejuvenation_Bead,
-	ID = 1080
+	ID = 1080,
+	Bought = false
 }
 Stinger = {
 	Item1 = Dagger,
 	Item2 = Dagger,
-	ID = 3101
+	ID = 3101,
+	Bought = false
 }
 Sunfire_Cape = {
 	Item1 = Chain_Vest,
 	Item2 = Giants_Belt,
-	ID = 3068
+	ID = 3068,
+	Bought = false
 }
 Sword_of_the_Divine = {
 	Item1 = Recurve_Bow,
 	Item2 = Dagger,
-	ID = 3131
+	ID = 3131,
+	Bought = false
 }
 Sword_of_the_Occult = {
 	Item1 = Long_Sword,
-	ID = 3141
+	ID = 3141,
+	Bought = false
 }
 Tear_of_the_Goddess = {
 	Item1 = Faerie_Charm,
 	Item2 = Sapphire_Crystal,
-	ID = 3070
+	ID = 3070,
+	Bought = false
 }
 Thornmail = {
 	Item1 = Cloth_Armor,
 	Item2 = Chain_Vest,
-	ID = 3075
+	ID = 3075,
+	Bought = false
 }
 Tiamat = {
 	Item1 = Pickaxe,
 	Item2 = Long_Sword,
 	Item3 = Rejuvenation_Bead,
 	Item4 = Rejuvenation_Bead,
-	ID = 3077
+	ID = 3077,
+	Bought = false
 }
 Vampiric_Scepter = {
 	Item1 = Long_Sword,
-	ID = 1053
+	ID = 1053,
+	Bought = false
 }
 Void_Staff = {
 	Item1 = Amplifying_Tome,
 	Item2 = Blasting_Wand,
-	ID = 3135
+	ID = 3135,
+	Bought = false
 }
 Wardens_Mail = {
 	Item1 = Cloth_Armor,
 	Item2 = Cloth_Armor,
-	ID = 3082
+	ID = 3082,
+	Bought = false
 }
 Warmogs_Armor = {
 	Item1 = Giants_Belt,
 	Item2 = Ruby_Crystal,
 	Item3 = Rejuvenation_Bead,
 	Item4 = Rejuvenation_Bead,
-	ID = 3083
+	ID = 3083,
+	Bought = false
 }
 Wits_End = {
 	Item1 = Recurve_Bow,
 	Item2 = NullMagic_Mantle,
 	Item3 = Dagger,
-	ID = 3091
+	ID = 3091,
+	Bought = false
 }
 Zeal = {
 	Item1 = Dagger,
 	Item2 = Brawlers_Gloves,
-	ID = 3086
+	ID = 3086,
+	Bought = false
 }
 Aegis_of_the_Legion = {
 	Item1 = Emblem_of_Valor,
 	Item2 = Ruby_Crystal,
 	Item3 = NullMagic_Mantle,
-	ID = 3105
+	ID = 3105,
+	Bought = false
 }
 Archangels_Staff = {
 	Item1 = Tear_of_the_Goddess,
 	Item2 = Blasting_Wand,
-	ID = 3003
+	ID = 3003,
+	Bought = false
 }
 Athenes_Unholy_Grail = {
 	Item1 = Fiendish_Codex,
 	Item2 = Chalice_of_Harmony,
-	ID = 3174
+	ID = 3174,
+	Bought = false
 }
 Atmas_Impaler = {
 	Item1 = Chain_Vest,
 	Item2 = Avarice_Blade,
-	ID = 3005
+	ID = 3005,
+	Bought = false
 }
 Banner_of_Command = {
 	Item1 = Fiendish_Codex,
 	Item2 = Amplifying_Tome,
-	ID = 3060
+	ID = 3060,
+	Bought = false
 }
 Banshees_Veil = {
 	Item1 = Ruby_Crystal,
 	Item2 = Spectres_Cowl,
-	ID = 3102
+	ID = 3102,
+	Bought = false
 }
 Bilgewater_Cutlass = {
-	Item1 = ,
-	Item2 = ,
-	ID = 3144
+	Item1 = Long_Sword,
+	Item2 = Vampiric_Scepter,
+	ID = 3144,
+	Bought = false
 }
 The_Black_Cleaver = {
 	Item1 = The_Brutalizer,
 	Item2 = Ruby_Crystal,
-	ID = 3071
+	ID = 3071,
+	Bought = false
 }
 The_Bloodthirster = {
 	Item1 = BF_SWORD,
 	Item2 = Vampiric_Scepter,
-	ID = 3072
+	ID = 3072,
+	Bought = false
 }
 Deathfire_Grasp = {
 	Item1 = Needlessly_Large_Rod,
 	Item2 = Amplifying_Tome,
-	ID = 3128
+	ID = 3128,
+	Bought = false
 }
 Eleisas_Miracle = {
 	Item1 = Philosophers_Stone,
 	ID = 3173,
+	Bought = false
 }
 Executioners_Calling = {
 	Item1 = Avarice_Blade,
 	Item2 = Long_Sword,
-	ID = 3123
+	ID = 3123,
+	Bought = false
 }
 Frozen_Heart = {
 	Item1 = Wardens_Mail,
 	Item2 = Glacial_Shroud,
-	ID = 3110
+	ID = 3110,
+	Bought = false
 }
 Frozen_Mallet = {
 	Item1 = Ruby_Crystal,
 	Item2 = Pickaxe,
 	Item3 = Giants_Belt,
-	ID = 3022
+	ID = 3022,
+	Bought = false
 }
 Iceborn_Gauntlet = {
 	Item1 = Sheen,
 	Item2 = Glacial_Shroud,
-	ID = 3025
+	ID = 3025,
+	Bought = false
 }
 Liandrys_Torment = {
 	Item1 = Haunting_Guise,
 	Item2 = Amplifying_Tome,
-	ID = 3151
+	ID = 3151,
+	Bought = false
 }
 Lich_Bane = {
 	Item1 = Sheen,
 	Item2 = Blasting_Wand,
-	ID = 3100
+	ID = 3100,
+	Bought = false
 }
 Manamune = {
 	Item1 = Tear_of_the_Goddess,
 	Item2 = Long_Sword,
-	ID = 3004
+	ID = 3004,
+	Bought = false
 }
 Maw_of_Malmortius = {
 	Item1 = Hexdrinker,
 	Item2 = Pickaxe,
-	ID = 3156
+	ID = 3156,
+	Bought = false
 }
 Mercurial_Scimitar = {
 	Item1 = Quicksilver Sash,
 	Item2 = BF_Sword,
-	ID = 3139
+	ID = 3139,
+	Bought = false
 }
 Mikaels_Crucible = {
 	Item1 = Philosophers_Stone,
 	Item2 = Chalice_of_Harmony,
-	ID = 3222
+	ID = 3222,
+	Bought = false
 }
 Morellonomicon = {
 	Item1 = Fiendish_Codex,
 	Item2 = Kages_Lucky_Pick,
 	Item3 = Faerie_Charm,
-	ID = 3165
+	ID = 3165,
+	Bought = false
 }
 Nashors_Tooth = {
 	Item1 = Stinger,
 	Item2 = Fiendish_Codex,
-	ID = 3115
+	ID = 3115,
+	Bought = false
 }
 Ohmwrecker = {
 	Item1 = Ruby_Crystal,
 	Item2 = Blasting_Wand,
 	Item3 = Philosophers_Stone,
-	ID = 3056
+	ID = 3056,
+	Bought = false
 }
 Phantom_Dancer = {
 	Item1 = Cloak_of_Agility,
 	Item2 = Zeal,
 	Item3 = Dagger,
-	ID = 3046
+	ID = 3046,
+	Bought = false
 }
 Randuins_Omen = {
 	Item1 = Giants_Belt,
 	Item2 = Wardens_Mail,
-	ID = 3143
+	ID = 3143,
+	Bought = false
 }
 Ravenous_Hydra = {
 	Item1 = Tiamat,
 	Item2 = Vampiric_Scepter,
-	ID = 3074
+	ID = 3074,
+	Bought = false
 }
 Rod_of_Ages = {
 	Item1 = Catalyst_the_Protector,
 	Item2 = Blasting_Wand,
-	ID = 3027
+	ID = 3027,
+	Bought = false
 }
 Ruby_Sightstone = {
 	Item1 = Sightstone,
 	Item2 = Ruby_Crystal,
-	ID = 2045
+	ID = 2045,
+	Bought = false
 }
 Shard_of_True_Ice = {
 	Item1 = Kages_Lucky_Pick,
 	Item2 = Mana_Manipulator,
-	ID = 3092
+	ID = 3092,
+	Bought = false
 }
 Shurelyas_Reverie = {
 	Item1 = Kindlegem,
 	Item2 = Philosophers_Stone,
-	ID = 3609
+	ID = 3609,
+	Bought = false
 }
 Spirit_of_the_Ancient_Golem = {
 	Item1 = Spirit_Stone,
 	Item2 = Kindlegem,
-	ID = 3207
+	ID = 3207,
+	Bought = false
 }
 Spirit_of_the_Elder_Lizard = {
 	Item1 = Spirit_Stone,
 	Item2 = Long_Sword,
 	Item3 = Long_Sword,
-	ID = 3209
+	ID = 3209,
+	Bought = false
 }
 Spirit_of_the_Spectral_Wraith = {
 	Item1 = Spirit_Stone,
 	Item2 = Hextech_Revolver,
-	ID = 3206
+	ID = 3206,
+	Bought = false
 }
 Spirit_Visage = {
 	Item1 = Kindlegem,
 	Item2 = Spectres_Cowl,
-	ID = 3065
+	ID = 3065,
+	Bought = false
 }
 Statikk_Shiv = {
 	Item1 = Zeal,
 	Item2 = Avarice_Blade,
-	ID = 3087
+	ID = 3087,
+	Bought = false
 }
 Trinity_Force = {
 	Item1 = Zeal,
 	Item2 = Sheen,
 	Item3 = Phage,
-	ID = 3078
+	ID = 3078,
+	Bought = false
 }
 Twin_Shadows = {
 	Item1 = Kages_Lucky_Pick,
 	Item2 = Null-Magic_Mantle,
-	ID = 3023
+	ID = 3023,
+	Bought = false
 }
 Will_of_the_Ancients = {
 	Item1 = Hextech_Revolver‎,
 	Item2 = Kages_Lucky_Pick,
-	ID = 3152
+	ID = 3152,
+	Bought = false
 }
 Wriggles_Lantern = {
 	Item1 = Madreds_Razors,
 	Item2 = Vampiric_Scepter,
-	ID = 3154
+	ID = 3154,
+	Bought = false
 }
 Youmuus_Ghostblade = {
 	Item1 = Avarice_Blade,
 	Item2 = The_Brutalizer,
-	ID = 3142
+	ID = 3142,
+	Bought = false
 }
 Zekes_Herald = {
 	Item1 = Kindlegem,
 	Item2 = Vampiric_Scepter,
-	ID = 3050
+	ID = 3050,
+	Bought = false
 }
 Zephyr = {
 	Item1 = Stinger,
 	Item2 = Pickaxe,
-	ID = 3172
+	ID = 3172,
+	Bought = false
 }
 Zhonyas_Hourglass = {
 	Item1 = Seekers_Armguard,
 	Item2 = Needlessly_Large_Rod, 
-	ID = 3157
+	ID = 3157,
+	Bought = false
 }
 -- Mythical
 Blade_of_the_Ruined_King = {
 	Item1 = Bilgewater_Cutlass,
 	Item2 = Dagger,
 	Item3 = Dagger,
-	ID = 3153
+	ID = 3153,
+	Bought = false
 }
 Hextech_Gunblade = {
 	Item1 = Hextech_Revolver,
 	Item2 = Bilgewater_Cutlass,
-	ID = 3146
+	ID = 3146,
+	Bought = false
 }
 Locket_of_the_Iron_Solari = {
 	Item1 = Aegis_of_the_Legion,
 	Item2 = Ruby_Crystal,
 	Item3 = Null-Magic_Mantle,
-	ID = 3190
+	ID = 3190,
+	Bought = false
 }
 
 
