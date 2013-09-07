@@ -1,0 +1,1372 @@
+--[[
+	Jax Bot
+]]--
+
+-- Colors
+Red = ARGB(0x00,0xFF,0x00,0x00)
+DarkRed = 0
+Blue = ARGB(0x00,0xFF,0xFF,0xFF)
+DarkBlue = ARGB(0x00,0x00,0xFF,0x00)
+Green = 0
+Lime = ARGB(0x00,0x00,0xFF,0x00)
+Purple = ARGB(0x00,0xFF,0x00,0xFF)
+
+-- BlueTeam
+BlueTeamBase = {
+	X = 45,
+	Y = 184,
+	Z = 265,
+	Range = 420,
+	Color = Blue,
+	Team = "Blue Team"
+}
+
+BlueTeamBlueSpot = {
+	X = 3633,
+	Y = 54,
+	Z = 7599,
+	Range = 350,
+	Color = Blue,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 115,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 300,
+	AncientGolemName = "AncientGolem1.1.1",
+	YoungLizard1Name = "YoungLizard1.1.2",
+	YoungLizard2Name = "YoungLizard1.1.3",
+	AncientGolem = nil,
+	YoungLizard1 = nil,
+	YoungLizard2 = nil,
+	OnTheWayStatus = "On The Way To BlueTeamBlueSpot",
+	ClearingStatus = "Clearing BlueTeamBlueSpot"
+}
+BlueTeamWolfesSpot = {
+	X = 3380,
+	Y = 55,
+	Z = 6220,
+	Range = 350,
+	Color = Blue,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 125,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 50,
+	GiantWolfName = "GiantWolf2.1.3",
+	Wolf1Name = "wolf2.1.1",
+	Wolf2Name = "wolf2.1.2",
+	GiantWolf = nil,
+	Wolf1 = nil,
+	Wolf2 = nil,
+	OnTheWayStatus = "On The Way To BlueTeamWolfesSpot",
+	ClearingStatus = "Clearing BlueTeamWolfesSpot"
+}
+BlueTeamWarithsSpot = {
+	X = 6531,
+	Y = 58,
+	Z = 5268,
+	Range = 350,
+	Color = Blue,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 50,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 125,
+	WraithName = "LesserWraith3.1.3",
+	LesserWraith1Name = "LesserWraith3.1.1",
+	LesserWraith2Name = "LesserWraith3.1.2",
+	LesserWraith3Name = "LesserWraith3.1.4",
+	Wraith = nil,
+	LesserWraith1 = nil,
+	LesserWraith2 = nil,
+	LesserWraith3 = nil,
+	OnTheWayStatus = "On The Way To BlueTeamWarithsSpot",
+	ClearingStatus = "Clearing BlueTeamWarithsSpot"
+}
+BlueTeamRedSpot = {
+	X = 7438,
+	Y = 57,
+	Z = 3884,
+	Range = 350,
+	Color = Blue,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 115,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 300,
+	LizardElder = "LizardElder4.1.1",
+	YoungLizard1Name = "YoungLizard4.1.2",
+	YoungLizard2Name = "YoungLizard4.1.3",
+	LizardElder = nil,
+	YoungLizard1 = nil,
+	YoungLizard2 = nil,
+	OnTheWayStatus = "On The Way To BlueTeamRedSpot",
+	ClearingStatus = "Clearing BlueTeamRedSpot"
+}
+BlueTeamGolemsSpot = {
+	X = 8053,
+	Y = 54,
+	Z = 2474,
+	Range = 350,
+	Color = Blue,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 125,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 50,
+	GolemName = "Golem5.1.2",
+	SmallGolemName = "SmallGolem5.1.1",
+	Golem = nil,
+	SmallGolem = nil,
+	OnTheWayStatus = "On The Way To BlueTeamGolemsSpot",
+	ClearingStatus = "Clearing BlueTeamGolemsSpot"
+}
+
+
+
+-- RedTeam
+RedTeamBase = {
+	X = 13960,
+	Y = 184,
+	Z = 14190,
+	Range = 420,
+	Color = Red,
+	Team = "Red Team"
+}
+
+RedTeamBlueSpot = {
+	X = 10385,
+	Y = 54,
+	Z = 6813,
+	Range = 350,
+	Color = Red,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 115,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 300,
+	AncientGolemName = "AncientGolem7.1.1",
+	YoungLizard1Name = "YoungLizard7.1.2",
+	YoungLizard2Name = "YoungLizard7.1.3",
+	AncientGolem = nil,
+	YoungLizard1 = nil,
+	YoungLizard2 = nil,
+	OnTheWayStatus = "On The Way To RedTeamBlueSpot",
+	ClearingStatus = "Clearing RedTeamBlueSpot"
+}
+RedTeamWolfesSpot = {
+	X = 10649,
+	Y = 63,
+	Z = 8125,
+	Range = 350,
+	Color = Red,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 125,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 50,
+	GiantWolfName = "GiantWolf8.1.3",
+	Wolf1Name = "wolf8.1.1",
+	Wolf2Name = "wolf8.1.2",
+	GiantWolf = nil,
+	Wolf1 = nil,
+	Wolf2 = nil,
+	OnTheWayStatus = "On The Way To RedTeamWolfesSpot",
+	ClearingStatus = "Clearing RedTeamWolfesSpot"
+}
+RedTeamWarithsSpot = {
+	X = 7462,
+	Y = 55,
+	Z = 9198,
+	Range = 350,
+	Color = Red,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 125,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 50,
+	WraithName = "Wraith9.1.3",
+	LesserWraith1Name = "LesserWraith9.1.1",
+	LesserWraith2Name = "LesserWraith9.1.2",
+	LesserWraith3Name = "LesserWraith9.1.4",
+	Wraith = nil,
+	LesserWraith1 = nil,
+	LesserWraith2 = nil,
+	LesserWraith3 = nil,
+	OnTheWayStatus = "On The Way To RedTeamWarithsSpot",
+	ClearingStatus = "Clearing RedTeamWarithsSpot"
+}
+RedTeamRedSpot = {
+	X = 6508,
+	Y = 54,
+	Z = 10583,
+	Range = 350,
+	Color = Red,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 115,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 300,
+	LizardElderName = "LizardElder10.1.1",
+	YoungLizard1Name = "YoungLizard10.1.2",
+	YoungLizard2Name = "YoungLizard10.1.3",
+	LizardElder = nil,
+	YoungLizard1 = nil,
+	YoungLizard2 = nil,
+	OnTheWayStatus = "On The Way To RedTeamRedSpot",
+	ClearingStatus = "Clearing RedTeamRedSpot"
+}
+RedTeamGolemsSpot = {
+	X = 5997,
+	Y = 54,
+	Z = 12011,
+	Range = 350,
+	Color = Red,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 125,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 50,
+	Golem = "Golem11.1.2",
+	SmallGolemName = "SmallGolem11.1.1",
+	Golem = nil,
+	SmallGolem = nil,
+	OnTheWayStatus = "On The Way To RedTeamGolemsSpot",
+	ClearingStatus = "Clearing RedTeamGolemsSpot"
+}
+-- Dragon
+DragonSpot = {
+	X = 9459,
+	Y = -60,
+	Z = 4195,
+	Range = 600,
+	Color = Lime,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 150,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 360,
+	Name = "Dragon6.1.1",
+	Dragon = nil,
+	OnTheWayStatus = "On The Way To DragonSpot",
+	ClearingStatus = "Clearing DragonSpot"
+}
+-- Baron
+BaronSpot = {
+	X = 4594,
+	Y = -63,
+	Z = 10243,
+	Range = 600,
+	Color = Lime,
+	Alieve = false,
+	TimeOfDeath = 0,
+	TimeOfFirstRespawn = 900,
+	TimeOfRespawn = 0,
+	TimeToRespawn = 420,
+	Name = "Worm12.1.1",
+	Baron = nil,
+	OnTheWayStatus = "On The Way To BaronSpot",
+	ClearingStatus = "Clearing BaronSpot"
+}
+
+-- Towers
+-- Red Team
+TopOuterTowerRedTeam = {
+	Name = Turret_T2_L_03_A,
+	X = 3911,
+	Y = 13,
+	Z = 13654,
+	Range = 775,
+	Tower = nil
+
+}
+TopInnerTowerRedTeam = {
+	Name = Turret_T2_L_02_A,
+	X = 7536,
+	Y = 39,
+	Z = 13190,
+	Range = 775,
+	Tower = nil
+
+}
+TopInhibitorTowerRedTeam = {
+	Name = Turret_T2_L_01_A,
+	X = 10261,
+	Y = 95,
+	Z = 13465,
+	Range = 775,
+	Tower = nil
+
+}
+MidOuterTowerRedTeam = {
+	Name = Turret_T2_C_05_A,
+	X = 8548,
+	Y = 44,
+	Z = 8289,
+	Range = 775,
+	Tower = nil
+
+}
+MidInnerTowerRedTeam = {
+	Name = Turret_T2_C_04_A,
+	X = 9361,
+	Y = 41,
+	Z = 9892,
+	Range = 775,
+	Tower = nil
+}
+MidInhibitorTowerRedTeam = {
+	Name = Turret_T2_C_03_A,
+	X = 10743,
+	Y = 96,
+	Z = 11010,
+	Range = 775,
+	Tower = nil
+
+}
+BotOuterTowerRedTeam = {
+	Name = Turret_T2_R_03_A,
+	X = 13459,
+	Y = 40,
+	Z = 4284,
+	Range = 775,
+	Tower = nil
+
+}
+BotInnerTowerRedTeam = {
+	Name = Turret_T2_R_02_A,
+	X = 12920,
+	Y = 37,
+	Z = 8005,
+	Range = 775,
+	Tower = nil
+
+}
+BotInhibitorTowerRedTeam = {
+	Name = Turret_T2_R_01_A,
+	X = 13205,
+	Y = 95,
+	Z = 10474,
+	Range = 775,
+	Tower = nil
+
+}
+NexusLeftTowerRedTeam = {
+	Name = Turret_T2_C_02_A,
+	X = 12118,
+	Y = 93,
+	Z = 12876,
+	Range = 775,
+	Tower = nil
+
+}
+NexusRightTowerRedTeam = {
+	Name = Turret_T2_C_01_A,
+	X = 12662,
+	Y = 93,
+	Z = 12442,
+	Range = 775,
+	Tower = nil
+
+}
+-- Blue Team
+TopOuterTowerBlueTeam = {
+	Name = Turret_T1_L_03_A,
+	X = 574,
+	Y = 26,
+	Z = 10220,
+	Range = 775,
+	Tower = nil
+
+}
+TopInnerTowerBlueTeam = {
+	Name = Turret_T1_L_02_A,
+	X = 1106,
+	Y = 42,
+	Z = 6478,
+	Range = 775,
+	Tower = nil
+
+}
+TopInhibitorTowerBlueTeam = {
+	Name = Turret_T1_C_06_A,
+	X = 802,
+	Y = 96,
+	Z = 4052,
+	Range = 775,
+	Tower = nil
+
+}
+MidOuterTowerBlueTeam = {
+	Name = Turret_T1_C_05_A,
+	X = 5439,
+	Y = 44,
+	Z = 6175,
+	Range = 775,
+	Tower = nil
+
+}
+MidInnerTowerBlueTeam = {
+	Name = Turret_T1_C_04_A,
+	X = 4641,
+	Y = 43,
+	Z = 4591,
+	Range = 775,
+	Tower = nil
+}
+MidInhibitorTowerBlueTeam = {
+	Name = Turret_T1_C_03_A,
+	X = 3233,
+	Y = 96,
+	Z = 3447,
+	Range = 775,
+	Tower = nil
+
+}
+BotOuterTowerBlueTeam= {
+	Name = Turret_T1_R_03_A,
+	X = 10097,
+	Y = 41,
+	Z = 808,
+	Range = 775,
+	Tower = nil
+
+}
+BotInnerTowerBlueTeam = {
+	Name = Turret_T1_R_02_A,
+	X = 6512,
+	Y = 43,
+	Z = 1262,
+	Range = 775,
+	Tower = nil
+
+}
+BotInhibitorTowerBlueTeam = {
+	Name = Turret_T1_C_07_A,
+	X = 3747,
+	Y = 96,
+	Z = 1041,
+	Range = 775,
+	Tower = nil
+
+}
+NexusLeftTowerBlueTeam = {
+	Name = Turret_T1_C_01_A,
+	X = 1341,
+	Y = 98,
+	Z = 2029,
+	Range = 775,
+	Tower = nil
+
+}
+NexusRightTowerBlueTeam = {
+	Name = Turret_T1_C_02_A,
+	X = 1768,
+	Y = 96,
+	Z = 1589,
+	Range = 775,
+	Tower = nil
+}
+
+-- WayPoints
+-- Blue Team
+-- Top
+BlueTeamTopLaneWayPoints1 = {
+	WayPoint1X = 2685,
+	WayPoint1Y = 54,
+	WayPoint1Z = 7492,
+	WayPoint2X = 3211,
+	WayPoint2Y = -7,
+	WayPoint2Z = 9081,
+	WayPoint3X = 2234,
+	WayPoint3Y = -26,
+	WayPoint3Z = 11370,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+BlueTeamTopLaneWayPoints2 = {
+	WayPoint1X = 2685,
+	WayPoint1Y = 54,
+	WayPoint1Z = 7492,
+	WayPoint2X = 3211,
+	WayPoint2Y = -7,
+	WayPoint2Z = 9081,
+	WayPoint3X = 4043,
+	WayPoint3Y = 48,
+	WayPoint3Z = 11580,
+	WayPoint4X = 3492,
+	WayPoint4Y = 33,
+	WayPoint4Z = 12593,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+BlueTeamTopLaneWayPoints3 = {
+	WayPoint1X = 4273,
+	WayPoint1Y = 53,
+	WayPoint1Z = 7026,
+	WayPoint2X = 5026,
+	WayPoint2Y = -62,
+	WayPoint2Z = 8432,
+	WayPoint3X = 5879,
+	WayPoint3Y = -30,
+	WayPoint3Z = 9171,
+	WayPoint4X = 5824,
+	WayPoint4Y = 55,
+	WayPoint4Z = 9896,
+	WayPoint5X = 4043,
+	WayPoint5Y = 48,
+	WayPoint5Z = 11580,
+	WayPoint6X = 3492,
+	WayPoint6Y = 33,
+	WayPoint6Z = 12593,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+-- Mid
+BlueTeamMidLaneWayPoints1 = {
+	WayPoint1X = 4273,
+	WayPoint1Y = 53,
+	WayPoint1Z = 7026,
+	WayPoint2X = 5026,
+	WayPoint2Y = -62,
+	WayPoint2Z = 8432,
+	WayPoint3X = 6453,
+	WayPoint3Y = -64,
+	WayPoint3Z = 8344,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+BlueTeamMidLaneWayPoints2 = {
+	WayPoint1X = 4273,
+	WayPoint1Y = 53,
+	WayPoint1Z = 7026,
+	WayPoint2X = 5026,
+	WayPoint2Y = -62,
+	WayPoint2Z = 8432,
+	WayPoint3X = 5879,
+	WayPoint3Y = -30,
+	WayPoint3Z = 9171,
+	WayPoint4X = 7323,
+	WayPoint4Y = 55,
+	WayPoint4Z = 8331,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+BlueTeamMidLaneWayPoints3 = {
+	WayPoint1X = 7998,
+	WayPoint1Y = 11,
+	WayPoint1Z = 5240,
+	WayPoint2X = 8339,
+	WayPoint2Y = -66,
+	WayPoint2Z = 6435,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+BlueTeamMidLaneWayPoints4 = {
+	WayPoint1X = 7998,
+	WayPoint1Y = 11,
+	WayPoint1Z = 5240,
+	WayPoint2X = 9104,
+	WayPoint2Y = -65,
+	WayPoint2Z = 6050,
+	WayPoint3X = 8523,
+	WayPoint3Y = 55,
+	WayPoint3Z = 7291,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+} 
+-- Bot
+BlueTeamBotLaneWayPoints1 = {
+	WayPoint1X = 7579,
+	WayPoint1Y = 54,
+	WayPoint1Z = 3226,
+	WayPoint2X = 10011,
+	WayPoint2Y = 53,
+	WayPoint2Z = 2842,
+	WayPoint3X = 11529,
+	WayPoint3Y = -56,
+	WayPoint3Z = 3706,
+	WayPoint4X = 11661,
+	WayPoint4Y = -53,
+	WayPoint4Z = 3307,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+BlueTeamBotLaneWayPoints2 = {
+	WayPoint1X = 7998,
+	WayPoint1Y = 11,
+	WayPoint1Z = 5240,
+	WayPoint2X = 10036,
+	WayPoint2Y = -62,
+	WayPoint2Z = 4928,
+	WayPoint3X = 11661,
+	WayPoint3Y = -53,
+	WayPoint3Z = 3307,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+BlueTeamBotLaneWayPoints3 = {
+	WayPoint1X = 6572,
+	WayPoint1Y = 55,
+	WayPoint1Z = 2804,
+	WayPoint2X = 8789,
+	WayPoint2Y = 62,
+	WayPoint2Z = 1915,
+	WayPoint3X = 10163,
+	WayPoint3Y = 52,
+	WayPoint3Z = 663,
+	WayPoint4X = 11724,
+	WayPoint4Y = 52,
+	WayPoint4Z = 1093,
+	WayPoint5X = 12364,
+	WayPoint5Y = 55,
+	WayPoint5Z = 1599,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+-- Red Team
+-- Top
+RedTeamTopLaneWayPoints1 = {
+	WayPoint1X = 6491,
+	WayPoint1Y = 54,
+	WayPoint1Z = 11227,
+	WayPoint2X = 4043,
+	WayPoint2Y = 48,
+	WayPoint2Z = 11580,
+	WayPoint3X = 2565,
+	WayPoint3Y = -65,
+	WayPoint3Z = 10917,
+	WayPoint4X = 2234,
+	WayPoint4Y = -26,
+	WayPoint4Z = 11370,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+RedTeamTopLaneWayPoints2 = {
+	WayPoint1X = 5879,
+	WayPoint1Y = -30,
+	WayPoint1Z = 9171,
+	WayPoint2X = 3815,
+	WayPoint2Y = -60,
+	WayPoint2Z = 9494,
+	WayPoint3X = 2234,
+	WayPoint3Y = -26,
+	WayPoint3Z = 11370,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+RedTeamTopLaneWayPoints3 = {
+	WayPoint1X = 5231,
+	WayPoint1Y = 39,
+	WayPoint1Z = 12479,
+	WayPoint2X = 3908,
+	WayPoint2Y = 36,
+	WayPoint2Z = 13855,
+	WayPoint3X = 2413,
+	WayPoint3Y = 30,
+	WayPoint3Z = 13566,
+	WayPoint4X = 1697,
+	WayPoint4Y = 33,
+	WayPoint4Z = 13263,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Top Lane"
+}
+-- Mid
+RedTeamMidLaneWayPoints1 = {
+	WayPoint1X = 5879,
+	WayPoint1Y = -30,
+	WayPoint1Z = 9171,
+	WayPoint2X = 5862,
+	WayPoint2Y = -55,
+	WayPoint2Z = 7922,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+RedTeamMidLaneWayPoints2 = {
+	WayPoint1X = 5879,
+	WayPoint1Y = -30,
+	WayPoint1Z = 9171,
+	WayPoint2X = 5026,
+	WayPoint2Y = -62,
+	WayPoint2Z = 8432,
+	WayPoint3X = 4423,
+	WayPoint3Y = 52,
+	WayPoint3Z = 7559,
+	WayPoint4X = 6013,
+	WayPoint4Y = 55,
+	WayPoint4Z = 7033,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+RedTeamMidLaneWayPoints3 = {
+	WayPoint1X = 9743,
+	WayPoint1Y = 54,
+	WayPoint1Z = 7309,
+	WayPoint2X = 9104,
+	WayPoint2Y = -65,
+	WayPoint2Z = 6050,
+	WayPoint3X = 7723,
+	WayPoint3Y = -65,
+	WayPoint3Z = 6013,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+RedTeamMidLaneWayPoints4 = {
+	WayPoint1X = 9743,
+	WayPoint1Y = 54,
+	WayPoint1Z = 7309,
+	WayPoint2X = 9104,
+	WayPoint2Y = -65,
+	WayPoint2Z = 6050,
+	WayPoint3X = 7998,
+	WayPoint3Y = 11,
+	WayPoint3Z = 5240,
+	WayPoint4X = 6773,
+	WayPoint4Y = 55,
+	WayPoint4Z = 6231,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Mid Lane"
+}
+-- Bot
+RedTeamBotLaneWayPoints1 = {
+	WayPoint1X = 11343,
+	WayPoint1Y = 54,
+	WayPoint1Z = 6977,
+	WayPoint2X = 10552,
+	WayPoint2Y = -63,
+	WayPoint2Z = 4591,
+	WayPoint3X = 10011,
+	WayPoint3Y = 53,
+	WayPoint3Z = 2842,
+	WayPoint4X = 10845,
+	WayPoint4Y = 52,
+	WayPoint4Z = 1613,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+RedTeamBotLaneWayPoints2 = {
+	WayPoint1X = 9743,
+	WayPoint1Y = 54,
+	WayPoint1Z = 7309,
+	WayPoint2X = 7998,
+	WayPoint2Y = 11,
+	WayPoint2Z = 5240,
+	WayPoint3X = 10011,
+	WayPoint3Y = 53,
+	WayPoint3Z = 2842,
+	WayPoint4X = 10845,
+	WayPoint4Y = 52,
+	WayPoint4Z = 1613,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+RedTeamBotLaneWayPoints3 = {
+	WayPoint1X = 10552,
+	WayPoint1Y = -63,
+	WayPoint1Z = 4591,
+	WayPoint2X = 11707,
+	WayPoint2Y = -37,
+	WayPoint2Z = 3251,
+	Range = 75,
+	Color = Purple,
+	Gank = false,
+	Status = "Ganking Bot Lane"
+}
+
+-- RecalSpots
+
+SafeRecalSpot1 = {
+	X = 4307,
+	Y = 53,
+	Z = 7051,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+SafeRecalSpot2 = {
+	X = 6054,
+	Y = 51,
+	Z = 4342,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+SafeRecalSpot3 = {
+	X = 6559,
+	Y = 55,
+	Z = 2781,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+SafeRecalSpot4 = {
+	X = 7947,
+	Y = 53,
+	Z = 10158,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+SafeRecalSpot5 = {
+	X = 7533,
+	Y = 50,
+	Z = 11671,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+SafeRecalSpot6 = {
+	X = 9688,
+	Y = 54,
+	Z = 7362,
+	Distance = 0,
+	Color = DarkBlue,
+	Range = 75
+}
+
+-- Items
+-- List
+-- Basic Items
+Amplifying_Tome = {
+	ID = 1052
+}
+BF_Sword = {
+	ID = 1038
+}
+Blasting_Wand = {
+	ID = 1026
+}
+Boots_of_Speed = {
+	ID = 1001
+}
+Brawlers_Gloves = {
+	ID = 1051
+}
+Chain_Vest = {
+	ID = 1031
+}
+Cloak_of_Agility = {
+	ID = 1018
+}
+Cloth_Armor = {
+	ID = 1029
+}
+Dagger = {
+	ID = 1042
+}
+Dorans_Blade = {
+	ID = 1055
+}
+Dorans_Ring = {
+	ID = 1056
+}
+Dorans_Shield = {
+	ID = 1054
+}
+Giants_Belt = {
+	ID = 1011
+}
+Hunters_Machete = {
+	ID = 1039
+}
+Long_Sword = {
+	ID = 1036
+}
+Needlessly_Large_Rod = {
+	ID = 1058
+}
+Negatron_Cloak = {
+	ID = 1057
+}
+NullMagic_Mantle = {
+	ID = 1033
+}
+Pickaxe = {
+	ID = 1037
+}
+Recurve_Bow = {
+	ID = 1043
+}
+Rejuvenation_Bead = {
+	ID = 1006
+}
+Ruby_Crystal = {
+	ID = 1028
+}
+Sapphire_Crystal = {
+	ID = 1027
+}
+Spectres_Cowl = {
+	Item1 = Negatron_Cloak,
+	Item2 = Ruby_Crystal,
+	ID = nil
+}
+-- Advanced
+Abyssal_Scepter = {
+	Item1 = Blasting_Wand,
+	Item2 = Negatron_Cloak,
+	ID = 3001,
+}
+Avarice_Blade = {
+	Item1 = Brawlers_Gloves,
+	ID = 3093
+}
+Berserkers_Greaves = {
+	Item1 =  Boots_of_Speed,
+	Item2 = Dagger,
+	ID = 3006
+}
+Boots_of_Mobility = {
+	Item1 = Boots_of_Speed,
+	ID = 3117
+}
+Boots_of_Swiftness = {
+	Item1 = Boots_of_Speed,
+	ID = 3009
+}
+The_Brutalizer = {
+	Item1 =  Long_Sword,
+	Item2 =  Long_Sword,
+	ID = 3134
+}
+Catalyst_the_Protector = {
+	Item1 = Ruby_Crystal,
+	Item2 = Sapphire_Crystal,
+	ID = 3010 
+}
+Chalice_of_Harmony = {
+	Item1 = Faerie_Charm,
+	Item2 = Faerie_Charm,
+	Item3 = NullMagic_Mantle, 
+	ID = 3028
+}
+Emblem_of_Valor = {
+	Item1 = Cloth_Armor,
+	Item2 = Rejuvenation_Bead,
+	ID = 3097
+}
+Fiendish_Codex = {
+	Item1 = Amplifying_Tome,
+	ID = 3108
+}
+Glacial_Shroud = {
+	Item1 = Sapphire_Crystal,
+	Item2 = Chain_Vest,
+	ID = 3024
+}
+Guardian_Angel = {
+	Item1 = Negatron_Cloak,
+	Item2 = Chain_Vest,
+	ID = 3026
+}
+Guinsoos_Rageblade = {
+	Item1 = Pickaxe,
+	Item2 = Blasting_Wand,
+	ID = 1820
+}
+Haunting_Guise = {
+	Item1 = Ruby_Crystal,
+	Item2 = Amplifying_Tome,
+	ID = 3136
+}
+Hexdrinker = {
+	Item1 = Long_Sword,
+	Item2 = Null_Magic_Mantle,
+	ID = 3155
+}
+Hextech_Revolver = {
+	Item1 = Amplifying_Tome,
+	Item2 = Amplifying_Tome,
+	ID = 3145
+}
+Infinity_Edge = {
+	Item1 = BF_Sword,
+	Item2 = Pickaxe,
+	Item3 = Cloak_of_Agility,
+	ID = 3031
+}
+Ionian_Boots_of_Lucidity = {
+	Item1 = Boots_of_Speed,
+	ID = 3158
+}
+Kages_Lucky_Pick = {
+	Item1 = Amplifying_Tome,
+	ID = 3098
+}
+Kindlegem = {
+	Item1 = Ruby_Crystal,
+	ID = 3067
+}
+Last_Whisper = {
+	Item1 = Long_Sword,
+	Item2 = Pickaxe,
+	ID = 3035
+}
+Madreds_Razors = {
+	Item1 = Cloth_Armor,
+	Item2 = Hunters_Machete,
+	ID = 3106
+}
+Mana_Manipulator = {
+	Item1 = Faerie_Charm,
+	ID = 3037
+}
+Mejais_Soulstealer = {
+	Item1 = Amplifying_Tome,
+	ID = 3041
+}
+Mercurys_Treads = {
+	Item1 = Boots_of_Speed,
+	Item2 = NullMagic_Mantle,
+	ID = 3111
+}
+Ninja_Tabi = {
+	Item1 = Boots_of_Speed,
+	Item2 = Cloth_Armor,
+	ID = 3047
+}
+Phage = {
+	Item1 = Ruby_Crystal,
+	Item2 = LongSword,
+	ID = 3044 
+}
+Philosophers_Stone = {
+	Item1 = FaerieCharm,
+	Item2 = RejuvenationBead,
+	ID = 3096
+}
+Quicksilver_Sash = {
+	Item1 = Negatron_Cloak,
+	ID = 3140
+}
+Rabadons_Deathcap = {
+	Item1 = Blasting_Wand,
+	Item2 = Needlessly_Large_Rod, 
+	ID = 3089
+}
+Runaans_Hurricane = {
+	Item1 = Recurve_Bow,
+	Item2 = Dagger,
+	Item3 = Dagger,
+	ID = 3085
+}
+Rylais_Crystal_Scepter = {
+	Item1 = Amplifying_Tome,
+	Item2 = Blasting_Wand,
+	Item3 = Giants_Belt,
+	ID = 3116
+}
+Seekers_Armguard = {
+	Item1 = Amplifying_Tome,
+	Item2 = Cloth_Armor,
+	Item3 = Cloth_Armor,
+	ID = 3191
+}
+Sheen = {
+	Item1 = Sapphire_Crystal,
+	Item2 = Amplifying_Tome,
+	ID = 3057
+}
+Sightstone = {
+	Item1 = Ruby_Crystal,
+	Slot = nil,
+	ID = 2049
+}
+Sorcerers_Shoes = {
+	Item1 = Boots_of_Speed,
+	ID = 3020
+}
+Spirit_Stone = {
+	Item1 = Hunters_Machete,
+	Item2 = Faerie_Charm,
+	Item3 = Rejuvenation_Bead,
+	ID = 1080
+}
+Stinger = {
+	Item1 = Dagger,
+	Item2 = Dagger,
+	ID = 3101
+}
+Sunfire_Cape = {
+	Item1 = Chain_Vest,
+	Item2 = Giants_Belt,
+	ID = 3068
+}
+Sword_of_the_Divine = {
+	Item1 = Recurve_Bow,
+	Item2 = Dagger,
+	Slot = nil,
+	Ready = false,
+	ID = 3131
+}
+Sword_of_the_Occult = {
+	Item1 = Long_Sword,
+	ID = 3141
+}
+Tear_of_the_Goddess = {
+	Item1 = Faerie_Charm,
+	Item2 = Sapphire_Crystal,
+	ID = 3070
+}
+Thornmail = {
+	Item1 = Cloth_Armor,
+	Item2 = Chain_Vest,
+	ID = 3075
+}
+Tiamat = {
+	Item1 = Pickaxe,
+	Item2 = Long_Sword,
+	Item3 = Rejuvenation_Bead,
+	Item4 = Rejuvenation_Bead,
+	Slot = nil,
+	Ready = false,
+	ID = 3077
+}
+Vampiric_Scepter = {
+	Item1 = Long_Sword,
+	ID = 1053
+}
+Void_Staff = {
+	Item1 = Amplifying_Tome,
+	Item2 = Blasting_Wand,
+	ID = 3135
+}
+Wardens_Mail = {
+	Item1 = Cloth_Armor,
+	Item2 = Cloth_Armor,
+	ID = 3082
+}
+Warmogs_Armor = {
+	Item1 = Giants_Belt,
+	Item2 = Ruby_Crystal,
+	Item3 = Rejuvenation_Bead,
+	Item4 = Rejuvenation_Bead,
+	ID = 3083
+}
+Wits_End = {
+	Item1 = Recurve_Bow,
+	Item2 = NullMagic_Mantle,
+	Item3 = Dagger,
+	ID = 3091
+}
+Zeal = {
+	Item1 = Dagger,
+	Item2 = Brawlers_Gloves,
+	ID = 3086
+}
+Aegis_of_the_Legion = {
+	Item1 = Emblem_of_Valor,
+	Item2 = Ruby_Crystal,
+	Item3 = NullMagic_Mantle,
+	ID = 3105
+}
+Archangels_Staff = {
+	Item1 = Tear_of_the_Goddess,
+	Item2 = Blasting_Wand,
+	ID = 3003
+}
+Athenes_Unholy_Grail = {
+	Item1 = Fiendish_Codex,
+	Item2 = Chalice_of_Harmony,
+	ID = 3174
+}
+Atmas_Impaler = {
+	Item1 = Chain_Vest,
+	Item2 = Avarice_Blade,
+	ID = 3005
+}
+Banner_of_Command = {
+	Item1 = Fiendish_Codex,
+	Item2 = Amplifying_Tome,
+	ID = 3060
+}
+Banshees_Veil = {
+	Item1 = Ruby_Crystal,
+	Item2 = Spectres_Cowl,
+	ID = 3102
+}
+Bilgewater_Cutlass = {
+	Item1 = ,
+	Item2 = ,
+	Slot = nil,
+	Ready = false,
+	Range = 450,
+	ID = 3144
+}
+The_Black_Cleaver = {
+	Item1 = The_Brutalizer,
+	Item2 = Ruby_Crystal,
+	ID = 3071
+}
+The_Bloodthirster = {
+	Item1 = BF_SWORD,
+	Item2 = Vampiric_Scepter,
+	ID = 3072
+}
+Deathfire_Grasp = {
+	Item1 = Needlessly_Large_Rod,
+	Item2 = Amplifying_Tome,
+	ID = 3128
+}
+Eleisas_Miracle = {
+	Item1 = Philosophers_Stone,
+	ID = 3173,
+}
+Executioners_Calling = {
+	Item1 = Avarice_Blade,
+	Item2 = Long_Sword,
+	ID = 3123
+}
+Frozen_Heart = {
+	Item1 = Wardens_Mail,
+	Item2 = Glacial_Shroud,
+	ID = 3110
+}
+Frozen Mallet = {
+	Item1 = Ruby_Crystal,
+	Item2 = Pickaxe,
+	Item3 = Giants_Belt,
+	ID = 3022
+}
+
+
+
+
+-- Spels
+AA = {
+	Range = 125
+}
+SpellQ = {
+	Ready = false,
+	Damage = 0,
+	Range = 0
+}
+
+SpellW = {
+	Ready = false,
+	Damage = 0,
+	Range = 0
+}
+
+SpellE = {
+	Ready = false,
+	Damage = 0,
+	Range = 0
+}
+
+SpellR = {
+	Ready = false,
+	Damage = 0,
+	Range = 0
+}
+
+Smite = {
+	Name = "Smite",
+	Slot = nil,
+	Ready = false,
+	Damage = 0,
+	BaseDamage = 460,
+	PerLevelDamage = 30,
+	Range = 625
+}
+
+-- Globals
+Me = {
+	Team = "Netrual",
+	Status = "Free"
+}
+
+-- Functions
+
+-- MAIN()
+function OnLoad()
+	PrintChat("~~>Jungle Bot Loaded!<~~" .. Banshees_Veil.Item2.Item1.ID)
+end
+
+function OnTick()
+
+end
+
+function OnDraw()
+
+
+	-- Draw Spots
+	-- Blue Team
+	DrawCircle(BlueTeamBase.X, BlueTeamBase.Y, BlueTeamBase.Z, BlueTeamBase.Range, BlueTeamBase.Color)
+	DrawCircle(BlueTeamBlueSpot.X, BlueTeamBlueSpot.Y, BlueTeamBlueSpot.Z, BlueTeamBlueSpot.Range, BlueTeamBlueSpot.Color)
+	DrawCircle(BlueTeamWolfesSpot.X, BlueTeamWolfesSpot.Y, BlueTeamWolfesSpot.Z, BlueTeamWolfesSpot.Range, BlueTeamWolfesSpot.Color)
+	DrawCircle(BlueTeamWarithsSpot.X, BlueTeamWarithsSpot.Y, BlueTeamWarithsSpot.Z, BlueTeamWarithsSpot.Range, BlueTeamWarithsSpot.Color)
+	DrawCircle(BlueTeamRedSpot.X, BlueTeamRedSpot.Y, BlueTeamRedSpot.Z, BlueTeamRedSpot.Range, BlueTeamRedSpot.Color)
+	DrawCircle(BlueTeamGolemsSpot.X, BlueTeamGolemsSpot.Y, BlueTeamGolemsSpot.Z, BlueTeamGolemsSpot.Range, BlueTeamGolemsSpot.Color)
+	-- Red Team
+	DrawCircle(RedTeamBase.X, RedTeamBase.Y, RedTeamBase.Z, RedTeamBase.Range, RedTeamBase.Color)
+	DrawCircle(RedTeamBlueSpot.X, RedTeamBlueSpot.Y, RedTeamBlueSpot.Z, RedTeamBlueSpot.Range, RedTeamBlueSpot.Color)
+	DrawCircle(RedTeamWolfesSpot.X, RedTeamWolfesSpot.Y, RedTeamWolfesSpot.Z, RedTeamWolfesSpot.Range, RedTeamWolfesSpot.Color)
+	DrawCircle(RedTeamWarithsSpot.X, RedTeamWarithsSpot.Y, RedTeamWarithsSpot.Z, RedTeamWarithsSpot.Range, RedTeamWarithsSpot.Color)
+	DrawCircle(RedTeamRedSpot.X, RedTeamRedSpot.Y, RedTeamRedSpot.Z, RedTeamRedSpot.Range, RedTeamRedSpot.Color)
+	DrawCircle(RedTeamGolemsSpot.X, RedTeamGolemsSpot.Y, RedTeamGolemsSpot.Z, RedTeamGolemsSpot.Range, RedTeamGolemsSpot.Color)
+	--Dragon
+	DrawCircle(DragonSpot.X, DragonSpot.Y, DragonSpot.Z, DragonSpot.Range, DragonSpot.Color)
+	--Baron
+	DrawCircle(BaronSpot.X, BaronSpot.Y, BaronSpot.Z, BaronSpot.Range, BaronSpot.Color)
+	
+	-- WayPoints
+	-- Blue Team Top Lane
+	DrawCircle(BlueTeamTopLaneWayPoints1.WayPoint1X, BlueTeamTopLaneWayPoints1.WayPoint1Y, BlueTeamTopLaneWayPoints1.WayPoint1Z, BlueTeamTopLaneWayPoints1.Range, BlueTeamTopLaneWayPoints1.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints1.WayPoint2X, BlueTeamTopLaneWayPoints1.WayPoint2Y, BlueTeamTopLaneWayPoints1.WayPoint2Z, BlueTeamTopLaneWayPoints1.Range, BlueTeamTopLaneWayPoints1.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints1.WayPoint3X, BlueTeamTopLaneWayPoints1.WayPoint3Y, BlueTeamTopLaneWayPoints1.WayPoint3Z, BlueTeamTopLaneWayPoints1.Range, BlueTeamTopLaneWayPoints1.Color)
+	
+	DrawCircle(BlueTeamTopLaneWayPoints2.WayPoint1X, BlueTeamTopLaneWayPoints2.WayPoint1Y, BlueTeamTopLaneWayPoints2.WayPoint1Z, BlueTeamTopLaneWayPoints2.Range, BlueTeamTopLaneWayPoints2.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints2.WayPoint2X, BlueTeamTopLaneWayPoints2.WayPoint2Y, BlueTeamTopLaneWayPoints2.WayPoint2Z, BlueTeamTopLaneWayPoints2.Range, BlueTeamTopLaneWayPoints2.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints2.WayPoint3X, BlueTeamTopLaneWayPoints2.WayPoint3Y, BlueTeamTopLaneWayPoints2.WayPoint3Z, BlueTeamTopLaneWayPoints2.Range, BlueTeamTopLaneWayPoints2.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints2.WayPoint4X, BlueTeamTopLaneWayPoints2.WayPoint4Y, BlueTeamTopLaneWayPoints2.WayPoint4Z, BlueTeamTopLaneWayPoints2.Range, BlueTeamTopLaneWayPoints2.Color)
+
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint1X, BlueTeamTopLaneWayPoints3.WayPoint1Y, BlueTeamTopLaneWayPoints3.WayPoint1Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint2X, BlueTeamTopLaneWayPoints3.WayPoint2Y, BlueTeamTopLaneWayPoints3.WayPoint2Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint3X, BlueTeamTopLaneWayPoints3.WayPoint3Y, BlueTeamTopLaneWayPoints3.WayPoint3Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint4X, BlueTeamTopLaneWayPoints3.WayPoint4Y, BlueTeamTopLaneWayPoints3.WayPoint4Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint5X, BlueTeamTopLaneWayPoints3.WayPoint5Y, BlueTeamTopLaneWayPoints3.WayPoint5Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	DrawCircle(BlueTeamTopLaneWayPoints3.WayPoint6X, BlueTeamTopLaneWayPoints3.WayPoint6Y, BlueTeamTopLaneWayPoints3.WayPoint6Z, BlueTeamTopLaneWayPoints3.Range, BlueTeamTopLaneWayPoints3.Color)
+	-- Blue Team Mid Lane
+end
+
+
+
