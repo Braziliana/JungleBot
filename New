@@ -1639,7 +1639,11 @@ Smite = {
 
 -- Globals
 Jungle = {
-	Status = "Jungle"
+	Status = "Jungle",
+	FirstRespawnBufs = true,
+	FirstRespawnMonsters = true,
+	FirstRespawnDragon = true,
+	FirstRespawnBaron = true
 }
 Me = {
 	Team = "Netrual",
@@ -1734,14 +1738,41 @@ end
 function BuyItem6(Item)
 
 end
-
+function UpdateJungle()
+	if GameTime < 130 then
+		if GameTime >= 115 and Jungle.FirstRespawnBufs == true then
+			BlueTeamBlueSpot.Alieve = true
+			BlueTeamRedSpot.Alieve = true
+			RedTeamBlueSpot.Alieve = true
+			RedTeamRedSpot.Alieve = true
+			Jungle.FirstRespawnBufs = false
+		end
+		if GameTime >= 125 and Jungle.FirstRespawnMonsters == true then
+			BlueTeamWolfesSpot.Alieve = true
+			BlueTeamWarithsSpot.Alieve = true
+			BlueTeamGolemsSpot.Alieve = true
+			RedTeamWolfesSpot.Alieve = true
+			RedTeamWarithsSpot.Alieve = true
+			RedTeamGolemsSpot.Alieve = true
+			Jungle.FirstRespawnMonsters = false
+		end
+	else
+		if (BlueTeamBlueSpot.Alieve == false and BlueTeamBlueSpot.TimeOfRespawn <= GameTime) or BlueTeamBlueSpot.AncientGolem ~= nil or BlueTeamBlueSpot.YoungLizard1 ~= nil or BlueTeamBlueSpot.YoungLizard2 ~= nil then 
+			BlueTeamBlueSpot.Alieve = true
+		end
+		if (BlueTeamWolfesSpot.Alieve == false and BlueTeamWolfesSpot.TimeOfRespawn <= GameTime) or BlueTeamWolfesSpot.GiantWolf ~= nil or BlueTeamWolfesSpot.Wolf1 ~= nil or BlueTeamWolfesSpot.Wolf2 ~= nil then 
+			BlueTeamWolfesSpot.Alieve = true
+		end
+	end
+end
 -- AI
 function AutoBuy()
-	BuyItem1(Locket_of_the_Iron_Solari)
 	UpdateInventory()
 end
 function AIJungle()
-	DoBlue(BlueTeamBlueSpot)
+	if (GameTime < 115 or BlueTeamBlueSpot.Alieve)  and not Me.Status ~= BlueTeamWolfesSpot.OnTheWayStatus and not Me.Status ~= BlueTeamWolfesSpot.ClearingStatus  then
+		DoBlue(BlueTeamBlueSpot)
+	end
 end
 
 function DoBlue(Spot)
@@ -1803,6 +1834,7 @@ end
 
 function OnTick()
 	GameTime = GetInGameTimer()
+	UpdateJungle()
 	UpdateSpells()
 	AutoBuy()
 	AIJungle()
@@ -2201,7 +2233,4 @@ function LoadJungleAndTowers()
 		end
 	end
 end
-
-
-
 
