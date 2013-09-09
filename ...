@@ -913,6 +913,10 @@ Dorans_Shield = {
 	ID = 1054,
 	Bought = false
 }
+Faerie_Charm = {
+	ID = 1004,
+	Bought = false
+}
 Giants_Belt = {
 	ID = 1011,
 	Bought = false
@@ -960,7 +964,7 @@ Sapphire_Crystal = {
 Spectres_Cowl = {
 	Item1 = Negatron_Cloak,
 	Item2 = Ruby_Crystal,
-	ID = nil,
+	ID = 3211,
 	Bought = false
 }
 -- Advanced
@@ -1120,8 +1124,8 @@ Phage = {
 	Bought = false
 }
 Philosophers_Stone = {
-	Item1 = FaerieCharm,
-	Item2 = RejuvenationBead,
+	Item1 = Faerie_Charm,
+	Item2 = Rejuvenation_Bead,
 	ID = 3096,
 	Bought = false
 }
@@ -1377,7 +1381,7 @@ Maw_of_Malmortius = {
 	Bought = false
 }
 Mercurial_Scimitar = {
-	Item1 = Quicksilver Sash,
+	Item1 = Quicksilver_Slash,
 	Item2 = BF_Sword,
 	ID = 3139,
 	Bought = false
@@ -1491,12 +1495,12 @@ Trinity_Force = {
 }
 Twin_Shadows = {
 	Item1 = Kages_Lucky_Pick,
-	Item2 = Null-Magic_Mantle,
+	Item2 = NullMagic_Mantle,
 	ID = 3023,
 	Bought = false
 }
 Will_of_the_Ancients = {
-	Item1 = Hextech_Revolver‎,
+	Item1 = Hextech_Revolver,
 	Item2 = Kages_Lucky_Pick,
 	ID = 3152,
 	Bought = false
@@ -1548,12 +1552,10 @@ Hextech_Gunblade = {
 Locket_of_the_Iron_Solari = {
 	Item1 = Aegis_of_the_Legion,
 	Item2 = Ruby_Crystal,
-	Item3 = Null-Magic_Mantle,
+	Item3 = NullMagic_Mantle,
 	ID = 3190,
 	Bought = false
 }
-
-
 
 -- Spels
 AA = {
@@ -1598,16 +1600,115 @@ Me = {
 	Team = "Netrual",
 	Status = "Free"
 }
+Shop = {
+	LastBuyTMR = 0,
+	Delay = 200,
+	NextBuy = 1
+}
+GameTime = 0
+
+FreeItemSlots = {
+	[1] = false,
+	[2] = false,
+	[3] = false,
+	[4] = false,
+	[5] = false,
+	[6] = false,
+}
 
 -- Functions
+function UpdateInventory()
+	if myHero:getInventorySlot(ITEM_1) ~= 0 then
+		FreeItemSlots[1] = false
+	else
+		FreeItemSlots[1] = true
+	end
+	if myHero:getInventorySlot(ITEM_2) ~= 0 then
+		FreeItemSlots[2] = false
+	else
+		FreeItemSlots[2] = true
+	end
+	if myHero:getInventorySlot(ITEM_3) ~= 0 then
+		FreeItemSlots[3] = false
+	else
+		FreeItemSlots[3] = true
+	end
+	if myHero:getInventorySlot(ITEM_4) ~= 0 then
+		FreeItemSlots[4] = false
+	else
+		FreeItemSlots[4] = true
+	end
+	if myHero:getInventorySlot(ITEM_5) ~= 0 then
+		FreeItemSlots[5] = false
+	else
+		FreeItemSlots[5] = true
+	end
+	if myHero:getInventorySlot(ITEM_6) ~= 0 then
+		FreeItemSlots[6] = false
+	else
+		FreeItemSlots[6] = true
+	end
+end
+function TableLenght(Table)
+	local count = 0
+	for _ in pairs(Table) do
+		count = count + 1 end
+    return count
+end
+
+function BuyItem1(Item)
+	local ItemList = {}
+	local TempItem = {}
+	if GetInventorySlotItem(Item.ID) == nil then
+		if Item ~= nil and TableLenght(Item) > 2 then -- level 0
+			if Item.Item1 ~= nil and TableLenght(Item.Item1) > 2 then
+				
+			else
+				ItemList = Item.ID
+			end
+		else
+			ItemList = Item.ID
+		end
+	else
+		return true
+	end
+end
+
+function BuyItem2(Item)
+
+end
+function BuyItem3(Item)
+
+end
+function BuyItem4(Item)
+
+end
+function BuyItem5(Item)
+
+end
+function BuyItem6(Item)
+
+end
+
+-- AI
+function AutoBuy()
+	BuyItem1(Locket_of_the_Iron_Solari)
+	UpdateInventory()
+end
+function AutoJungle()
+
+end
 
 -- MAIN()
 function OnLoad()
-	PrintChat("~~>Jungle Bot Loaded!<~~" .. Banshees_Veil.Item2.Item1.ID)
+	LoadJungleAndTowers()
+	PrintChat("~~>Jungle Bot Loaded!<~~" .. Hextech_Gunblade.ID)
+	
 end
 
 function OnTick()
-
+	GameTime = GetInGameTimer()
+	AutoBuy()
 end
 
 function OnDraw()
@@ -1653,4 +1754,353 @@ function OnDraw()
 	-- Blue Team Mid Lane
 end
 
+function OnCreateObj(obj)
+	if obj ~= nil and obj.name ~= nil then
+		-- Jungle
+		if obj.name == BlueTeamBlueSpot.AncientGolemName then
+			BlueTeamBlueSpot.AncientGolem = obj
+		elseif obj.name == BlueTeamBlueSpot.YoungLizard1Name then
+			BlueTeamBlueSpot.YoungLizard1 = obj
+		elseif obj.name == BlueTeamBlueSpot.YoungLizard2Name then
+			BlueTeamBlueSpot.YoungLizard2 = obj
+		elseif obj.name == BlueTeamWolfesSpot.GiantWolfName then
+			BlueTeamWolfesSpot.GiantWolf = obj
+		elseif obj.name == BlueTeamWolfesSpot.Wolf1Name then
+			BlueTeamWolfesSpot.Wolf1 = obj
+		elseif obj.name == BlueTeamWolfesSpot.Wolf2Name then
+			BlueTeamWolfesSpot.Wolf2 = obj
+		elseif obj.name == BlueTeamWarithsSpot.WraithName then
+			BlueTeamWarithsSpot.Wraith = obj
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith1Name then
+			BlueTeamWarithsSpot.LesserWraith1 = obj
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith2Name then
+			BlueTeamWarithsSpot.LesserWraith2 = obj
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith3Name then
+			BlueTeamWarithsSpot.LesserWraith3 = obj
+		elseif obj.name == BlueTeamRedSpot.LizardElderName then
+			BlueTeamRedSpot.LizardElder = obj
+		elseif obj.name == BlueTeamRedSpot.YoungLizard1Name then
+			BlueTeamRedSpot.YoungLizard1 = obj
+		elseif obj.name == BlueTeamRedSpot.YoungLizard2Name then
+			BlueTeamRedSpot.YoungLizard2 = obj
+		elseif obj.name == BlueTeamGolemsSpot.GolemName then
+			BlueTeamGolemsSpot.Golem = obj
+		elseif obj.name == BlueTeamGolemsSpot.SmallGolemName then
+			BlueTeamGolemsSpot.SmallGolem = obj
+		elseif obj.name == RedTeamBlueSpot.AncientGolemName then
+			RedTeamBlueSpot.AncientGolem = obj
+		elseif obj.name == RedTeamBlueSpot.YoungLizard1Name then
+			RedTeamBlueSpot.YoungLizard1 = obj
+		elseif obj.name == RedTeamBlueSpot.YoungLizard2Name then
+			RedTeamBlueSpot.YoungLizard2 = obj
+		elseif obj.name == RedTeamWolfesSpot.GiantWolfName then
+			RedTeamWolfesSpot.GiantWolf = obj
+		elseif obj.name == RedTeamWolfesSpot.Wolf1Name then
+			RedTeamWolfesSpot.Wolf1 = obj
+		elseif obj.name == RedTeamWolfesSpot.Wolf2Name then
+			RedTeamWolfesSpot.Wolf2 = obj
+		elseif obj.name == RedTeamWarithsSpot.WraithName then
+			RedTeamWarithsSpot.Wraith = obj
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith1Name then
+			RedTeamWarithsSpot.LesserWraith1 = obj
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith2Name then
+			RedTeamWarithsSpot.LesserWraith2 = obj
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith3Name then
+			RedTeamWarithsSpot.LesserWraith3 = obj
+		elseif obj.name == RedTeamRedSpot.LizardElderName then
+			RedTeamRedSpot.LizardElder = obj
+		elseif obj.name == RedTeamRedSpot.YoungLizard1Name then
+			RedTeamRedSpot.YoungLizard1 = obj
+		elseif obj.name == RedTeamRedSpot.YoungLizard2Name then
+			RedTeamRedSpot.YoungLizard2 = obj
+		elseif obj.name == RedTeamGolemsSpot.GolemName then
+			RedTeamGolemsSpot.Golem = obj
+		elseif obj.name == RedTeamGolemsSpot.SmallGolemName then
+			RedTeamGolemsSpot.SmallGolem = obj
+		elseif obj.name == DragonSpot.Name then
+			DragonSpot.Dragon = obj
+		elseif obj.name == BaronSpot.Name then
+			BaronSpot.Baron = obj
+		-- Towers
+		elseif obj.name == TopOuterTowerRedTeam.Name then
+			TopOuterTowerRedTeam.Tower = obj
+		elseif obj.name == TopInnerTowerRedTeam.Name then
+			TopInnerTowerRedTeam.Tower = obj
+		elseif obj.name == TopInhibitorTowerRedTeam.Name then
+			TopInhibitorTowerRedTeam.Tower = obj
+		elseif obj.name == MidOuterTowerRedTeam.Name then
+			MidOuterTowerRedTeam.Tower = obj
+		elseif obj.name == MidInnerTowerRedTeam.Name then
+			MidInnerTowerRedTeam.Tower = obj
+		elseif obj.name == MidInhibitorTowerRedTeam.Name then
+			MidInhibitorTowerRedTeam.Tower = obj
+		elseif obj.name == BotOuterTowerRedTeam.Name then
+			BotOuterTowerRedTeam.Tower = obj
+		elseif obj.name == BotInnerTowerRedTeam.Name then
+			BotInnerTowerRedTeam.Tower = obj
+		elseif obj.name == BotInhibitorTowerRedTeam.Name then
+			BotInhibitorTowerRedTeam.Tower = obj
+		elseif obj.name == NexusLeftTowerRedTeam.Name then
+			NexusLeftTowerRedTeam.Tower = obj
+		elseif obj.name == NexusRightTowerRedTeam.Name then
+			NexusRightTowerRedTeam.Tower = obj
+		elseif obj.name == TopOuterTowerBlueTeam.Name then
+			TopInnerTowerBlueTeam.Tower = obj
+		elseif obj.name == TopInnerTowerBlueTeam.Name then
+			TopInnerTowerBlueTeam.Tower = obj
+		elseif obj.name == TopInhibitorTowerBlueTeam.Name then
+			TopInhibitorTowerBlueTeam.Tower = obj
+		elseif obj.name == MidOuterTowerBlueTeam.Name then
+			MidOuterTowerBlueTeam.Tower = obj
+		elseif obj.name == MidInnerTowerBlueTeam.Name then
+			MidInnerTowerBlueTeam.Tower = obj
+		elseif obj.name == MidInhibitorTowerBlueTeam.Name then
+			MidInhibitorTowerBlueTeam.Tower = obj
+		elseif obj.name == BotOuterTowerBlueTeam.Name then
+			BotOuterTowerBlueTeam.Tower = obj
+		elseif obj.name == BotInnerTowerBlueTeam.Name then
+			BotInnerTowerBlueTeam.Tower = obj
+		elseif obj.name == BotInhibitorTowerBlueTeam.Name then
+			BotInhibitorTowerBlueTeam.Tower = obj
+		elseif obj.name == NexusLeftTowerBlueTeam.Name then
+			NexusLeftTowerBlueTeam.Tower = obj
+		elseif obj.name == NexusRightTowerBlueTeam.Name then
+			NexusRightTowerBlueTeam.Tower = obj
+		end
+	end
+end
+function OnDeleteObj(obj)
+	if obj ~= nil and obj.name ~= nil then
+		-- Jungle
+		if obj.name == BlueTeamBlueSpot.AncientGolemName then
+			BlueTeamBlueSpot.AncientGolem = nil
+		elseif obj.name == BlueTeamBlueSpot.YoungLizard1Name then
+			BlueTeamBlueSpot.YoungLizard1 = nil
+		elseif obj.name == BlueTeamBlueSpot.YoungLizard2Name then
+			BlueTeamBlueSpot.YoungLizard2 = nil
+		elseif obj.name == BlueTeamWolfesSpot.GiantWolfName then
+			BlueTeamWolfesSpot.GiantWolf = nil
+		elseif obj.name == BlueTeamWolfesSpot.Wolf1Name then
+			BlueTeamWolfesSpot.Wolf1 = nil
+		elseif obj.name == BlueTeamWolfesSpot.Wolf2Name then
+			BlueTeamWolfesSpot.Wolf2 = nil
+		elseif obj.name == BlueTeamWarithsSpot.WraithName then
+			BlueTeamWarithsSpot.Wraith = nil
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith1Name then
+			BlueTeamWarithsSpot.LesserWraith1 = nil
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith2Name then
+			BlueTeamWarithsSpot.LesserWraith2 = nil
+		elseif obj.name == BlueTeamWarithsSpot.LesserWraith3Name then
+			BlueTeamWarithsSpot.LesserWraith3 = nil
+		elseif obj.name == BlueTeamRedSpot.LizardElderName then
+			BlueTeamRedSpot.LizardElder = nil
+		elseif obj.name == BlueTeamRedSpot.YoungLizard1Name then
+			BlueTeamRedSpot.YoungLizard1 = nil
+		elseif obj.name == BlueTeamRedSpot.YoungLizard2Name then
+			BlueTeamRedSpot.YoungLizard2 = nil
+		elseif obj.name == BlueTeamGolemsSpot.GolemName then
+			BlueTeamGolemsSpot.Golem = nil
+		elseif obj.name == BlueTeamGolemsSpot.SmallGolemName then
+			BlueTeamGolemsSpot.SmallGolem = nil
+		elseif obj.name == RedTeamBlueSpot.AncientGolemName then
+			RedTeamBlueSpot.AncientGolem = nil
+		elseif obj.name == RedTeamBlueSpot.YoungLizard1Name then
+			RedTeamBlueSpot.YoungLizard1 = nil
+		elseif obj.name == RedTeamBlueSpot.YoungLizard2Name then
+			RedTeamBlueSpot.YoungLizard2 = nil
+		elseif obj.name == RedTeamWolfesSpot.GiantWolfName then
+			RedTeamWolfesSpot.GiantWolf = nil
+		elseif obj.name == RedTeamWolfesSpot.Wolf1Name then
+			RedTeamWolfesSpot.Wolf1 = nil
+		elseif obj.name == RedTeamWolfesSpot.Wolf2Name then
+			RedTeamWolfesSpot.Wolf2 = nil
+		elseif obj.name == RedTeamWarithsSpot.WraithName then
+			RedTeamWarithsSpot.Wraith = nil
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith1Name then
+			RedTeamWarithsSpot.LesserWraith1 = nil
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith2Name then
+			RedTeamWarithsSpot.LesserWraith2 = nil
+		elseif obj.name == RedTeamWarithsSpot.LesserWraith3Name then
+			RedTeamWarithsSpot.LesserWraith3 = nil
+		elseif obj.name == RedTeamRedSpot.LizardElderName then
+			RedTeamRedSpot.LizardElder = nil
+		elseif obj.name == RedTeamRedSpot.YoungLizard1Name then
+			RedTeamRedSpot.YoungLizard1 = nil
+		elseif obj.name == RedTeamRedSpot.YoungLizard2Name then
+			RedTeamRedSpot.YoungLizard2 = nil
+		elseif obj.name == RedTeamGolemsSpot.GolemName then
+			RedTeamGolemsSpot.Golem = nil
+		elseif obj.name == RedTeamGolemsSpot.SmallGolemName then
+			RedTeamGolemsSpot.SmallGolem = nil
+		elseif obj.name == DragonSpot.Name then
+			DragonSpot.Dragon = nil
+		elseif obj.name == BaronSpot.Name then
+			BaronSpot.Baron = nil
+		-- Towers
+		elseif obj.name == TopOuterTowerRedTeam.Name then
+			TopOuterTowerRedTeam.Tower = nil
+		elseif obj.name == TopInnerTowerRedTeam.Name then
+			TopInnerTowerRedTeam.Tower = nil
+		elseif obj.name == TopInhibitorTowerRedTeam.Name then
+			TopInhibitorTowerRedTeam.Tower = nil
+		elseif obj.name == MidOuterTowerRedTeam.Name then
+			MidOuterTowerRedTeam.Tower = nil
+		elseif obj.name == MidInnerTowerRedTeam.Name then
+			MidInnerTowerRedTeam.Tower = nil
+		elseif obj.name == MidInhibitorTowerRedTeam.Name then
+			MidInhibitorTowerRedTeam.Tower = nil
+		elseif obj.name == BotOuterTowerRedTeam.Name then
+			BotOuterTowerRedTeam.Tower = nil
+		elseif obj.name == BotInnerTowerRedTeam.Name then
+			BotInnerTowerRedTeam.Tower = nil
+		elseif obj.name == BotInhibitorTowerRedTeam.Name then
+			BotInhibitorTowerRedTeam.Tower = nil
+		elseif obj.name == NexusLeftTowerRedTeam.Name then
+			NexusLeftTowerRedTeam.Tower = nil
+		elseif obj.name == NexusRightTowerRedTeam.Name then
+			NexusRightTowerRedTeam.Tower = nil
+		elseif obj.name == TopOuterTowerBlueTeam.Name then
+			TopInnerTowerBlueTeam.Tower = nil
+		elseif obj.name == TopInnerTowerBlueTeam.Name then
+			TopInnerTowerBlueTeam.Tower = nil
+		elseif obj.name == TopInhibitorTowerBlueTeam.Name then
+			TopInhibitorTowerBlueTeam.Tower = nil
+		elseif obj.name == MidOuterTowerBlueTeam.Name then
+			MidOuterTowerBlueTeam.Tower = nil
+		elseif obj.name == MidInnerTowerBlueTeam.Name then
+			MidInnerTowerBlueTeam.Tower = nil
+		elseif obj.name == MidInhibitorTowerBlueTeam.Name then
+			MidInhibitorTowerBlueTeam.Tower = nil
+		elseif obj.name == BotOuterTowerBlueTeam.Name then
+			BotOuterTowerBlueTeam.Tower = nil
+		elseif obj.name == BotInnerTowerBlueTeam.Name then
+			BotInnerTowerBlueTeam.Tower = nil
+		elseif obj.name == BotInhibitorTowerBlueTeam.Name then
+			BotInhibitorTowerBlueTeam.Tower = nil
+		elseif obj.name == NexusLeftTowerBlueTeam.Name then
+			NexusLeftTowerBlueTeam.Tower = nil
+		elseif obj.name == NexusRightTowerBlueTeam.Name then
+			NexusRightTowerBlueTeam.Tower = nil
+		end
+	end
+end
 
+function LoadJungleAndTowers()
+	for i = 1, objManager.maxObjects do
+		local obj = objManager:getObject(i)
+        if obj ~= nil and obj.name ~= nil then
+			-- Jungle
+			if obj.name == BlueTeamBlueSpot.AncientGolemName then
+				BlueTeamBlueSpot.AncientGolem = obj
+			elseif obj.name == BlueTeamBlueSpot.YoungLizard1Name then
+				BlueTeamBlueSpot.YoungLizard1 = obj
+			elseif obj.name == BlueTeamBlueSpot.YoungLizard2Name then
+				BlueTeamBlueSpot.YoungLizard2 = obj
+			elseif obj.name == BlueTeamWolfesSpot.GiantWolfName then
+				BlueTeamWolfesSpot.GiantWolf = obj
+			elseif obj.name == BlueTeamWolfesSpot.Wolf1Name then
+				BlueTeamWolfesSpot.Wolf1 = obj
+			elseif obj.name == BlueTeamWolfesSpot.Wolf2Name then
+				BlueTeamWolfesSpot.Wolf2 = obj
+			elseif obj.name == BlueTeamWarithsSpot.WraithName then
+				BlueTeamWarithsSpot.Wraith = obj
+			elseif obj.name == BlueTeamWarithsSpot.LesserWraith1Name then
+				BlueTeamWarithsSpot.LesserWraith1 = obj
+			elseif obj.name == BlueTeamWarithsSpot.LesserWraith2Name then
+				BlueTeamWarithsSpot.LesserWraith2 = obj
+			elseif obj.name == BlueTeamWarithsSpot.LesserWraith3Name then
+				BlueTeamWarithsSpot.LesserWraith3 = obj
+			elseif obj.name == BlueTeamRedSpot.LizardElderName then
+				BlueTeamRedSpot.LizardElder = obj
+			elseif obj.name == BlueTeamRedSpot.YoungLizard1Name then
+				BlueTeamRedSpot.YoungLizard1 = obj
+			elseif obj.name == BlueTeamRedSpot.YoungLizard2Name then
+				BlueTeamRedSpot.YoungLizard2 = obj
+			elseif obj.name == BlueTeamGolemsSpot.GolemName then
+				BlueTeamGolemsSpot.Golem = obj
+			elseif obj.name == BlueTeamGolemsSpot.SmallGolemName then
+				BlueTeamGolemsSpot.SmallGolem = obj
+			elseif obj.name == RedTeamBlueSpot.AncientGolemName then
+				RedTeamBlueSpot.AncientGolem = obj
+			elseif obj.name == RedTeamBlueSpot.YoungLizard1Name then
+				RedTeamBlueSpot.YoungLizard1 = obj
+			elseif obj.name == RedTeamBlueSpot.YoungLizard2Name then
+				RedTeamBlueSpot.YoungLizard2 = obj
+			elseif obj.name == RedTeamWolfesSpot.GiantWolfName then
+				RedTeamWolfesSpot.GiantWolf = obj
+			elseif obj.name == RedTeamWolfesSpot.Wolf1Name then
+				RedTeamWolfesSpot.Wolf1 = obj
+			elseif obj.name == RedTeamWolfesSpot.Wolf2Name then
+				RedTeamWolfesSpot.Wolf2 = obj
+			elseif obj.name == RedTeamWarithsSpot.WraithName then
+				RedTeamWarithsSpot.Wraith = obj
+			elseif obj.name == RedTeamWarithsSpot.LesserWraith1Name then
+				RedTeamWarithsSpot.LesserWraith1 = obj
+			elseif obj.name == RedTeamWarithsSpot.LesserWraith2Name then
+				RedTeamWarithsSpot.LesserWraith2 = obj
+			elseif obj.name == RedTeamWarithsSpot.LesserWraith3Name then
+				RedTeamWarithsSpot.LesserWraith3 = obj
+			elseif obj.name == RedTeamRedSpot.LizardElderName then
+				RedTeamRedSpot.LizardElder = obj
+			elseif obj.name == RedTeamRedSpot.YoungLizard1Name then
+				RedTeamRedSpot.YoungLizard1 = obj
+			elseif obj.name == RedTeamRedSpot.YoungLizard2Name then
+				RedTeamRedSpot.YoungLizard2 = obj
+			elseif obj.name == RedTeamGolemsSpot.GolemName then
+				RedTeamGolemsSpot.Golem = obj
+			elseif obj.name == RedTeamGolemsSpot.SmallGolemName then
+				RedTeamGolemsSpot.SmallGolem = obj
+			elseif obj.name == DragonSpot.Name then
+				DragonSpot.Dragon = obj
+			elseif obj.name == BaronSpot.Name then
+				BaronSpot.Baron = obj
+			-- Towers
+			elseif obj.name == TopOuterTowerRedTeam.Name then
+				TopOuterTowerRedTeam.Tower = obj
+			elseif obj.name == TopInnerTowerRedTeam.Name then
+				TopInnerTowerRedTeam.Tower = obj
+			elseif obj.name == TopInhibitorTowerRedTeam.Name then
+				TopInhibitorTowerRedTeam.Tower = obj
+			elseif obj.name == MidOuterTowerRedTeam.Name then
+				MidOuterTowerRedTeam.Tower = obj
+			elseif obj.name == MidInnerTowerRedTeam.Name then
+				MidInnerTowerRedTeam.Tower = obj
+			elseif obj.name == MidInhibitorTowerRedTeam.Name then
+				MidInhibitorTowerRedTeam.Tower = obj
+			elseif obj.name == BotOuterTowerRedTeam.Name then
+				BotOuterTowerRedTeam.Tower = obj
+			elseif obj.name == BotInnerTowerRedTeam.Name then
+				BotInnerTowerRedTeam.Tower = obj
+			elseif obj.name == BotInhibitorTowerRedTeam.Name then
+				BotInhibitorTowerRedTeam.Tower = obj
+			elseif obj.name == NexusLeftTowerRedTeam.Name then
+				NexusLeftTowerRedTeam.Tower = obj
+			elseif obj.name == NexusRightTowerRedTeam.Name then
+				NexusRightTowerRedTeam.Tower = obj
+			elseif obj.name == TopOuterTowerBlueTeam.Name then
+				TopInnerTowerBlueTeam.Tower = obj
+			elseif obj.name == TopInnerTowerBlueTeam.Name then
+				TopInnerTowerBlueTeam.Tower = obj
+			elseif obj.name == TopInhibitorTowerBlueTeam.Name then
+				TopInhibitorTowerBlueTeam.Tower = obj
+			elseif obj.name == MidOuterTowerBlueTeam.Name then
+				MidOuterTowerBlueTeam.Tower = obj
+			elseif obj.name == MidInnerTowerBlueTeam.Name then
+				MidInnerTowerBlueTeam.Tower = obj
+			elseif obj.name == MidInhibitorTowerBlueTeam.Name then
+				MidInhibitorTowerBlueTeam.Tower = obj
+			elseif obj.name == BotOuterTowerBlueTeam.Name then
+				BotOuterTowerBlueTeam.Tower = obj
+			elseif obj.name == BotInnerTowerBlueTeam.Name then
+				BotInnerTowerBlueTeam.Tower = obj
+			elseif obj.name == BotInhibitorTowerBlueTeam.Name then
+				BotInhibitorTowerBlueTeam.Tower = obj
+			elseif obj.name == NexusLeftTowerBlueTeam.Name then
+				NexusLeftTowerBlueTeam.Tower = obj
+			elseif obj.name == NexusRightTowerBlueTeam.Name then
+				NexusRightTowerBlueTeam.Tower = obj
+			end
+		end
+		end
+	end
+end
