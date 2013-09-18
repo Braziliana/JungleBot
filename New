@@ -32,6 +32,7 @@ BlueTeamBlueSpot = {
 	TimeOfFirstRespawn = 115,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 300,
+	Timer = false,
 	AncientGolemName = "AncientGolem1.1.1",
 	YoungLizard1Name = "YoungLizard1.1.2",
 	YoungLizard2Name = "YoungLizard1.1.3",
@@ -52,6 +53,7 @@ BlueTeamWolfesSpot = {
 	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 50,
+	Timer = false,
 	GiantWolfName = "GiantWolf2.1.3",
 	Wolf1Name = "wolf2.1.1",
 	Wolf2Name = "wolf2.1.2",
@@ -69,9 +71,10 @@ BlueTeamWarithsSpot = {
 	Color = Blue,
 	Alieve = false,
 	TimeOfDeath = 0,
-	TimeOfFirstRespawn = 50,
+	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
-	TimeToRespawn = 125,
+	TimeToRespawn = 50,
+	Timer = false,
 	WraithName = "LesserWraith3.1.3",
 	LesserWraith1Name = "LesserWraith3.1.1",
 	LesserWraith2Name = "LesserWraith3.1.2",
@@ -94,6 +97,7 @@ BlueTeamRedSpot = {
 	TimeOfFirstRespawn = 115,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 300,
+	Timer = false,
 	LizardElder = "LizardElder4.1.1",
 	YoungLizard1Name = "YoungLizard4.1.2",
 	YoungLizard2Name = "YoungLizard4.1.3",
@@ -114,6 +118,7 @@ BlueTeamGolemsSpot = {
 	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 50,
+	Timer = false,
 	GolemName = "Golem5.1.2",
 	SmallGolemName = "SmallGolem5.1.1",
 	Golem = nil,
@@ -145,6 +150,7 @@ RedTeamBlueSpot = {
 	TimeOfFirstRespawn = 115,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 300,
+	Timer = false,
 	AncientGolemName = "AncientGolem7.1.1",
 	YoungLizard1Name = "YoungLizard7.1.2",
 	YoungLizard2Name = "YoungLizard7.1.3",
@@ -165,6 +171,7 @@ RedTeamWolfesSpot = {
 	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 50,
+	Timer = false,
 	GiantWolfName = "GiantWolf8.1.3",
 	Wolf1Name = "wolf8.1.1",
 	Wolf2Name = "wolf8.1.2",
@@ -185,6 +192,7 @@ RedTeamWarithsSpot = {
 	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 50,
+	Timer = false,
 	WraithName = "Wraith9.1.3",
 	LesserWraith1Name = "LesserWraith9.1.1",
 	LesserWraith2Name = "LesserWraith9.1.2",
@@ -207,6 +215,7 @@ RedTeamRedSpot = {
 	TimeOfFirstRespawn = 115,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 300,
+	Timer = false,
 	LizardElderName = "LizardElder10.1.1",
 	YoungLizard1Name = "YoungLizard10.1.2",
 	YoungLizard2Name = "YoungLizard10.1.3",
@@ -227,6 +236,7 @@ RedTeamGolemsSpot = {
 	TimeOfFirstRespawn = 125,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 50,
+	Timer = false,
 	Golem = "Golem11.1.2",
 	SmallGolemName = "SmallGolem11.1.1",
 	Golem = nil,
@@ -246,6 +256,7 @@ DragonSpot = {
 	TimeOfFirstRespawn = 150,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 360,
+	Timer = false,
 	Name = "Dragon6.1.1",
 	Dragon = nil,
 	OnTheWayStatus = "On The Way To DragonSpot",
@@ -263,6 +274,7 @@ BaronSpot = {
 	TimeOfFirstRespawn = 900,
 	TimeOfRespawn = 0,
 	TimeToRespawn = 420,
+	Timer = false,
 	Name = "Worm12.1.1",
 	Baron = nil,
 	OnTheWayStatus = "On The Way To BaronSpot",
@@ -1738,40 +1750,110 @@ end
 function BuyItem6(Item)
 
 end
-function UpdateJungle()
-	if GameTime < 130 then
-		if GameTime >= 115 and Jungle.FirstRespawnBufs == true then
+
+
+function UpdateJungle()	
+	if GameTime <= 126 then
+		if Jungle.FirstRespawnBufs and GameTime >= 115 then
 			BlueTeamBlueSpot.Alieve = true
 			BlueTeamRedSpot.Alieve = true
-			RedTeamBlueSpot.Alieve = true
-			RedTeamRedSpot.Alieve = true
 			Jungle.FirstRespawnBufs = false
 		end
-		if GameTime >= 125 and Jungle.FirstRespawnMonsters == true then
+		if Jungle.FirstRespawnMonsters and GameTime >= 125 then
 			BlueTeamWolfesSpot.Alieve = true
 			BlueTeamWarithsSpot.Alieve = true
 			BlueTeamGolemsSpot.Alieve = true
-			RedTeamWolfesSpot.Alieve = true
-			RedTeamWarithsSpot.Alieve = true
-			RedTeamGolemsSpot.Alieve = true
 			Jungle.FirstRespawnMonsters = false
 		end
-	else
-		if (BlueTeamBlueSpot.Alieve == false and BlueTeamBlueSpot.TimeOfRespawn <= GameTime) or BlueTeamBlueSpot.AncientGolem ~= nil or BlueTeamBlueSpot.YoungLizard1 ~= nil or BlueTeamBlueSpot.YoungLizard2 ~= nil then 
-			BlueTeamBlueSpot.Alieve = true
-		end
-		if (BlueTeamWolfesSpot.Alieve == false and BlueTeamWolfesSpot.TimeOfRespawn <= GameTime) or BlueTeamWolfesSpot.GiantWolf ~= nil or BlueTeamWolfesSpot.Wolf1 ~= nil or BlueTeamWolfesSpot.Wolf2 ~= nil then 
-			BlueTeamWolfesSpot.Alieve = true
-		end
+		
+		BlueTeamBlueSpot.TimeOfRespawn = BlueTeamBlueSpot.TimeOfFirstRespawn 
+		BlueTeamWolfesSpot.TimeOfRespawn = BlueTeamWolfesSpot.TimeOfFirstRespawn 
+		BlueTeamWarithsSpot.TimeOfRespawn = BlueTeamWarithsSpot.TimeOfFirstRespawn 
+		BlueTeamRedSpot.TimeOfRespawn = BlueTeamRedSpot.TimeOfFirstRespawn 
+		BlueTeamGolemsSpot.TimeOfRespawn = BlueTeamGolemsSpot.TimeOfFirstRespawn 
 	end
+
+	-- Blue
+	if BlueTeamBlueSpot.AncientGolem  ~= nil or BlueTeamBlueSpot.YoungLizard1 ~= nil or BlueTeamBlueSpot.YoungLizard2  ~= nil or (BlueTeamBlueSpot.TimeOfRespawn <= GameTime and BlueTeamBlueSpot.Timer == true) then
+		BlueTeamBlueSpot.Alieve = true
+	else
+		BlueTeamBlueSpot.Alieve = false
+	end
+	if BlueTeamBlueSpot.Alieve then
+		if BlueTeamBlueSpot.AncientGolem  ~= nil or BlueTeamBlueSpot.YoungLizard1 ~= nil or BlueTeamBlueSpot.YoungLizard2  ~= nil then
+			BlueTeamBlueSpot.Timer = false
+		end
+	elseif BlueTeamBlueSpot.Timer == false then
+		BlueTeamBlueSpot.TimeOfRespawn = GameTime + BlueTeamBlueSpot.TimeToRespawn
+		BlueTeamBlueSpot.Timer = true
+	end
+	-- Wolves
+	if BlueTeamWolfesSpot.Wolf1 ~= nil or BlueTeamWolfesSpot.Wolf2 ~= nil or BlueTeamWolfesSpot.GiantWolf ~= nil or (BlueTeamWolfesSpot.TimeOfRespawn <= GameTime and BlueTeamWolfesSpot.Timer == true) then
+		BlueTeamWolfesSpot.Alieve = true
+	else
+		BlueTeamWolfesSpot.Alieve = false
+	end
+	if BlueTeamWolfesSpot.Alieve then
+		if BlueTeamWolfesSpot.Wolf1 ~= nil or BlueTeamWolfesSpot.Wolf2 ~= nil or BlueTeamWolfesSpot.GiantWolf ~= nil then
+			BlueTeamWolfesSpot.Timer = false
+		end
+	elseif BlueTeamWolfesSpot.Timer == false then
+		BlueTeamWolfesSpot.TimeOfRespawn = GameTime + BlueTeamWolfesSpot.TimeToRespawn
+		BlueTeamWolfesSpot.Timer = true
+	end
+	-- Wariths
+	if BlueTeamWarithsSpot.Wraith ~= nil or BlueTeamWarithsSpot.LesserWraith1 ~= nil or BlueTeamWarithsSpot.LesserWraith2 ~= nil or BlueTeamWarithsSpot.LesserWraith3 ~= nil or (BlueTeamWarithsSpot.TimeOfRespawn <= GameTime and BlueTeamWarithsSpot.Timer == true) then
+		BlueTeamWarithsSpot.Alieve = true
+	else
+		BlueTeamWarithsSpot.Alieve = false
+	end
+	if BlueTeamWarithsSpot.Alieve then
+		if BlueTeamWarithsSpot.Wraith ~= nil or BlueTeamWarithsSpot.LesserWraith1 ~= nil or BlueTeamWarithsSpot.LesserWraith2 ~= nil or BlueTeamWarithsSpot.LesserWraith3 ~= nil then
+			BlueTeamWarithsSpot.Timer = false
+		end
+	elseif BlueTeamWarithsSpot.Timer == false then
+		BlueTeamWarithsSpot.TimeOfRespawn = GameTime + BlueTeamWarithsSpot.TimeToRespawn
+		BlueTeamWarithsSpot.Timer = true
+	end
+	-- Red
+	if BlueTeamRedSpot.LizardElder ~= nil or BlueTeamRedSpot.YoungLizard1 ~= nil or BlueTeamRedSpot.YoungLizard2 ~= nil or (BlueTeamRedSpot.TimeOfRespawn <= GameTime and BlueTeamRedSpot.Timer == true) then
+		BlueTeamRedSpot.Alieve = true
+	else
+		BlueTeamRedSpot.Alieve = false
+	end
+	if BlueTeamRedSpot.Alieve then
+		if BlueTeamRedSpot.LizardElder ~= nil or BlueTeamRedSpot.YoungLizard1 ~= nil or BlueTeamRedSpot.YoungLizard2 ~= nil then
+			BlueTeamRedSpot.Timer = false
+		end
+	elseif BlueTeamRedSpot.Timer == false then
+		BlueTeamRedSpot.TimeOfRespawn = GameTime + BlueTeamRedSpot.TimeToRespawn
+		BlueTeamRedSpot.Timer = true
+	end
+	-- Golems
+	if BlueTeamGolemsSpot.Golem ~= nil or BlueTeamGolemsSpot.SmallGolem ~= nil or (BlueTeamGolemsSpot.TimeOfRespawn <= GameTime and BlueTeamGolemsSpot.Timer == true) then
+		BlueTeamGolemsSpot.Alieve = true
+	else
+		BlueTeamGolemsSpot.Alieve = false
+	end
+	if BlueTeamGolemsSpot.Alieve then
+		if BlueTeamGolemsSpot.Golem ~= nil or BlueTeamGolemsSpot.SmallGolem ~= nil then
+			BlueTeamGolemsSpot.Timer = false
+		end
+	elseif BlueTeamGolemsSpot.Timer == false then
+		BlueTeamGolemsSpot.TimeOfRespawn = GameTime + BlueTeamGolemsSpot.TimeToRespawn
+		BlueTeamGolemsSpot.Timer = true
+	end
+
 end
 -- AI
 function AutoBuy()
 	UpdateInventory()
 end
 function AIJungle()
-	if (GameTime < 115 or BlueTeamBlueSpot.Alieve)  and not Me.Status ~= BlueTeamWolfesSpot.OnTheWayStatus and not Me.Status ~= BlueTeamWolfesSpot.ClearingStatus  then
+	if (GameTime < 115 or BlueTeamBlueSpot.Alieve) and not Me.Status ~= BlueTeamWolfesSpot.OnTheWayStatus and not Me.Status ~= BlueTeamWolfesSpot.ClearingStatus then
 		DoBlue(BlueTeamBlueSpot)
+	elseif BlueTeamWolfesSpot.Alieve and not Me.Status ~= BlueTeamBlueSpot.OnTheWayStatus and not Me.Status ~= BlueTeamBlueSpot.ClearingStatus then
+		DoWolves(BlueTeamWolfesSpot)
 	end
 end
 
@@ -1787,15 +1869,41 @@ function DoBlue(Spot)
 			CastEJungle()
 			myHero:Attack(Spot.AncientGolem)
 		elseif Spot.YoungLizard1 ~= nil and not Spot.YoungLizard1.dead then
+			Spot.AncientGolem = nil
 			CastWJungle()
 			myHero:Attack(Spot.YoungLizard1)
 		elseif Spot.YoungLizard2 ~= nil and not Spot.YoungLizard2.dead then
+			Spot.YoungLizard1 = nil
 			CastWJungle()
 			myHero:Attack(Spot.YoungLizard2)
 		else
+			Spot.YoungLizard2 = nil
 			Me.Status = Jungle.Status
-			Spot.Alieve = false
-			Spot.TimeOfRespawn = GameTime + Spot.TimeToRespawn
+		end
+	end
+end
+function DoWolves(Spot)
+	if math.sqrt((myHero.x - Spot.X)*(myHero.x - Spot.X) + (myHero.z - Spot.Z)*(myHero.z - Spot.Z)) >= 250  then
+		myHero:MoveTo(Spot.X, Spot.Z)
+		Me.Status = Spot.OnTheWayStatus
+	else
+		Me.Status = Spot.ClearingStatus
+		if Spot.GiantWolf ~= nil and not Spot.GiantWolf.dead then
+			CastQJungle(Spot.GiantWolf)
+			CastWJungle()
+			CastEJungle()
+			myHero:Attack(Spot.GiantWolf)
+		elseif Spot.Wolf1 ~= nil and not Spot.Wolf1.dead then
+			Spot.GiantWolf = nil
+			CastWJungle()
+			myHero:Attack(Spot.Wolf1)
+		elseif Spot.Wolf2 ~= nil and not Spot.Wolf2.dead then
+			Spot.Wolf1 = nil
+			CastWJungle()
+			myHero:Attack(Spot.Wolf2)
+		else
+			Spot.Wolf2 = nil
+			Me.Status = Jungle.Status
 		end
 	end
 end
@@ -1804,8 +1912,6 @@ end
 function OnLoad()
 	LoadJungleAndTowers()
 	PrintChat("~~>Jungle Bot Loaded!<~~")
-	
-	
 	
 	JaxSpellSettings = scriptConfig("Jax Bot Spells", "Jax Bot Spells")
 	JaxSpellSettings:addParam("0","Jungle Spells Config",SCRIPT_PARAM_INFO,"")
@@ -1830,6 +1936,8 @@ function OnLoad()
 	JaxSpellSettings:addParam("UseWCombo","W in Combo", SCRIPT_PARAM_ONOFF, true)
 	JaxSpellSettings:addParam("UseECombo","E in Combo", SCRIPT_PARAM_ONOFF, true)
 	JaxSpellSettings:addParam("UseRCombo","R in Combo", SCRIPT_PARAM_ONOFF, true)
+	
+	
 end
 
 function OnTick()
@@ -1841,7 +1949,33 @@ function OnTick()
 end
 
 function OnDraw()
-	DrawText("Status: " .. Me.Status,20,100,80,0xFFFF00FF)
+	DrawText("Status: " .. Me.Status,20,900,50,0xFFFFFF00)
+	if BlueTeamBlueSpot.Alieve == false then
+		DrawText("Blue Respawn Time: " .. math.ceil(BlueTeamBlueSpot.TimeOfRespawn-GameTime),20,100,100,0xFFFF00FF)
+	else
+		DrawText("Blue Alieve!",20,100,100,0xFF00FF00)
+	end
+	if BlueTeamWolfesSpot.Alieve == false then
+		DrawText("Wolves Respawn Time: " .. math.ceil(BlueTeamWolfesSpot.TimeOfRespawn-GameTime),20,100,120,0xFFFF00FF)
+	else
+		DrawText("Wolves Alieve!",20,100,120,0xFF00FF00)
+	end
+	if BlueTeamWarithsSpot.Alieve == false then
+		DrawText("Wariths Respawn Time: " .. math.ceil(BlueTeamWarithsSpot.TimeOfRespawn-GameTime),20,100,140,0xFFFF00FF)
+	else
+		DrawText("Wariths Alieve!",20,100,140,0xFF00FF00)
+	end
+	if BlueTeamRedSpot.Alieve == false then
+		DrawText("Red Respawn Time: " .. math.ceil(BlueTeamRedSpot.TimeOfRespawn-GameTime),20,100,160,0xFFFF00FF)
+	else
+		DrawText("Red Alieve!",20,100,160,0xFF00FF00)
+	end
+	if BlueTeamGolemsSpot.Alieve == false then
+		DrawText("Golems Respawn Time: " .. math.ceil(BlueTeamGolemsSpot.TimeOfRespawn-GameTime),20,100,180,0xFFFF00FF)
+	else
+		DrawText("Golems Alieve!",20,100,180,0xFF00FF00)
+	end
+
 	--[[
 	-- Draw Spots
 	-- Blue Team
@@ -1999,6 +2133,7 @@ function OnCreateObj(obj)
 		end
 	end
 end
+
 function OnDeleteObj(obj)
 	if obj ~= nil and obj.name ~= nil then
 		-- Jungle
@@ -2233,4 +2368,6 @@ function LoadJungleAndTowers()
 		end
 	end
 end
+
+
 
