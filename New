@@ -16,6 +16,7 @@ BlueTeamBase = {
 	X = 45,
 	Y = 184,
 	Z = 265,
+	Distance = 0,
 	Range = 420,
 	Color = Blue,
 	Team = "Blue Team"
@@ -142,6 +143,7 @@ RedTeamBase = {
 	X = 13960,
 	Y = 184,
 	Z = 14190,
+	Distance = 0,
 	Range = 420,
 	Color = Red,
 	Team = "Red Team"
@@ -351,6 +353,7 @@ MidInhibitorTowerRedTeam = {
 	Range = 775,
 	Tower = nil
 
+	
 }
 BotOuterTowerRedTeam = {
 	Name = Turret_T2_R_03_A,
@@ -1696,13 +1699,29 @@ HPPotion = {
 	TimeOfLastPotionUse = 0,
 	Potion = nil
 }
+Recover = {
+	Status = "Recover",
+}
+Recal = {
+	Status = "Recal",
+	Recal = false,
+	RecalTime = 8,
+	StartRecal = 0
+}
+Run = {
+	Status = "Run",
+	ClosestSafeArea = nil,
+	ClosestSafeAreaRange = 50
+}
 Me = {
 	Team = "Netrual",
-	Status = "Free"
+	Status = "Free",
+	FirstBack = false
 }
 Shop = {
 	LastBuyTMR = 0,
 	BuyingTime = 0,
+	NextTime = 30,
 	Delay = 200,
 	NextBuy = 1,
 	Status = "Shopping",
@@ -1779,6 +1798,37 @@ function BuyItem6(Item)
 
 end
 
+function ClosestRecalSpot()
+	
+	local closest = 0
+	
+	BlueTeamBase.Distance = math.sqrt((myHero.x - BlueTeamBase.X)^2 + (myHero.z - BlueTeamBase.Z)^2)
+	SafeRecalSpot1.Distance = math.sqrt((myHero.x - SafeRecalSpot1.X)^2 + (myHero.z - SafeRecalSpot1.Z)^2)
+	SafeRecalSpot2.Distance = math.sqrt((myHero.x - SafeRecalSpot2.X)^2 + (myHero.z - SafeRecalSpot2.Z)^2)
+	SafeRecalSpot3.Distance = math.sqrt((myHero.x - SafeRecalSpot3.X)^2 + (myHero.z - SafeRecalSpot3.Z)^2)
+	SafeRecalSpot4.Distance = math.sqrt((myHero.x - SafeRecalSpot4.X)^2 + (myHero.z - SafeRecalSpot4.Z)^2)
+	SafeRecalSpot5.Distance = math.sqrt((myHero.x - SafeRecalSpot5.X)^2 + (myHero.z - SafeRecalSpot5.Z)^2)
+	SafeRecalSpot6.Distance = math.sqrt((myHero.x - SafeRecalSpot6.X)^2 + (myHero.z - SafeRecalSpot6.Z)^2)
+	
+	closest = math.min(SafeRecalSpot1.Distance, SafeRecalSpot2.Distance, SafeRecalSpot3.Distance, SafeRecalSpot4.Distance, SafeRecalSpot5.Distance, SafeRecalSpot6.Distance, BlueTeamBase.Distance)
+	
+	if BlueTeamBase.Distance == closest then
+		return BlueTeamBase
+	elseif SafeRecalSpot1.Distance == closest then
+		return SafeRecalSpot1
+	elseif SafeRecalSpot2.Distance == closest then
+		return SafeRecalSpot2
+	elseif SafeRecalSpot3.Distance == closest then
+		return SafeRecalSpot3
+	elseif SafeRecalSpot4.Distance == closest then
+		return SafeRecalSpot4
+	elseif SafeRecalSpot5.Distance == closest then
+		return SafeRecalSpot5
+	elseif SafeRecalSpot6.Distance == closest then
+		return SafeRecalSpot6
+	end
+	
+end
 
 function UpdateJungle()	
 	if GameTime <= 126 then
@@ -1875,38 +1925,65 @@ function UpdateJungle()
 end
 -- AI
 function AutoBuy()
-
-	if JaxMainSettings.AutoBuy then
-		UpdateInventory()
-		if GameTime < 30 then
-			BuyItem(1039)
-			BuyItem(2003)
-		end
-		
-		if Shop.Buying == false then
-			Shop.BuyingTime = GameTime
-			Shop.Buying = true
-			Me.Status = Shop.Status
-		end
-
-		if GameTime - 5 >= Shop.BuyingTime then
-			Shop.Buying = false
-			Me.Status = "Free"
-		end
-
-		if GetTickCount() > Shop.LastBuyTMR + Shop.Delay then
-			if ItemList[Shop.NextBuy] ~= nil and GetInventorySlotItem(ItemList[Shop.NextBuy]) ~= nil then
-				Shop.NextBuy = Shop.NextBuy + 1
-			else
-				BuyItem(ItemList[Shop.NextBuy])
-				Shop.LastBuyTMR = GetTickCount()
-			end
-		end
+	UpdateInventory()
 	
-	else
+	if GameTime > 30 and GameTime < 60 then
+		Me.FirstBack = true
+	end
+		
+	if Shop.Buying == false then
+		Shop.BuyingTime = GameTime
+		Shop.Buying = true
+		Me.Status = Shop.Status
+	end
+		
+	if GameTime - 5 >= Shop.BuyingTime then
+		Shop.Buying = false
 		Me.Status = "Free"
 	end
 	
+	if GetTickCount() > Shop.LastBuyTMR + Shop.Delay then
+		if ItemList[Shop.NextBuy] ~= nil and GetInventorySlotItem(ItemList[Shop.NextBuy]) ~= nil then
+			Shop.NextBuy = Shop.NextBuy + 1
+		else
+			BuyItem(ItemList[Shop.NextBuy])
+			Shop.LastBuyTMR = GetTickCount()
+		end
+	end
+end
+
+function Back()
+	if GameTime > 20 then
+	if myHero.health/myHero.maxHealth * 100 <= JaxMainSettings.RecalHealth and math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) > BlueTeamBase.Range then
+		Me.Status = Run.Status
+	elseif myHero.health/myHero.maxHealth * 100 <= 95 and math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) <= BlueTeamBase.Range then
+		Me.Status = Recover.Status
+	elseif math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) <= BlueTeamBase.Range and GameTime-Shop.BuyingTime >= Shop.NextTime then
+		Me.Status = Shop.Status
+	end
+	
+	if math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) > BlueTeamBase.Range and (myHero.gold >= JaxMainSettings.GoldToBack or (myHero.gold >= JaxMainSettings.GoldToFirstBack and Me.FirstBack == true) and (Me.Status == Jungle.Status or Me.Status == "Free" or Me.Status == BlueTeamBlueSpot.OnTheWayStatus or Me.Status == BlueTeamWolfesSpot.OnTheWayStatus or Me.Status == BlueTeamWarithsSpot.OnTheWayStatus or Me.Status == BlueTeamRedSpot.OnTheWayStatus or Me.Status == BlueTeamGolemsSpot.OnTheWayStatus )) then
+		Me.Status = Run.Status
+		Me.FirstBack = false
+	end
+	if Me.Status ~= Shop.Status and math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) <= BlueTeamBase.Range and myHero.health/myHero.maxHealth * 100 >= 95 and myHero.mana/myHero.maxMana * 100 >= 95 and myHero.gold < JaxMainSettings.GoldToBack then
+		Me.Status = "Free"
+	end
+	
+	if Me.Status == Run.Status or Me.Status == Recal.Status then
+		Run.ClosestSafeArea = ClosestRecalSpot()
+		if math.sqrt((myHero.x - Run.ClosestSafeArea.X) ^ 2 + (myHero.z - Run.ClosestSafeArea.Z) ^ 2) > Run.ClosestSafeAreaRange and Me.Status ~= Recal.Status and math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) > BlueTeamBase.Range  then
+			myHero:MoveTo(Run.ClosestSafeArea.X, Run.ClosestSafeArea.Z)
+		elseif math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) > BlueTeamBase.Range then
+			Me.Status = Recal.Status
+			CastSpell(RECALL)
+		elseif math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) <= BlueTeamBase.Range and GameTime-Shop.BuyingTime >= Shop.NextTime then
+			Me.Status = Shop.Status
+		end
+	else
+		Run.ClosestSafeArea = 0
+	end
+	end
 end
 
 function LevelUpSpels()
@@ -2113,7 +2190,7 @@ function GoAndWait(Spot)
 end
 
 function SmiteAI()
-
+	if Smite.Slot ~= nil then
 		if BlueTeamBlueSpot.Alieve == false and BlueTeamBlueSpot.TimeOfRespawn - GameTime >= Smite.Cooldown and BlueTeamRedSpot.Alieve == false and BlueTeamRedSpot.TimeOfRespawn - GameTime >= Smite.Cooldown then
 			if BlueTeamWolfesSpot.GiantWolf ~= nil and math.sqrt((myHero.x - BlueTeamWolfesSpot.GiantWolf.x)^2 + (myHero.z - BlueTeamWolfesSpot.GiantWolf.z)^2) < Smite.Range and Smite.Damage >= BlueTeamWolfesSpot.GiantWolf.health then
 				CastSpell(Smite.Slot, BlueTeamWolfesSpot.GiantWolf)
@@ -2132,9 +2209,15 @@ function SmiteAI()
 				CastSpell(Smite.Slot, BlueTeamRedSpot.LizardElder)
 			end
 		end
-
+	end
 end
 
+function MAINAI()
+	Back()
+	if JaxMainSettings.Jungle and Me.Status ~= Shop.Status and Me.Status ~= Run.Status and Me.Status ~= Recal.Status and Me.Status ~= Recover.Status and GameTime > 20 then
+		AIJungle()
+	end
+end
 
 -- MAIN()
 function OnLoad()
@@ -2143,8 +2226,11 @@ function OnLoad()
 	
 	JaxMainSettings = scriptConfig("Jax Main Setting", "Jax Main Setting")
 	JaxMainSettings:addParam("MinHPToUsePotion"," % HP To Use Potion",SCRIPT_PARAM_SLICE, 70, 0, 100, 0)
-	JaxMainSettings:addParam("Jungle","Jungle", SCRIPT_PARAM_ONOFF, true)
+	JaxMainSettings:addParam("RecalHealth"," % HP To Back",SCRIPT_PARAM_SLICE, 15, 0, 100, 0)
+	JaxMainSettings:addParam("Jungle","Jungle", SCRIPT_PARAM_ONKEYTOGGLE, true, string.byte("O"))
 	JaxMainSettings:addParam("AutoBuy","Auto Buy", SCRIPT_PARAM_ONOFF, true)
+	JaxMainSettings:addParam("GoldToFirstBack","Gold To First Back",SCRIPT_PARAM_SLICE, 450, 450, 1000, -1)
+	JaxMainSettings:addParam("GoldToBack","Gold To Back",SCRIPT_PARAM_SLICE, 1200, 500, 3000, -1)
 	
 	JaxSpellSettings = scriptConfig("Jax Bot Spells", "Jax Bot Spells")
 	JaxSpellSettings:addParam("0","Jungle Spells Config",SCRIPT_PARAM_INFO,"")
@@ -2179,10 +2265,22 @@ function OnTick()
 	GameTime = GetInGameTimer()
 	UpdateJungle()
 	UpdateSpells()
-	AutoBuy()
-	if JaxMainSettings.Jungle then
-		AIJungle()
+	
+	if JaxMainSettings.AutoBuy then
+		if GameTime < 30 then
+			BuyItem(1039)
+			BuyItem(2003)
+		end
+		if math.sqrt((myHero.x - BlueTeamBase.X) ^ 2 + (myHero.z - BlueTeamBase.Z) ^ 2) <= BlueTeamBase.Range and GameTime-Shop.BuyingTime >= Shop.NextTime then
+			Me.Status = Shop.Status
+		end
+		if Me.Status == Shop.Status then
+			AutoBuy()
+		end
 	end
+	
+	MAINAI()
+	
 	LevelUpSpels()
 	AutoPotion()
 end
