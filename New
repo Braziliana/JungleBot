@@ -2158,6 +2158,7 @@ function DoGolems(Spot)
 		elseif Spot.SmallGolem ~= nil and not Spot.SmallGolem.dead then
 			Spot.Golem = nil
 			CastWJungle()
+			myHero:Attack(Spot.SmallGolem)
 		else
 			Spot.Golem = nil
 			Spot.SmallGolem = nil
